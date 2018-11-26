@@ -72,7 +72,9 @@ app.get('/map', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/map.html'))
 });
 
-
+app.get('/import', function(req,res,html){
+  res.sendFile(path.join(__dirname+ '/views/import.html'))
+});
 //connecting sql
 // const mysql = require('mysql');  
 // const fs = require('fs');
