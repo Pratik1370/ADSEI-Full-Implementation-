@@ -1,120 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Analytics Pro</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <title>Analytics Pro</title>
 
-    <!-- Libraries CSS Files -->
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body class="nav-md-0">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3">
-       
+<body class="nav-md-0">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3">
 
-            <div class="clearfix"></div>
 
-          </div>
+        <div class="clearfix"></div>
+
+      </div>
+    </div>
+
+
+    <header id="header" style="background-color: #2C3A47">
+      <div class="container-fluid">
+
+        <div id="logo" class="pull-left">
+          <h1><a href="#intro" class="scrollto">Analytics Pro > Import</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
         </div>
 
-        
-          <header id="header" style="background-color: #2C3A47">
-          <div class="container-fluid">
+        <button id="back" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
+          Back</button>
+        <form class="fileupload" action="import" method="post" enctype="multipart/form-data">
+          <input id="file_submit" style="float: right;" type="submit" class="btn btn-dark">Upload</input>
+          <input id="file_field" style="float: right;" type="file" name="upfile" value="" class="btn btn-dark"></input>
+        </form>
 
-            <div id="logo" class="pull-left">
-              <h1><a href="#intro" class="scrollto">Analytics Pro > Import</a></h1>
-              <!-- Uncomment below if you prefer to use an image logo -->
-              <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
-            </div>
+      </div>
+    </header><!-- #header -->
 
-            <button id="browse" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back</button>
+    <br><br><br><br><br>
+    <!-- page content -->
+    <!-- container for load diagram information-->
+    <div class="container">
 
-            <button id="browse" style="float: right;" type="button" class="btn btn-dark">Browse</button>
+      <div id="upload_msg" class="text-center">
+        <div class="p-3 h2 text-success">File uploaded successfully!</div>
+      </div>
 
-          </div>
-        </header><!-- #header -->
-
-<br><br><br><br><br>
-        <!-- page content -->
-        <!-- container for load diagram information-->
-        <div class="container">
-
+      <!--boxes for users choose the column
+               when user choose the column the corresponding content of cell will show below to select-->
+      <div class="row">
+        <div id=colCheckBox class="col-sm-12 col-md-6">
           <div class="text-center">
-            <div class = "p-3 h2 text-success">File loaded successfully!</div>
+            <div class=" h4 text-dark p-2">Choose the columns you want to compare</div>
           </div>
 
-          <!--boxes for users choose the column
-               when user choose the colmn the corresponding content of cell will show below to select-->
-          <div class="row">
-            <div id=colCheckBox class="col-sm-12 col-md-6">
-              <div class="text-center">
-                <div class = " h4 text-dark p-2">Choose the columns you want to compare</div>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input id="col_1" type="checkbox" class="custom-control-input" />
-                <label class="custom-control-label" for="customCheck">column name 1</label>
-              </div>
-
-              <div id="cellCol_1"></div>
-
-              <div class="custom-control custom-checkbox">
-                <input id="col_2" type="checkbox" class="custom-control-input">
-                <label class="custom-control-label" for="customCheck">column name 2</label>
-              </div>
-
-              <div id="cellCol_2"></div>
-
-              <div class="custom-control custom-checkbox">
-                <input id="col_3" type="checkbox" class="custom-control-input">
-                <label class="custom-control-label" for="customCheck">column name 3</label>
-              </div>
-
-              <div id="cellCol_3"></div>
-
-            </div>
-
-            <div id=colRadioBox class="col-sm-12 col-md-6">
-              <div class="text-center">
-                <div class = " h4 text-dark p-2">Choose the diagram you want to see</div>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">Pie Chart</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio">Line Chart</label>
-              </div>
-              <div class="radio disabled">
-                <label><input type="radio" name="optradio">Bar Chart</label>
-              </div>
-
-            </div>
+          <div class="custom-control custom-checkbox">
+            <input id="col_1" type="checkbox" class="custom-control-input" />
+            <label class="custom-control-label" for="customCheck">column name 1</label>
           </div>
 
-        </div><!--end of the load diagram container-->
+          <div id="cellCol_1"></div>
+
+          <div class="custom-control custom-checkbox">
+            <input id="col_2" type="checkbox" class="custom-control-input">
+            <label class="custom-control-label" for="customCheck">column name 2</label>
+          </div>
+
+          <div id="cellCol_2"></div>
+
+          <div class="custom-control custom-checkbox">
+            <input id="col_3" type="checkbox" class="custom-control-input">
+            <label class="custom-control-label" for="customCheck">column name 3</label>
+          </div>
+
+          <div id="cellCol_3"></div>
+
+        </div>
+
+        <div id=colRadioBox class="col-sm-12 col-md-6">
+          <div class="text-center">
+            <div class=" h4 text-dark p-2">Choose the diagram you want to see</div>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Pie Chart</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Line Chart</label>
+          </div>
+          <div class="radio disabled">
+            <label><input type="radio" name="optradio">Bar Chart</label>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!--end of the load diagram container-->
 
 
     <!-- jQuery -->
@@ -133,6 +138,7 @@
     <script src="../build/js/custom.js"></script>
     <script src="../build/js/center-loader.js"></script>
     <script src="../js/import.js"></script>
-	
-  </body>
+
+</body>
+
 </html>

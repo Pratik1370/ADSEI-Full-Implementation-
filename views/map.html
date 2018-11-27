@@ -1,99 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Analytics Pro</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <title>Analytics Pro</title>
 
-    <!-- Libraries CSS Files -->
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body class="nav-md-0">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3">
-       
+<body class="nav-md-0">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3">
 
-            <div class="clearfix"></div>
 
-          </div>
+        <div class="clearfix"></div>
+
+      </div>
+    </div>
+
+
+    <header id="header" style="background-color: #2C3A47">
+      <div class="container-fluid">
+
+        <div id="logo" class="pull-left">
+          <h1><a href="#intro" class="scrollto">Analytics Pro</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
         </div>
 
-        
-          <header id="header" style="background-color: #2C3A47">
-          <div class="container-fluid">
+        <button id="switch_button_map" style="float: right;" type="button" class="btn btn-dark">Switch to Continental
+          Visualisations ></button>
+        <button id="import_button" style="float: right;" type="button" class="btn btn-dark"> Import</button>
 
-            <div id="logo" class="pull-left">
-              <h1><a href="#intro" class="scrollto">Analytics Pro</a></h1>
-              <!-- Uncomment below if you prefer to use an image logo -->
-              <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+    </header><!-- #header -->
+
+    <br><br><br><br><br>
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+
+          <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+
+              <div class="x_content">
+
+                <div id="echart_world_map" style="height:100vh;"></div>
+
+              </div>
             </div>
-
-            <button id="switch_button_map" style="float: right;" type="button" class="btn btn-dark">Switch to Continental Visualisations ></button>
-            <button id="import_button" style="float: right;" type="button" class="btn btn-dark" > Import</button>
-
           </div>
-        </header><!-- #header -->
 
-<br><br><br><br><br>
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            
-            
-            <div class="clearfix"></div>
 
-            <div class="row">
-              
+          <div id="pie_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
 
-               <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                 
-                  <div class="x_content">
+              <div class="clearfix"></div>
 
-                    <div id="echart_world_map" style="height:100vh;"></div>
+              <div class="x_content">
 
-                  </div>
-                </div>
+                <div id="echart_pie2" style="height:75vh;"></div>
+
               </div>
-
-
-              <div id="pie_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  
-                    <div class="clearfix"></div>
-                  
-                  <div class="x_content">
-
-                    <div id="echart_pie2" style="height:75vh;"></div>
-
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
 
         </div>
-       
+
       </div>
     </div>
 
@@ -112,6 +114,7 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
     <script src="../build/js/center-loader.js"></script>
-	
-  </body>
+
+</body>
+
 </html>

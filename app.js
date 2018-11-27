@@ -7,6 +7,8 @@ var logger = require('morgan');
 var csv=require('csvtojson');
 var csvjson =require('csvjson');
 var fs = require('fs');
+var upload = require('express-fileupload');
+
 
 
 
@@ -75,6 +77,38 @@ app.get('/map', function(req,res,html){
 app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
+
+//file upload
+app.use(upload());
+
+app.get('/import',function(req,res){
+  res.sendFile(__dirname+'views/import.html');
+})
+app.post('/import',function(req,res){
+  console.log(req.files);
+  if(req.files.upfile){
+    var file = req.files.upfile,
+      name = file.name,
+      type = file.mimetype;
+    var uploadpath = __dirname + '/public/data/' + name;
+    file.mv(uploadpath,function(err){
+      if(err){
+        console.log("File Upload Failed",name,err);
+        res.redirect('/import');
+      }
+      else {
+        console.log("File Uploaded",name);
+        res.redirect('/import');
+      }
+    });
+  }
+  else {
+    res.redirect('/import');
+    res.end();
+  };
+})
+
+
 //connecting sql
 // const mysql = require('mysql');  
 // const fs = require('fs');
