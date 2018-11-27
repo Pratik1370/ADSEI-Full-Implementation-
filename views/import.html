@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
@@ -9,7 +10,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Analytics Pro</title>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+@media (min-width: 768px){
+.form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+}
+}
+</style>
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -51,12 +81,9 @@
           <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
         </div>
 
-        <button id="back" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
-          Back</button>
-        <form class="fileupload" action="import" method="post" enctype="multipart/form-data">
-          <input id="file_submit" style="float: right;" type="submit" class="btn btn-dark">Upload</input>
-          <input id="file_field" style="float: right;" type="file" name="upfile" value="" class="btn btn-dark"></input>
-        </form>
+        <!-- <button id="back" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
+          Back</button> -->
+        
 
       </div>
     </header><!-- #header -->
@@ -64,15 +91,36 @@
     <br><br><br><br><br>
     <!-- page content -->
     <!-- container for load diagram information-->
-    <div class="container">
+    <div class="clear"></div>
 
-      <div id="upload_msg" class="text-center">
+    <div class="container" >
+      <div class="clear"></div>
+      <div class="row form-import" style="margin-left: 25%; margin-top: 5%">
+      <form class="fileupload"  action="import" method="post" enctype="multipart/form-data">
+        <div><input id="file_field"  type="file" name="upfile" value="" class="btn btn-dark"></div>
+<br>        
+        <div></div><input id="file_submit" style="align-content: center;" type="submit" class="btn btn-dark">
+
+      </form> 
+      <!-- <form>
+          <div class="form-group">
+            <label for="file_field">file input</label>
+            <input type="file" class="form-control-file" name="upfile" id="file_field">
+          </div>
+          <div class="form-group">
+              <label for="file_submit">file submit</label>
+              <input type="submit" class="form-control-file" name="upfile" id="file_submit">
+            </div>
+        </form> -->
+    </div>
+      <div id="upload_msg" class="text-center" style="display: none">
         <div class="p-3 h2 text-success">File uploaded successfully!</div>
       </div>
+      <div class="clear"></div>
 
       <!--boxes for users choose the column
                when user choose the column the corresponding content of cell will show below to select-->
-      <div class="row">
+      <div class="row" style="margin-top: 50px">
         <div id=colCheckBox class="col-sm-12 col-md-6">
           <div class="text-center">
             <div class=" h4 text-dark p-2">Choose the columns you want to compare</div>
@@ -109,7 +157,7 @@
             <label><input type="radio" name="optradio">Pie Chart</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="optradio">Line Chart</label>
+            <label><input type="radio" name="optradio" disabled>Line Chart</label>
           </div>
           <div class="radio disabled">
             <label><input type="radio" name="optradio">Bar Chart</label>
