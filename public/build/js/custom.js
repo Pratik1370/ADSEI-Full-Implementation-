@@ -929,6 +929,12 @@ $(document).ready(function() {
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send();
 
+	
+
+	$('#import_button').on('click',function(e){
+	
+		window.location.href="/import";
+	});
 
       $('#switch_button_map').on('click',function(e){
 
