@@ -78,6 +78,10 @@ app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
 
+app.get('/testapi', function(req,res){
+  console.log('dbsjbjs');
+  res.send('nmscmscsmcmscmscm');});
+
 //file upload
 app.use(upload());
 
@@ -93,16 +97,18 @@ app.post('/import',function(req,res){
     var uploadpath = __dirname + '/public/data/' + name;
     file.mv(uploadpath,function(err){
       if(err){
-        console.log("File Upload Failed",name,err);
+        console.log("File Upload Failed",name,err);  res.send('nmscmscsmcmscmscm');
         res.redirect('/import');
       }
       else {
-        console.log("File Uploaded",name);
+        console.log("File Uploaded",name);  res.send('nmscmscsmcmscmscm');
         res.redirect('/import');
       }
     });
   }
   else {
+    res.send('nmscmscsmcmscmscm');
+
     res.redirect('/import');
     res.end();
   };

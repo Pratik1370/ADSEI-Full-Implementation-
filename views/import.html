@@ -94,12 +94,12 @@
     <div class="clear"></div>
 
     <div class="container" >
-      <div class="clear"></div>
+      <!-- <div class="clear"></div> -->
       <div class="row form-import" style="margin-left: 25%; margin-top: 5%">
       <form class="fileupload"  action="import" method="post" enctype="multipart/form-data">
         <div><input id="file_field"  type="file" name="upfile" value="" class="btn btn-dark"></div>
 <br>        
-        <div></div><input id="file_submit" style="align-content: center;" type="submit" class="btn btn-dark">
+        <!-- <div></div><input id="file_submit" style="align-content: center;" type="button" class="btn btn-dark"> -->
 
       </form> 
       <!-- <form>
@@ -116,22 +116,22 @@
       <div id="upload_msg" class="text-center" style="display: none">
         <div class="p-3 h2 text-success">File uploaded successfully!</div>
       </div>
-      <div class="clear"></div>
+      <!-- <div class="clear"></div> -->
 
       <!--boxes for users choose the column
                when user choose the column the corresponding content of cell will show below to select-->
-      <div class="row" style="margin-top: 50px">
+      <div class="row option-display" style="margin-top: 50px; display: none">
         <div id=colCheckBox class="col-sm-12 col-md-6">
           <div class="text-center">
             <div class=" h4 text-dark p-2">Choose the columns you want to compare</div>
           </div>
-
-          <div class="custom-control custom-checkbox">
+<ul id="checknames"></ul>
+          <!-- <div class="custom-control custom-checkbox">
             <input id="col_1" type="checkbox" class="custom-control-input" />
             <label class="custom-control-label" for="customCheck">column name 1</label>
-          </div>
+          </div> -->
 
-          <div id="cellCol_1"></div>
+          <!-- <div id="cellCol_1"></div>
 
           <div class="custom-control custom-checkbox">
             <input id="col_2" type="checkbox" class="custom-control-input">
@@ -145,7 +145,7 @@
             <label class="custom-control-label" for="customCheck">column name 3</label>
           </div>
 
-          <div id="cellCol_3"></div>
+          <div id="cellCol_3"></div> -->
 
         </div>
 
@@ -183,10 +183,118 @@
     <script src="../vendors/echarts/map/js/world.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.js"></script>
+    <!-- <script src="../build/js/custom.js"></script> -->
     <script src="../build/js/center-loader.js"></script>
     <script src="../js/import.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.1/xlsx.core.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+<script src="../build/js/center-loader.js"></script>
+
+<script>
+  $(document).ready(function(){
+
+    function handleFile(e) {
+      var timer;
+      $('.body').loader('show', '<img src="../img/ring.gif">');
+      // $('.container').hide();
+      window.clearTimeout(timer);
+
+        var files = e.target.files;
+        var i, f;
+        // console.log(files);
+     //Loop through files
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var data = e.target.result;
+                // console.log(data);
+
+                var result;
+                try{
+                  console.log('workbook');
+
+                var workbook = XLSX.read(data, { type: 'binary' });
+                // console.log(workbook);
+
+                }catch(err){
+                  console.log(err);
+                }
+                var sheet_name_list = workbook.SheetNames;
+                sheet_name_list.forEach(function (y) { /* iterate through sheets */
+                  // alert(sheet_name_list);
+//Convert the cell value to Json
+                    var roa = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
+                    if (roa.length > 0) {
+                        result = roa;
+                    }
+                    // alert('roa');
+
+                });
+                var header_names = Object.keys(result[0]);
+                // $('#checknames li').each(function (index) {
+                //     $(this).text(header_names[index]);
+                // });
+                var assetList = $('#checknames')
+
+$.each(header_names, function(i)
+    {
+        var li = $('<li/>')
+            .addClass('custom-control custom-checkbox')
+            .attr('role', 'menuitem')
+            .appendTo(assetList);
+
+        var input = $('<input/>')
+            .addClass('custom-control-input')
+            .attr('type', 'checkbox')
+            .appendTo(li);
+
+       var aaa = $('<label/>')
+            .addClass('custom-control-label')
+            .attr('for', 'customCheck')
+            .text(header_names[i])
+            .appendTo(li);
+
+    });
+$(".option-display").show();
+
+		// timer = window.setTimeout(function () {
+			// When the time is 1.5 second after last input, hide the image.
+			
+$('.body').loader('hide');
+// $('.container').show();
+
+		// }, 7500);
+
+            };
+            reader.readAsBinaryString(files[0]);
+    }
+    $('#file_field').change(handleFile);
+
+    $("#file_field12").on("change", function (e) {
+    var file = $(this)[0].files[0];
+    var upload = new Upload(file);
+    console.log(file);
+
+});
+    $('#file_submit').on('click', function (e) {
+
+      $.ajax({
+        url: "http://localhost:3000/import",
+        type: "GET",
+        success: function(res){
+          // alert('ffff');
+        },
+        error: function(err){
+          alert('Error');
+        }
+      })
+
+    });
+  });
+
+</script>
 </body>
 
 </html>
