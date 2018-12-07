@@ -78,6 +78,11 @@ app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
 
+app.get('/dashboard', function(req,res,html){
+  // console.log(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/dashboard.html'))
+});
+
 app.get('/testapi', function(req,res){
   console.log('dbsjbjs');
   res.send('nmscmscsmcmscmscm');});
@@ -113,6 +118,7 @@ app.post('/import',function(req,res){
     res.end();
   };
 })
+
 
 
 //connecting sql

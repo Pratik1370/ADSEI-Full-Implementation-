@@ -942,6 +942,11 @@ $(document).ready(function () {
 		window.location.href = "/import";
 	});
 
+	$('#dashboard_button').on('click', function (e) {
+
+		window.location.href = "/dashboard";
+	});
+
 	$('#switch_button_map').on('click', function (e) {
 
 
@@ -982,6 +987,26 @@ $(document).ready(function () {
 
 	init_charts();
 
+
+});
+
+// sidebar functions
+$(document).ready(function () {
+// 	$("#sidebar").mCustomScrollbar({
+// 		theme: "minimal"
+//   	 });
+
+
+    $('#sideBarButton').on('click', function () {
+//             // open or close navbar
+			$('#sidebar').toggleClass('active');
+// 			// close dropdowns
+// 			$('.collapse.in').toggleClass('in');
+// 			// and also adjust aria-expanded attributes we use for the open/closed arrows
+// 			// in our CSS
+// 			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+		});
+	
 
 });
 
