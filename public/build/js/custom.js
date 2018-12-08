@@ -942,6 +942,11 @@ $(document).ready(function () {
 		window.location.href = "/import";
 	});
 
+	$('#bubblechart_button').on('click', function (e) {
+
+		window.location.href = "/bubblechart";
+	});
+
 	$('#dashboard_button').on('click', function (e) {
 
 		window.location.href = "/dashboard";

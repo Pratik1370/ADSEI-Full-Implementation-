@@ -78,6 +78,10 @@ app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
 
+app.get('/bubblechart', function(req,res,html){
+  res.sendFile(path.join(__dirname+ '/views/bubblechart.html'))
+});
+
 app.get('/dashboard', function(req,res,html){
   // console.log(req.query.name);
   res.sendFile(path.join(__dirname+ '/views/dashboard.html'))
