@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
 
 app.get('/visualisations_data', function(req,res,html){
     //console.log(req.query.name);
-  charts_controller.test(req.query.name);
+  charts_controller.test(req.query);
   res.sendFile(path.join(__dirname+ '/views/visualisations_data.html'))
 });
 
@@ -69,6 +69,15 @@ app.get('/visualisations_compare', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/visualisations_compare.html'))
 });
 
+app.get('/bubble_compare',function(req, res){
+  charts_controller.bubble_compare1(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/bubblechart.html'))
+});
+
+app.get('/bubble_compare1',function(req, res){
+  charts_controller.bubble_compare1(req,res);
+  // res.sendFile(path.join(__dirname+ '/views/bubblechart.html'))
+});
 
 app.get('/map', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/map.html'))
@@ -89,7 +98,8 @@ app.get('/dashboard', function(req,res,html){
 
 app.get('/testapi', function(req,res){
   console.log('dbsjbjs');
-  res.send('nmscmscsmcmscmscm');});
+  // res.send('nmscmscsmcmscmscm');
+});
 
 //file upload
 app.use(upload());
