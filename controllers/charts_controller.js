@@ -58,6 +58,10 @@ function getContinentalMapping(country){
   if(data['2013']){
         
    var temp_data = data['2013'][country];
+  //  console.log(data['2013']);
+   console.log(data['2013'][country]);
+  
+   
    var count=0;
    for(var index=0; index < temp_data.length ; index++){
       count += parseInt(temp_data[index],10);
@@ -97,7 +101,7 @@ function groupBy( array)
 
       
         
-        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === ''){
+        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === '' || o.City === ''){
 
             flag = i;
         } else {
@@ -142,19 +146,20 @@ function groupBy( array)
             map_country_json.push({name: country, value: avg_temp})
         }
 }
+console.log(map_country_json);
 
-  continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2013});
-  continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2013});
-  continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2013});
-  continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2013});
-  continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2013});
-  continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2013});
-  continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2013});
+  // continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2013});
+  // continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2013});
+  // continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2013});
+  // continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2013});
+  // continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2013});
+  // continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2013});
+  // continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2013});
   
   
  
-
-  return {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
+  // return {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
+  return {'cities': cities, 'cities_2':cities_2, 'world_map_data': map_country_json};
 
 //   return {'single_country_Unc_temp': single_country_Unc_temp, 'single_country_temp': single_country_temp, 'array': array, 'china_data': china_data};
 }
