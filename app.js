@@ -91,7 +91,8 @@ app.get('/bubblechart', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/bubblechart.html'))
 });
 
-app.get('/cities', function(req,res,html){
+app.get('/cities', function(req,res){
+  // charts_controller.cities(req.query,res);
   res.sendFile(path.join(__dirname+ '/views/cities.html'))
 });
 
@@ -99,6 +100,12 @@ app.get('/dashboard', function(req,res,html){
   // console.log(req.query.name);
   res.sendFile(path.join(__dirname+ '/views/dashboard.html'))
 });
+
+app.get('/cities_data', function(req,res){
+  //console.log(req.query.name);
+charts_controller.cities(req.query,res);
+});
+
 
 app.get('/testapi', function(req,res){
   console.log('dbsjbjs');
@@ -130,7 +137,6 @@ app.post('/import',function(req,res){
     });
   }
   else {
-    res.send('nmscmscsmcmscmscm');
 
     res.redirect('/import');
     res.end();

@@ -10,7 +10,7 @@ var continent_json = [];
 var cities = {};
 var cities_2 = {};
 var jsonObj1 = '';
-
+var cities_of_country = '';
 
 function getYearMapping(country){
 
@@ -169,7 +169,7 @@ exports.index = function(req, res){
 
     if (jsonObj1 == ''){
      
-      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByCountry.csv'
+      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
 
     const csv=require('csvtojson')
     csv()
@@ -198,7 +198,7 @@ exports.test = function(req,res){
 
     if (jsonObj1 == ''){
      
-      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByCountry.csv'
+      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
 
     const csv=require('csvtojson')
     csv()
@@ -214,7 +214,10 @@ var sent_data = req;
     if (selected_country != ''){
      cities = getYearMapping1(sent_data);
      jsonObj1 = {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
-    }
+     console.log('...................................................................');
+     console.log(jsonObj1);
+     console.log('...................................................................');
+     }
 };
 
 exports.test_compare = function(req,res){
@@ -225,7 +228,7 @@ exports.test_compare = function(req,res){
 
     if (jsonObj1 == ''){
      
-      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByCountry.csv'
+      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
 
     const csv=require('csvtojson')
     csv()
@@ -256,7 +259,7 @@ exports.bubble_compare1 = function(req,res){
 
     if (jsonObj1 == ''){
      
-      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByCountry.csv'
+      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
 console.log(csvFilePath);
     const csv=require('csvtojson')
     csv()
@@ -269,10 +272,94 @@ console.log(csvFilePath);
         
     }
     setTimeout(function(){
-      console.log('*******************************************************************************************');
-      console.log(jsonObj1);
-      res.send(jsonObj1);
-      // res.send(JSON.stringify({ a: 1 }));
-      // return jsonObj1;
+     
+      res.send(jsonObj1); 
     },4000);
 };
+
+exports.cities = function(req,res){
+  // console.log(req);
+
+  
+    var currentPath = process.cwd();
+    var sent_data = req;
+    var jsonObj_cities;
+    // var selected_country = sent_data.name;
+    // cities_of_country = 'India';
+    cities_of_country = req.name;
+
+    // if (jsonObj_cities == ''){
+     
+      const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
+
+    const csv=require('csvtojson')
+    csv()
+        .fromFile(csvFilePath)
+        .then((jsonObj)=>{
+            jsonObj_cities = cities_data (jsonObj);
+            
+        });
+        setTimeout(function(){
+          console.log(typeof jsonObj_cities);
+// return jsonObj_cities;
+          res.send(jsonObj_cities); 
+        },4000);
+    
+};
+
+function cities_data( array)
+{
+ 
+  var flag = -1;
+  var date;
+  var cities_in_country = [];
+ var city = [];
+
+  array.forEach( function( o,i )
+  {
+      if(flag != -1){
+        var a = array.slice(flag,1);
+        flag = -1;
+      }
+
+      
+        
+        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === '' || o.City === ''){
+
+            flag = i;
+        } else {
+            o.AverageTemperature = parseFloat(o.AverageTemperature);
+            // UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
+
+            date = moment(o.dt, 'YYYY-MM-DD').toDate();
+            array[i].dt = date.getFullYear();
+            year = array[i].dt;
+            
+            if(year == 2013 && o.Country == cities_of_country) {
+              if(!(o.City in city)){
+                city[o.City] = [];
+              }
+              city[o.City].push(o.AverageTemperature);
+            }
+            
+            
+
+    }
+  });
+  // console.log(city);
+      // city.forEach(function(p,j){
+        for(var j in city){
+          if(city.hasOwnProperty(j)){
+            // console.log(j);
+            var sum = city[j].reduce((previous, current) => current += previous);
+            var avg = parseFloat(sum / city[j].length).toFixed(2);
+              cities_in_country.push({name:j, value:avg});
+
+          }
+    }
+    // });
+
+  // console.log(cities_in_country);
+return cities_in_country;
+
+ }

@@ -11,10 +11,35 @@
 </head>
 <body>
 <div id="main" style="width: 1024px;height:576px;"></div>
+</body>
 <script type="text/javascript">
 
+$(document).ready(function(e){
+    console.log('res');
 
-var myChart = echarts.init(document.getElementById('main'));
+    var getParams = function (url) {
+          var params = {};
+          var parser = document.createElement('a');
+          parser.href = url;
+          var query = parser.search.substring(1);
+          var vars = query.split('&');
+          for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            params[pair[0]] = decodeURIComponent(pair[1]);
+          }
+          console.log(params.name);
+
+          return params;
+        };
+
+        // Get parameters from the current URL
+        var params = getParams(window.location.href);
+    $.ajax({
+        url: "http://localhost:3000/cities_data?name="+params.name,
+        type: "GET",
+        success: function(res){
+            console.log('res');
+        var myChart = echarts.init(document.getElementById('main'));
 
 option = {
     backgroundColor: '#2c343c',
@@ -47,13 +72,7 @@ option = {
             type:'pie',
             radius : '55%',
             center: ['50%', '50%'],
-            data:[
-                {value:335, name:'City 1'},
-                {value:310, name:'City 2'},
-                {value:274, name:'City 3'},
-                {value:235, name:'City 4'},
-                {value:400, name:'City 5'}
-            ].sort(function (a, b) { return a.value - b.value; }),
+            data:res.sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
                 normal: {
@@ -91,6 +110,10 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
+},
+        error: function(error){alert(error.message)}
+});
+});
 </script>
-</body>
+
 </html>
