@@ -947,6 +947,11 @@ $(document).ready(function () {
 		window.location.href = "/bubblechart";
 	});
 
+	$('#cities_button').on('click', function (e) {
+
+		window.location.href = "/cities";
+	});
+
 	$('#dashboard_button').on('click', function (e) {
 
 		window.location.href = "/dashboard";
