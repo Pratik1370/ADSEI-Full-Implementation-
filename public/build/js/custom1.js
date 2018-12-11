@@ -513,79 +513,7 @@ function init_echarts(xx) {
 
 	//echart Line
 
-	if ($('#echart_line').length) {
-
-		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
-		var data = [];
-		for (key in xx.cities) {
-			//console.log(xx.cities[key]);
-			var obj_data = {
-				name: key,
-				type: 'line',
-				smooth: true,
-				itemStyle: {
-					normal: {
-						// areaStyle: {
-						// type: 'none'
-						// }
-					}
-				},
-				data: xx.cities[key]
-			}
-			data.push(obj_data);
-		}
-
-
-		echartLine.setOption({
-			title: {
-				text: localStorage.getItem('selected_country'),
-				subtext: 'Avg Temperature'
-			},
-			tooltip: {
-				trigger: 'axis'
-			},
-			legend: {
-				x: 220,
-				y: 40,
-				data: Object.keys(xx.cities)
-			},
-			toolbox: {
-				show: true,
-				feature: {
-					magicType: {
-						show: true,
-						title: {
-							line: 'Line',
-							bar: 'Bar'
-
-						},
-						type: ['line', 'bar']
-					},
-					restore: {
-						show: true,
-						title: "Restore"
-					},
-					saveAsImage: {
-						show: true,
-						title: "Save Image"
-					}
-				}
-			},
-			calculable: true,
-			xAxis: [{
-				name: '\n\n\n\n\n\n\nMonths',
-				type: 'category',
-				boundaryGap: false,
-				data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-			}],
-			yAxis: [{
-				type: 'value'
-			}],
-			series: data
-
-		});
-
-	}
+	
 
 	//echart Line
 
@@ -874,19 +802,16 @@ function init_echarts(xx) {
 
 			country_name = param.data.name;
 			localStorage.setItem('selected_country', country_name);
-			var start_year = 2001;
-			var end_year = 2005;
-			// var param_send = {start: start_year, end: end_year, country: country_name};
-			window.location.href = 'visualisations_data?name=' + country_name+'&start_year='+start_year+'&end_year='+end_year;
+			window.location.href = 'visualisations_data?name=' + country_name;
 
 
 		}
 	}
 
 	function eConsole_compare(param) {
-
+// console.log('((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((')
 		if (typeof param.seriesIndex != 'undefined') {
-
+			console.log(param);
 			if (compare == "") {
 				compare = param.data.name;
 				localStorage.setItem('selected_country_2', compare);
@@ -948,11 +873,6 @@ $(document).ready(function () {
 	$('#bubblechart_button').on('click', function (e) {
 
 		window.location.href = "/bubblechart";
-	});
-
-	$('#cities_button').on('click', function (e) {
-
-		window.location.href = "/cities";
 	});
 
 	$('#dashboard_button').on('click', function (e) {
@@ -1022,3 +942,4 @@ $(document).ready(function () {
 	
 
 });
+
