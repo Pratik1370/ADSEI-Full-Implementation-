@@ -150,13 +150,18 @@
         // Get parameters from the current URL
         var params = getParams(window.location.href);
 
+        $('#cities_button').on('click', function (event) {
+          var country_name = params.name;
+          window.location.href = 'cities?name=' + country_name;
+        });
+        
         $('#year_data').on('click', function (event) {
           var start_year = $('#start').val();
           var end_year = $('#end').val();
           console.log(start_year);
           console.log(end_year);
           var country_name = params.name;
-          var country_name = 'India';
+          // var country_name = 'India';
 
           // var param_send = {start: start_year, end: end_year, country: country_name};
           // console.log(param_send);
