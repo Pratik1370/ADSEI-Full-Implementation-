@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>City View</title>
@@ -8,112 +9,118 @@
     <script src="/vendors/echarts/dist/echarts.js"></script>
     <script src="/vendors/echarts/dist/echarts.common.min.js"></script>
     <script src="/public/build/js/custom.js"></script>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../build/js/center-loader.js"></script>
 </head>
+
 <body>
-<div id="main" style="width: 1024px;height:576px;"></div>
+    <div id="main" style="width: 1024px;height:576px;"></div>
 </body>
 <script type="text/javascript">
 
-$(document).ready(function(e){
-    console.log('res');
+    $(document).ready(function (e) {
+        $('#main').loader('show', '<img src="../img/ring.gif">');
+        console.log('res');
 
-    var getParams = function (url) {
-          var params = {};
-          var parser = document.createElement('a');
-          parser.href = url;
-          var query = parser.search.substring(1);
-          var vars = query.split('&');
-          for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            params[pair[0]] = decodeURIComponent(pair[1]);
-          }
-          console.log(params.name);
+        var getParams = function (url) {
+            var params = {};
+            var parser = document.createElement('a');
+            parser.href = url;
+            var query = parser.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                params[pair[0]] = decodeURIComponent(pair[1]);
+            }
+            console.log(params.name);
 
-          return params;
+            return params;
         };
 
         // Get parameters from the current URL
         var params = getParams(window.location.href);
-    $.ajax({
-        url: "http://localhost:3000/cities_data?name="+params.name,
-        type: "GET",
-        success: function(res){
-            console.log('res');
-        var myChart = echarts.init(document.getElementById('main'));
+        $.ajax({
+            url: "http://localhost:3000/cities_data?name=" + params.name,
+            type: "GET",
+            success: function (res) {
+                $('#main').loader('hide');
+                console.log('res');
+                var myChart = echarts.init(document.getElementById('main'));
 
-option = {
-    backgroundColor: '#2c343c',
+                option = {
+                    backgroundColor: '#2c343c',
 
-    title: {
-        text: 'City View',
-        left: 'center',
-        top: 20,
-        textStyle: {
-            color: '#ccc'
-        }
-    },
-
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-
-    visualMap: {
-        show: false,
-        min: 80,
-        max: 600,
-        inRange: {
-            colorLightness: [0, 1]
-        }
-    },
-    series : [
-        {
-            name:'Country',
-            type:'pie',
-            radius : '55%',
-            center: ['50%', '50%'],
-            data:res.sort(function (a, b) { return a.value - b.value; }),
-            roseType: 'radius',
-            label: {
-                normal: {
-                    textStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    lineStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
+                    title: {
+                        text: 'City View',
+                        left: 'center',
+                        top: 20,
+                        textStyle: {
+                            color: '#ccc'
+                        }
                     },
-                    smooth: 0.2,
-                    length: 10,
-                    length2: 20
-                }
-            },
-            itemStyle: {
-                normal: {
-                    color: '#c23531',
-                    shadowBlur: 200,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            },
 
-            animationType: 'scale',
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) {
-                return Math.random() * 200;
-            }
-        }
-    ]
-};;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-},
-        error: function(error){alert(error.message)}
-});
-});
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+
+                    visualMap: {
+                        show: false,
+                        min: 80,
+                        max: 600,
+                        inRange: {
+                            colorLightness: [0, 1]
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Country',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '50%'],
+                            data: res.sort(function (a, b) { return a.value - b.value; }),
+                            roseType: 'radius',
+                            label: {
+                                normal: {
+                                    textStyle: {
+                                        color: 'rgba(255, 255, 255, 0.3)'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    lineStyle: {
+                                        color: 'rgba(255, 255, 255, 0.3)'
+                                    },
+                                    smooth: 0.2,
+                                    length: 10,
+                                    length2: 20
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#c23531',
+                                    shadowBlur: 200,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            },
+
+                            animationType: 'scale',
+                            animationEasing: 'elasticOut',
+                            animationDelay: function (idx) {
+                                return Math.random() * 200;
+                            }
+                        }
+                    ]
+                };
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            },
+            error: function (error) { alert(error.message) }
+        });
+    });
 </script>
 
 </html>
