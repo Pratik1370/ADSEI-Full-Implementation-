@@ -51,7 +51,7 @@
           <h1><a href="#intro" class="scrollto">Analytics Pro</a></h1>
         </div>
 
-        <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button>
+
       </div>
     </header><!-- #header -->
 
@@ -69,14 +69,13 @@
           <div id="line" class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
               <div class="x_title">
-                <h2 style="margin-right: 10px">Climate Changes</h2> 
+                <h2 style="margin-right: 10px">Climate Changes</h2>
                 <label for="start">From:</label>
-                <input type="year" id="start" name="start"
-       min="2000" value="2000">
-       <label for="end"> To:</label>
-       <input type="year" id="end" name="start"
-       max="2012" value="2012">
-       <button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button>
+                <input type="year" id="start" name="start" min="2000" value="2000">
+                <label for="end"> To:</label>
+                <input type="year" id="end" name="start" max="2012" value="2012">
+                <button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button>
+                <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -113,43 +112,43 @@
     <script src="../build/js/custom.js"></script>
     <script src="../build/js/center-loader.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
+      $(document).ready(function () {
 
-      var getParams = function (url) {
-        var params = {};
-        var parser = document.createElement('a');
-        parser.href = url;
-        var query = parser.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-          var pair = vars[i].split('=');
-          params[pair[0]] = decodeURIComponent(pair[1]);
-        }
-        // console.log(params);
-        document.getElementById('start').value = params.start_year;
-        document.getElementById('end').value = params.end_year;
-        return params;
-      };
+        var getParams = function (url) {
+          var params = {};
+          var parser = document.createElement('a');
+          parser.href = url;
+          var query = parser.search.substring(1);
+          var vars = query.split('&');
+          for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            params[pair[0]] = decodeURIComponent(pair[1]);
+          }
+          // console.log(params);
+          document.getElementById('start').value = params.start_year;
+          document.getElementById('end').value = params.end_year;
+          return params;
+        };
 
-      // Get parameters from the current URL
-      var params = getParams(window.location.href);
-  
-    $('#year_data').on('click', function(event){
-      var start_year = $('#start').val();
-      var end_year = $('#end').val();
-      console.log(start_year);
-      console.log(end_year);
-      var country_name = params.name;
-      var country_name = 'India';
+        // Get parameters from the current URL
+        var params = getParams(window.location.href);
 
-      // var param_send = {start: start_year, end: end_year, country: country_name};
-      // console.log(param_send);
-      window.location.href = 'visualisations_data?name=' + country_name+'&start_year='+start_year+'&end_year='+end_year;
+        $('#year_data').on('click', function (event) {
+          var start_year = $('#start').val();
+          var end_year = $('#end').val();
+          console.log(start_year);
+          console.log(end_year);
+          var country_name = params.name;
+          var country_name = 'India';
 
-    });
-  });
+          // var param_send = {start: start_year, end: end_year, country: country_name};
+          // console.log(param_send);
+          window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
+
+        });
+      });
     </script>
-<!-- <script type="text/javascript">
+    <!-- <script type="text/javascript">
 // if ($('#echart_line').length) {
 
 var echartLine = echarts.init(document.getElementById('echart_line'), theme);
