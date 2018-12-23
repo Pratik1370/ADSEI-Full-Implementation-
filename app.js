@@ -43,8 +43,6 @@ app.use(function(err, req, res, next) {
   next(createError(404));
 });
 
-
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -87,8 +85,8 @@ app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
 
-app.get('/bubblechart', function(req,res,html){
-  res.sendFile(path.join(__dirname+ '/views/bubblechart.html'))
+app.get('/charts', function(req,res,html){
+  res.sendFile(path.join(__dirname+ '/views/charts.html'))
 });
 
 app.get('/cities', function(req,res){

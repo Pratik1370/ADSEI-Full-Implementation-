@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Charts</title>
+    <!-- including ECharts file -->
+    <script src="/vendors/echarts/dist/echarts.min.js"></script>
+    <script src="/vendors/echarts/dist/echarts.js"></script>
+    <script src="/vendors/echarts/dist/echarts.common.min.js"></script>
+    <script src="/public/build/js/custom.js"></script>
+
+      <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3">
+
+        <div class="clearfix"></div>
+
+      </div>
+    </div>
+
+
+    <header id="header" style="background-color: #2C3A47">
+      <div class="container-fluid">
+
+        <div id="logo" class="pull-left">
+          <h1><a href="#intro" class="scrollto">Analytics Pro > Learning</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+        </div>
+
+        <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
+    </header>
+
+    <div class="dropdown" "fixed-top">
+  <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Bar Graph</a></li>
+    <li><a href="#">Pie Graph</a></li>
+    <li><a href="#">Line Graph</a></li>
+  </ul>
+</div>
+
+    <br><br><br><br><br>
+
+<!-- <div class="dropdown" "fixed-top">
+  <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Bar Graph</a></li>
+    <li><a href="#">Pie Graph</a></li>
+    <li><a href="#">Line Graph</a></li>
+  </ul>
+
+<br><br>
+
+</div> -->
+<div class="row">
+<div id="main" style="width: 700px;height:480px;"class="col-sm-5"></div>
+<script type="text/javascript">
+
+var myChart = echarts.init(document.getElementById('main'));
+
+        // specify chart configuration item and data
+        var option = {
+            title: {
+                text: 'Fruit Count'
+            },
+            tooltip: {},
+            legend: {
+                data:['Total']
+            },
+            xAxis: {
+                data: ["Apple","Oranges","Banana","Watermelon","Grapes","Pears"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'Fruits',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+myChart.setOption(option);
+
+</script>
+
+<div id="main" style="width: 640px;height:480px;"class="col-sm-6"></div>
+<!DOCTYPE html>
+<html>
+<body>
+<h4>
+A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
+
+The bars can be horizontal or vertical.
+</h4>
+</body>
+</html>
+</div>
+
+</body>
+</html>
