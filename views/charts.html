@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <title>Charts</title>
     <!-- including ECharts file -->
-    <script src="/vendors/echarts/dist/echarts.min.js"></script>
-    <script src="/vendors/echarts/dist/echarts.js"></script>
-    <script src="/vendors/echarts/dist/echarts.common.min.js"></script>
-    <script src="/public/build/js/custom.js"></script>
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <script src="../vendors/echarts/dist/echarts.js"></script>
+    <script src="../vendors/echarts/dist/echarts.common.min.js"></script>
+    <script src="../build/js/custom.js"></script>
+    <script src="../vendors/bootstrap/popper.min.js"></script>
+    <script src="../js/charts.js"></script>
+    <!-- <script src="/public/js/charts.js"></script> -->
 
       <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +59,7 @@
         <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
     </header>
 
-    <div class="dropdown" "fixed-top">
+    <!-- <div class="dropdown" "fixed-top">
   <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -64,64 +67,35 @@
     <li><a href="#">Pie Graph</a></li>
     <li><a href="#">Line Graph</a></li>
   </ul>
-</div>
+</div> -->
 
     <br><br><br><br><br>
 
-<!-- <div class="dropdown" "fixed-top">
+<div class="dropdown" "fixed-top">
   <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li><a href="#">Bar Graph</a></li>
+    <li><a onclick="showBar()">Bar Graph</a></li>
     <li><a href="#">Pie Graph</a></li>
-    <li><a href="#">Line Graph</a></li>
+    <li><a onclick="showLine()">Line Graph</a></li>
   </ul>
 
 <br><br>
 
-</div> -->
-<div class="row">
-<div id="main" style="width: 700px;height:480px;"class="col-sm-5"></div>
-<script type="text/javascript">
-
-var myChart = echarts.init(document.getElementById('main'));
-
-        // specify chart configuration item and data
-        var option = {
-            title: {
-                text: 'Fruit Count'
-            },
-            tooltip: {},
-            legend: {
-                data:['Total']
-            },
-            xAxis: {
-                data: ["Apple","Oranges","Banana","Watermelon","Grapes","Pears"]
-            },
-            yAxis: {},
-            series: [{
-                name: 'Fruits',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-
-myChart.setOption(option);
-
-</script>
-
-<div id="main" style="width: 640px;height:480px;"class="col-sm-6"></div>
-<!DOCTYPE html>
-<html>
-<body>
-<h4>
+</div>
+<!--************************ This is the content part ***********************-->
+<div class="row" >
+<div id="main" style="width: 700px;height:480px;"class="col-sm-6"></div>
+<div id="textContent" style="width: 640px;height:480px;"class="col-sm-6"></div>
+<!-- <h4>
 A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
 
 The bars can be horizontal or vertical.
-</h4>
-</body>
-</html>
+</h4> -->
 </div>
+
+
+
 
 </body>
 </html>
