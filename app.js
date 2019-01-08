@@ -110,6 +110,16 @@ app.get('/testapi', function(req,res){
   // res.send('nmscmscsmcmscmscm');
 });
 
+
+app.get('/country_names', function(req,res){
+  charts_controller.country_names(req.query,res);
+
+  console.log('*********country names*************');
+  // res.send('nmscmscsmcmscmscm');
+});
+
+
+
 //file upload
 app.use(upload());
 

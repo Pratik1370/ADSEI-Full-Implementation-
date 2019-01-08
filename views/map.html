@@ -112,7 +112,7 @@
               <tr>
                 <td><span class="close">&times;</span>
                   <select class="test" multiple="multiple">
-                    <optgroup label="Group A">
+                    <optgroup id="aa" label="Group A">
                       <option value="1">Option 1</option>
                       <option value="2" selected>Option 2</option>
                       <option value="3">Option 3</option>
@@ -226,6 +226,65 @@
           modal.style.display = "none";
         }
       }
+      $(document).ready(function(){
+//         function addcountry(res){
+//                   var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
+//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+// $("#aa").append($ctrl);
+//           $.each(res, function(index,country){
+//                 console.log(country);
+//                       // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
+//                       // options += '<label for="' + country + '">' + country + '</label>';
+
+//                       var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text").appendTo("#aa");
+//                       $('<label />', { for: country, text: country }).appendTo("#aa");
+//                       // $('#aa').append($ctrl);
+
+//                         });
+//         }
+        $.ajax({
+            url: "http://localhost:3000/country_names" ,
+            type: "GET",
+            success: function (res) {
+              console.log('res');
+
+              console.log(res);
+              // addcountry(res);
+              // var options = '';
+              $.each(res, function(index,country){
+                $('#aa').append($('<option>', { 
+        value: country,
+        text : country,
+        id: country 
+    }));
+                console.log(country);
+                      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
+                      // options += '<label for="' + country + '">' + country + '</label>';
+
+                      // var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
+                      // $('<label />', { for: country, text: country }).appendTo("#aa");
+                      // console.log($ctrl);
+                      // $('#aa').append($ctrl);
+
+                        });
+                        // $('#aa').append(options);
+
+
+            },
+            error: function(error){
+              console.log(error);
+            }
+          });
+//         var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
+//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+// $("#aa").append($ctrl);
+                        
+                        
+      });
     </script>
     <script>
         (function ($) {
