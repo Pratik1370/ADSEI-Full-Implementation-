@@ -88,6 +88,9 @@ app.get('/import', function(req,res,html){
 app.get('/charts', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/charts.html'))
 });
+app.get('/', function(req,res,html){
+  res.sendFile(path.join(__dirname+ '/'))
+});
 
 app.get('/cities', function(req,res){
   // charts_controller.cities(req.query,res);
