@@ -112,19 +112,14 @@
               <tr>
                 <td><span class="close">&times;</span>
                   <select class="test" multiple="multiple">
-                    <optgroup label="Group A">
-                      <option value="1">Option 1</option>
-                      <option value="2" selected>Option 2</option>
-                      <option value="3">Option 3</option>
-                      <option value="4" disabled>Manège</option>
-                      <option value="5">Bête</option>
+                    <optgroup id="aaa" label="Group A">
                     </optgroup>
-                    <optgroup label="Group B">
+                    <!-- <optgroup label="Group B">
                       <option value="6" selected>Option 6</option>
                       <option value="7">Option 7</option>
                       <option value="8">Option 8</option>
                       <option value="9">Mécanique</option>
-                    </optgroup>
+                    </optgroup> -->
                   </select></td>
               
               </tr>
@@ -132,7 +127,7 @@
                 <td><br></td>
               </tr>
               <tr>
-                <td> <button id="charts" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/visualisations_compare' ">
+                <td> <button id="cmp_btn" style="float: right;" type="button" class="btn btn-dark" >
                   Done </button></td>
               </tr>
             </table>
@@ -226,6 +221,71 @@
           modal.style.display = "none";
         }
       }
+      $(document).ready(function(){
+        // function addcountry(res){
+          var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
+          var options='';
+          $.each(res, function(index,country){
+                console.log(country);
+                
+                      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="fs-optgroup-label" />';
+                      // options += '<label for="' + country + '">' + country + '</label>';
+                      //     console.log(options);
+                      var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
+                      $('<label />', { for: country, text: country }).appendTo("#aaa");
+                      // $('#aaa').append($ctrl);
+
+                        });
+                      // $("#aaa").append(options);
+// }
+ 
+              // var options = '';
+//               var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aaa");
+//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+// $("#aaa").append($ctrl);
+//               $.each(res, function(index,country){
+//                 $('#aaa').append($('<option>', { 
+//         value: country,
+//         text : country,
+//         id: country 
+//     }));
+//                 console.log(country);
+                      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
+                      // options += '<label for="' + country + '">' + country + '</label>';
+
+                      // var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
+                      // $('<label />', { for: country, text: country }).appendTo("#aa");
+                      // console.log($ctrl);
+                      // $('#aa').append($ctrl);
+
+                        // });
+                        // $('#aa').append(options);
+
+
+          //   },
+          //   error: function(error){
+          //     console.log(error);
+          //   }
+          // });
+//         var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
+//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+// $("#aa").append($ctrl);
+                        
+                     $('#cmp_btn').on('click',function(e){
+                       console.log($('.fs-label').text());
+                       var cl = $('.fs-label').text().split(',');
+                       var c1 = cl[0].trim();
+                       var c2 = cl[1].trim();
+                       localStorage.setItem('selected_country', c1);
+                       localStorage.setItem('selected_country_2', c2);
+                       window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+                     });   
+      });
     </script>
     <script>
         (function ($) {

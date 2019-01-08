@@ -112,12 +112,12 @@ function groupBy( array)
             array[i].dt = date.getFullYear();
             year = array[i].dt;
             if(year > 2000){
-              if(o.country=='India'){
-                console.log(date);                console.log('______________________________________');
+              // if(o.country=='India'){
+              //   console.log(date);                console.log('______________________________________');
 
-                console.log(o.AverageTemperature);
+              //   console.log(o.AverageTemperature);
 
-              }
+              // }
 
               if(!(year in data)){
                 data[year] = [];
@@ -368,3 +368,50 @@ function cities_data( array)
 return cities_in_country;
 
  }
+
+ function countries(result){
+  var country_list = [];
+
+  result.forEach( function( o,i ){
+    if(!(o.name in country_list)){
+        country_list.push(o.name);
+    }
+ });
+  // $.each(result, function(index, value) {
+  //     if ($.inArray(value.name, categories) === -1) {
+  //         categories.push(value.name);
+  //     }
+  // });
+  return country_list;
+ }
+ 
+exports.country_names = function(req, res){
+    
+  var currentPath = process.cwd();
+var jsonObj1ss;
+  if (jsonObj1 == ''){
+   
+    const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
+
+  const csv=require('csvtojson')
+  csv()
+      .fromFile(csvFilePath)
+      .then((jsonObj)=>{
+          jsonObj1ss = countries (jsonObj);
+          
+      });
+  }else{
+    jsonObj1ss = countries (jsonObj1.world_map_data);
+
+  }
+  
+
+  setTimeout(function(){
+    // console.log(jsonObj1ss);
+    res.send(jsonObj1ss);
+  },4000);
+
+
+
+  
+};

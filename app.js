@@ -113,6 +113,20 @@ app.get('/testapi', function(req,res){
   // res.send('nmscmscsmcmscmscm');
 });
 
+
+app.get('/country_names', function(req,res){
+  charts_controller.country_names(req.query,res);
+
+  console.log('*********country names*************');
+  // res.send('nmscmscsmcmscmscm');
+});
+
+app.get('/test', function(req,res,html){
+  // console.log(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/test.html'))
+});
+
+
 //file upload
 app.use(upload());
 
