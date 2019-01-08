@@ -889,12 +889,12 @@ function init_echarts(xx) {
 
 			if (compare == "") {
 				compare = param.data.name;
-				localStorage.setItem('selected_country_2', compare);
+				// localStorage.setItem('selected_country_2', compare);
 			}
 			else {
 
 				country_name = param.data.name;
-				localStorage.setItem('selected_country', country_name);
+				// localStorage.setItem('selected_country', country_name);
 
 				if (compare == country_name) {
 					window.location.href = 'visualisations_data?name=' + country_name;

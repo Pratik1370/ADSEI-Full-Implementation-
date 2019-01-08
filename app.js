@@ -118,6 +118,10 @@ app.get('/country_names', function(req,res){
   // res.send('nmscmscsmcmscmscm');
 });
 
+app.get('/test', function(req,res,html){
+  // console.log(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/test.html'))
+});
 
 
 //file upload
