@@ -171,12 +171,12 @@
           var options='';
           $.each(res, function(index,country){
                 console.log(country);
-                country = country.replace(/"/g, "");
+                country = country.replace(/"/g, '');
 
                 $("#country1_dropdown")
-                .append('  <li><a class="country1_dropdown_class" href="#" id="'+country+'">"'+country+'"</a></li>');
+                .append('  <li><a class="country1_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
                 $("#country2_dropdown")
-                .append('  <li><a class="country2_dropdown_class" href="#" id="'+country+'">"'+country+'"</a></li>');
+                .append('  <li><a class="country2_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
   
                         });
 $('.country1_dropdown_class').on('click',function(e){
