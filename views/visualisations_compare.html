@@ -60,8 +60,7 @@
   <div class="col-sm-6"> <div class="row">
   <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 1
   <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-  <li><a href="#">Country 1</a></li>
+  <ul class="dropdown-menu" id="country1_dropdown">
   </ul>
 </div>
 <div class="clear"></div>
@@ -77,8 +76,8 @@
 <div class="col-sm-6"><div class="row">
   <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 2
   <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-  <li><a href="#">Country 2</a></li>
+  <ul class="dropdown-menu" id="country2_dropdown">
+  <!-- <li><a href="#">Country 2</a></li> -->
   </ul>
 </div>
 <div class="form-group">
@@ -168,7 +167,39 @@
       $(document).ready(function (e) {
         $('.yearselect').yearselect();
         $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+        var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
+          var options='';
+          $.each(res, function(index,country){
+                console.log(country);
+                country = country.replace(/"/g, "");
 
+                $("#country1_dropdown")
+                .append('  <li><a class="country1_dropdown_class" href="#" id="'+country+'">"'+country+'"</a></li>');
+                $("#country2_dropdown")
+                .append('  <li><a class="country2_dropdown_class" href="#" id="'+country+'">"'+country+'"</a></li>');
+  
+                        });
+$('.country1_dropdown_class').on('click',function(e){
+  var c1_id = $(this).attr('id');
+  localStorage.setItem('selected_country', c1_id);
+  var c1 = c1_id;
+  var c2= localStorage.getItem('selected_country_2');
+
+  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+
+});
+
+$('.country2_dropdown_class').on('click',function(e){
+  var c2_id = $(this).attr('id');
+  localStorage.setItem('selected_country_2', c2_id);
+  var c2 = c2_id;
+  var c1= localStorage.getItem('selected_country');
+
+  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+
+});
       });
     </script>
 
