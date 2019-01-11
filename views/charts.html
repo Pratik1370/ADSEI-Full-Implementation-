@@ -8,12 +8,13 @@
     <script src="../vendors/echarts/dist/echarts.js"></script>
     <script src="../vendors/echarts/dist/echarts.common.min.js"></script>
     <script src="../build/js/custom.js"></script>
-    <script src="../vendors/bootstrap/popper.min.js"></script>
     <script src="../js/charts.js"></script>
     <!-- <script src="/public/js/charts.js"></script> -->
 
       <!-- Bootstrap -->
-  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- Font Awesome -->
   <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->
@@ -33,11 +34,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--fixing the bootstrap-->
+  <script src="../js/popper.min.js"></script>
+  <link href="css/charts.css" rel="stylesheet">
 
+<!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 </head>
 <body>
 
-  <div class="container body">
+  <!-- <div class="body"> -->
     <div class="main_container">
       <div class="col-md-3">
 
@@ -69,9 +75,9 @@
   </ul>
 </div> -->
 
-    <br><br><br><br><br>
+    <br><br><br><br>
 
-<div class="dropdown" "fixed-top">
+<!-- <div class="dropdown fixed-top">
   <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -82,19 +88,88 @@
 
 <br><br>
 
-</div>
+</div> -->
+
+ <!-- Sidebar -->
+ <div class="wrapper">
+
+  <nav id="sidebar" style="background-color: #2C3A47">
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a onclick="showLine()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Line Chart</a>
+      </li>
+      <li class="active">
+        <a onclick="showPie()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pie Chart</a>
+      </li>
+      <li class="active">
+        <a onclick="showBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bar Chart</a>
+      </li>
+      <li class="active">
+        <a onclick="showScatter()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Scatter Chart</a>
+      </li>
+      <li class="active">
+        <a onclick="showMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Map</a>
+      </li>
+      <li class="active">
+        <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
+      </li>
+      <li class="active">
+          <a onclick="showRader()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rader</a>
+      </li>
+      <li class="active">
+          <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
+      </li>
+      <li class="active">
+          <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
+      </li>
+      <li class="active">
+          <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
+      </li>
+      <li class="active">
+          <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
+      </li>
+      <li class="active">
+          <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
+      </li>
+      <li class="active">
+          <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
+      </li>
+      <li class="active">
+          <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
+      </li>
+      <li class="active">
+          <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
+      </li>
+      <li class="active">
+          <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
+      </li>
+      <li class="active">
+          <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
+      </li>
+      <li class="active">
+          <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
+      </li>
+      <li class="active">
+          <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
+      </li>
+    </ul>
+  </nav>
+
 <!--************************ This is the content part ***********************-->
-<div class="row" >
-<div id="main" style="width: 700px;height:480px;"class="col-sm-6"></div>
-<div id="textContent" style="width: 640px;height:480px;"class="col-sm-6"></div>
-<!-- <h4>
-A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
-
-The bars can be horizontal or vertical.
-</h4> -->
+<div id="content">
+  <div class="row" id="chartContent">
+    <br><br>
+    <div id="main" style="width: 700px;height:480px;"class="col-sm-6"></div>
+    <div id="textContent" style="width: 640px;height:480px;"class="col-sm-6"></div>
+    <!-- <h4>
+    A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
+    
+    The bars can be horizontal or vertical.
+    </h4> -->
+  </div>
+    
 </div>
-
-
+</div>
 
 
 </body>
