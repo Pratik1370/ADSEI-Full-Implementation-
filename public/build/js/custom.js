@@ -928,7 +928,7 @@ $(document).ready(function () {
 
 		}
 	};
-	xhttp.open("GET", "http://localhost:3000/users", true);
+	xhttp.open("GET", "http://localhost:5000/users", true);
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send();
 

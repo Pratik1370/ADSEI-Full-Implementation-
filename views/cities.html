@@ -41,7 +41,7 @@
         // Get parameters from the current URL
         var params = getParams(window.location.href);
         $.ajax({
-            url: "http://localhost:3000/cities_data?name=" + params.name,
+            url: "http://localhost:5000/cities_data?name=" + params.name,
             type: "GET",
             success: function (res) {
                 $('#main').loader('hide');
