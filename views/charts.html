@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Charts</title>
-    <!-- including ECharts file -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/dist/echarts.js"></script>
-    <script src="../vendors/echarts/dist/echarts.common.min.js"></script>
-    <script src="../build/js/custom.js"></script>
-    <script src="../vendors/bootstrap/popper.min.js"></script>
-    <script src="../js/charts.js"></script>
-    <!-- <script src="/public/js/charts.js"></script> -->
 
-      <!-- Bootstrap -->
-  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>Charts</title>
+
+  <!--Echarts New-->
+  <script type="text/javascript" src="../js/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/ecStat.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/dataTool.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/china.js"></script>
+  <script type="text/javascript" src="../js/world.js"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="../js/bmap.min.js"></script>
+  <script type="text/javascript" src="../js/simplex.js"></script>
+
+
+  <script src="../js/charts.js"></script>
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- Font Awesome -->
   <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->
@@ -33,69 +41,137 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--fixing the bootstrap-->
+  <script src="../js/popper.min.js"></script>
+  <link href="css/charts.css" rel="stylesheet">
+  <link href="../build/css/style5.css" rel="stylesheet">
 
-</head>
+
+
 <body>
 
-  <div class="container body">
-    <div class="main_container">
-      <div class="col-md-3">
 
-        <div class="clearfix"></div>
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <p>Learning Data Visualization</p>
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Graphs</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+              <a onclick="showLine()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Line Chart</a>
+            </li>
+            <li>
+              <a onclick="showPie()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pie Chart</a>
+            </li>
+            <li>
+              <a onclick="showBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bar Chart</a>
+            </li>
+            <li>
+              <a onclick="showScatter()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Scatter
+                Chart</a>
+            </li>
+            <li>
+              <a onclick="showMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Map</a>
+            </li>
+            <li>
+              <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
+            </li>
+            <li>
+              <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
+            </li>
+            <li>
+              <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
+            </li>
+            <li>
+              <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
+            </li>
+            <li>
+              <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
+            </li>
+            <li>
+              <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
+            </li>
+            <li>
+              <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
+            </li>
+            <li>
+              <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
+            </li>
+            <li>
+              <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
+            </li>
+            <li>
+              <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
+            </li>
+            <li>
+              <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
+            </li>
+            <li>
+              <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
+            </li>
+            <li>
+              <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
+            </li>
+            <li>
+              <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/map">World Map</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="/map" class="article">Back</a></li>
+      </ul>
+    </nav>
+
+    <div id="content">
+
+      <header id="header" style="background-color: #2C3A47">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div id="logo" class="pull-left">
+            <h1><a href="/" class="scrollto">Analytics Pro > Learning</a></h1>
+          </div>
+
+      </header>
+
+      <!--************************ This is the content part ***********************-->
+      <div id="content">
+        <div class="row" id="chartContent">
+          <br><br>
+          <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+          <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+        </div>
 
       </div>
     </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+          $(this).toggleClass('active');
+        });
+      });
 
-
-    <header id="header" style="background-color: #2C3A47">
-      <div class="container-fluid">
-
-        <div id="logo" class="pull-left">
-          <h1><a href="/" class="scrollto">Analytics Pro > Learning</a></h1>
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
-        </div>
-
-        <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
-    </header>
-
-    <!-- <div class="dropdown" "fixed-top">
-  <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Bar Graph</a></li>
-    <li><a href="#">Pie Graph</a></li>
-    <li><a href="#">Line Graph</a></li>
-  </ul>
-</div> -->
-
-    <br><br><br><br><br>
-
-<div class="dropdown" "fixed-top">
-  <button style="float: left;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Graph
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a onclick="showBar()">Bar Graph</a></li>
-    <li><a onclick="showPie()">Pie Graph</a></li>
-    <li><a onclick="showLine()">Line Graph</a></li>
-  </ul>
-
-<br><br>
-
-</div>
-<!--************************ This is the content part ***********************-->
-<div class="row" >
-<div id="main" style="width: 700px;height:480px;"class="col-sm-6"></div>
-<div id="textContent" style="width: 640px;height:480px;"class="col-sm-6"></div>
-<!-- <h4>
-A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
-
-The bars can be horizontal or vertical.
-</h4> -->
-</div>
-
-
-
+    </script>
 
 </body>
+
 </html>

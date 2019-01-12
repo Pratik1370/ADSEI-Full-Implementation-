@@ -20,6 +20,11 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -40,10 +45,23 @@
   <link href="../build/css/fSelect.css" rel="stylesheet">
   <link href="../build/css/model.css" rel="stylesheet">
   <link href="../build/css/slider.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+  <link href="../build/css/style3.css" rel="stylesheet">
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
 
 </head>
 
 <body>
+<<<<<<< HEAD
+
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="glyphicon glyphicon-arrow-left"></i>
+      </div>
+=======
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -56,6 +74,48 @@
         <h3>Analytics Pro</h3>
       </div>
 
+      <ul class="list-unstyled components">
+
+        <li>
+          <a href="#">Continental View</a>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Years</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li><a href="#">Years 1</a></li>
+            <li><a href="#">Years 2</a></li>
+            <li><a href="#">Years 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/visualisations_compare">Compare</a>
+        </li>
+        <li>
+          <a href="/charts">Learning Data Visualization</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+
+
+
+      <header id="header" style="background-color: #2C3A47">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+              <i class="glyphicon glyphicon-align-left"></i>
+              <span>Sidebar</span>
+            </button>
+          </div>
+
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
+
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
+      </div>
+
+<<<<<<< HEAD
       <ul class="list-unstyled components">
         <li class="active">
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
@@ -148,11 +208,30 @@
                   Done </button></td>
               </tr>
             </table>
+=======
 
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
+
+          <div id="logo" class="pull-left">
+            <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
           </div>
 
+
+<<<<<<< HEAD
+      <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+          <div class="x_content">
+
+            <div id="echart_world_map" style="height:100vh;"></div>
+
+          </div>
         </div>
-    </header><!-- #header -->
+      </div>
+
+
+=======
+      </header>
 
       <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -166,6 +245,7 @@
       </div>
 
 
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
       <div id="pie_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
 
@@ -187,6 +267,7 @@
 
 
   <div class="overlay"></div>
+<<<<<<< HEAD
 
 
   <!-- jQuery CDN -->
@@ -266,6 +347,56 @@
         modal.style.display = "none";
       }
     }
+=======
+
+
+  <!-- jQuery CDN -->
+  <script src="../build/js/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="../build/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="../build/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- ECharts -->
+  <script src="../vendors/echarts/dist/echarts.min.js"></script>
+  <script src="../vendors/echarts/map/js/world.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.js"></script>
+  <script src="../build/js/center-loader.js"></script>
+  <script src="../build/js/fSelect.js"></script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').fadeOut();
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').fadeIn();
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+
+  <script>
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
     $(document).ready(function () {
       // function addcountry(res){
       var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
@@ -280,6 +411,7 @@
         $('<label />', { for: country, text: country }).appendTo("#aaa");
         // $('#aaa').append($ctrl);
 
+<<<<<<< HEAD
       });
       // $("#aaa").append(options);
       // }
@@ -337,6 +469,65 @@
       $(function () {
         $('.test').fSelect();
       });
+=======
+      });
+      // $("#aaa").append(options);
+      // }
+
+      // var options = '';
+      //               var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+      //         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aaa");
+      //         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+      // $("#aaa").append($ctrl);
+      //               $.each(res, function(index,country){
+      //                 $('#aaa').append($('<option>', { 
+      //         value: country,
+      //         text : country,
+      //         id: country 
+      //     }));
+      //                 console.log(country);
+      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
+      // options += '<label for="' + country + '">' + country + '</label>';
+
+      // var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
+      // $('<label />', { for: country, text: country }).appendTo("#aa");
+      // console.log($ctrl);
+      // $('#aa').append($ctrl);
+
+      // });
+      // $('#aa').append(options);
+
+
+      //   },
+      //   error: function(error){
+      //     console.log(error);
+      //   }
+      // });
+      //         var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+      //         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
+      //         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+      // $("#aa").append($ctrl);
+
+      $('#cmp_btn').on('click', function (e) {
+        console.log($('.fs-label').text());
+        var cl = $('.fs-label').text().split(',');
+        var c1 = cl[0].trim();
+        var c2 = cl[1].trim();
+        localStorage.setItem('selected_country', c1);
+        localStorage.setItem('selected_country_2', c2);
+        window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+      });
+    });
+  </script>
+  <script>
+    (function ($) {
+      $(function () {
+        $('.test').fSelect();
+      });
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
     })(jQuery);
   </script>
 
