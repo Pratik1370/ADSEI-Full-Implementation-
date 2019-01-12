@@ -49,7 +49,7 @@
 
 </head>
 
-<body>
+<body onload="show()">
 
     <div class="wrapper">
         <!-- Sidebar Holder -->
@@ -64,14 +64,14 @@
 
             <ul class="list-unstyled components">
                 <p>Detailed Temperature view</p>
-                <li class="active">
-                    <a href="#">Graphs</a>
+                <li>
+                    <a onclick="show()">Graphs</a>
                 </li>
                 <li>
-                    <a href="/heatmap">Heat Map</a>
+                    <a onclick="showHeatmap()">Heat Map</a>
                 </li>
                 <li>
-                    <a href="/cities">Cities</a>
+                    <a onclick="showPie()">Cities</a>
                 </li>
             </ul>
 
@@ -135,7 +135,7 @@
                               </tr>
             
                             </table>
-                            <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button>
+                            <!-- <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button> -->
             
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
@@ -158,6 +158,13 @@
                             </ul>
                             <div class="clearfix"></div>
                           </div>
+
+                          <div class="row" id="chartContent">
+                              <br><br>
+                              <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+                              <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+                            </div>
+
                           <div class="x_content">
             
                             <div id="echart_line" style="height:70vh;"></div>
@@ -196,6 +203,7 @@
     <script src="../build/js/custom.js"></script>
     <script src="../build/js/center-loader.js"></script>
     <script src="../build/js/year-select.js"></script>
+    <script src="../build/js/visualswitch.js"></script>
 
 
 
