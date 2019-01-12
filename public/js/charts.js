@@ -1,6 +1,9 @@
 // ************************This is the introduction of the bar chart*******************************
 function showBar(){
     // document.getElementById('main').innerHTML="";
+    var option=[];
+  
+
   var myChart = echarts.init(document.getElementById('main'));
   
   // specify chart configuration item and data
