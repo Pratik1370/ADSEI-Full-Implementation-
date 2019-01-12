@@ -10,6 +10,16 @@
 
   <title>Analytics Pro</title>
 
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="../build/css/bootstrap.min.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="../build/css/jquery.mCustomScrollbar.min.css">
+
+
+
+
+
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -28,68 +38,75 @@
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="../build/css/fSelect.css" rel="stylesheet">
-  <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    
-    /* The Modal (background) */
-    .modal {
-      display: none; /* Hidden by default */
-      z-index: 1; /* Sit on top */
-      padding-top: 200px; /* Location of the box */
-      padding-right: 500px; /* Location of the box */   
-      padding-left: 500px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width:100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      transform: scale(1.1);
-      transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-    }
-    
-    /* Modal Content */
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-    }
-    
-    /* The Close Button */
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    </style>
+  <link href="../build/css/model.css" rel="stylesheet">
+  <link href="../build/css/slider.css" rel="stylesheet">
 
 </head>
 
-<body class="nav-md-0">
-  <div class="container body">
-    <div class="main_container">
-      <div class="col-md-3">
+<body>
 
-        <div class="clearfix"></div>
-
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="glyphicon glyphicon-arrow-left"></i>
       </div>
-    </div>
+
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li><a href="#">Home 1</a></li>
+            <li><a href="#">Home 2</a></li>
+            <li><a href="#">Home 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">About</a>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Years</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li><a href="#">Years 1</a></li>
+            <li><a href="#">Years 2</a></li>
+            <li><a href="#">Years 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/visualisations_compare">Compare</a>
+        </li>
+        <li>
+          <a href="/charts">Learning Data Visualization</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+        <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
 
 
-    <header id="header" style="background-color: #2C3A47">
+
+      
+   <header id="header" style="background-color: #2C3A47">
       <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                <i class="glyphicon glyphicon-align-left"></i>
+                <span>Open Sidebar</span>
+              </button>
+            </div>
 
+
+      
+
+            
         <div id="logo" class="pull-left">
           <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
@@ -137,163 +154,191 @@
         </div>
     </header><!-- #header -->
 
-    <br><br><br><br><br>
-    <!-- page content -->
-    <div class="right_col" role="main">
-      <div class="">
+      <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
 
+          <div class="x_content">
 
-        <div class="clearfix"></div>
+            <div id="echart_world_map" style="height:100vh;"></div>
 
-        <div class="row">
-
-
-          <div id="map_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-
-              <div class="x_content">
-
-                <div id="echart_world_map" style="height:100vh;"></div>
-
-              </div>
-            </div>
           </div>
-
-
-          <div id="pie_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-
-              <div class="clearfix"></div>
-
-              <div class="x_content">
-
-                <div id="echart_pie2" style="height:75vh;"></div>
-
-              </div>
-            </div>
-          </div>
-
         </div>
-
       </div>
+
+
+      <div id="pie_visualisaton" class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+          <div class="clearfix"></div>
+
+          <div class="x_content">
+
+            <div id="echart_pie2" style="height:75vh;"></div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
     </div>
+  </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- ECharts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/map/js/world.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.js"></script>
-    <script src="../build/js/center-loader.js"></script>
-    <script src="../build/js/fSelect.js"></script>
 
-    <script>
-      // Get the modal
-      var modal = document.getElementById('myModal');
+  <div class="overlay"></div>
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("myBtn");
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+  <!-- jQuery CDN -->
+  <script src="../build/js/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="../build/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="../build/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-      // When the user clicks the button, open the modal 
-      btn.onclick = function () {
-        modal.style.display = "block";
-      }
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
 
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').fadeOut();
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').fadeIn();
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- ECharts -->
+  <script src="../vendors/echarts/dist/echarts.min.js"></script>
+  <script src="../vendors/echarts/map/js/world.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.js"></script>
+  <script src="../build/js/center-loader.js"></script>
+  <script src="../build/js/fSelect.js"></script>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+    $(document).ready(function () {
+      // function addcountry(res){
+      var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
+      var options = '';
+      $.each(res, function (index, country) {
+        console.log(country);
 
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-      $(document).ready(function(){
-        // function addcountry(res){
-          var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
-          var options='';
-          $.each(res, function(index,country){
-                console.log(country);
-                
-                      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="fs-optgroup-label" />';
-                      // options += '<label for="' + country + '">' + country + '</label>';
-                      //     console.log(options);
-                      var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
-                      $('<label />', { for: country, text: country }).appendTo("#aaa");
-                      // $('#aaa').append($ctrl);
+        // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="fs-optgroup-label" />';
+        // options += '<label for="' + country + '">' + country + '</label>';
+        //     console.log(options);
+        var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value: country, id: country }).addClass("text");
+        $('<label />', { for: country, text: country }).appendTo("#aaa");
+        // $('#aaa').append($ctrl);
 
-                        });
-                      // $("#aaa").append(options);
-// }
- 
-              // var options = '';
-//               var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
-//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aaa");
-//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
-
-// $("#aaa").append($ctrl);
-//               $.each(res, function(index,country){
-//                 $('#aaa').append($('<option>', { 
-//         value: country,
-//         text : country,
-//         id: country 
-//     }));
-//                 console.log(country);
-                      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
-                      // options += '<label for="' + country + '">' + country + '</label>';
-
-                      // var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
-                      // $('<label />', { for: country, text: country }).appendTo("#aa");
-                      // console.log($ctrl);
-                      // $('#aa').append($ctrl);
-
-                        // });
-                        // $('#aa').append(options);
-
-
-          //   },
-          //   error: function(error){
-          //     console.log(error);
-          //   }
-          // });
-//         var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
-//         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
-//         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
-
-// $("#aa").append($ctrl);
-                        
-                     $('#cmp_btn').on('click',function(e){
-                       console.log($('.fs-label').text());
-                       var cl = $('.fs-label').text().split(',');
-                       var c1 = cl[0].trim();
-                       var c2 = cl[1].trim();
-                       localStorage.setItem('selected_country', c1);
-                       localStorage.setItem('selected_country_2', c2);
-                       window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
-
-                     });   
       });
-    </script>
-    <script>
-        (function ($) {
-          $(function () {
-            $('.test').fSelect();
-          });
-        })(jQuery);
-    </script>
+      // $("#aaa").append(options);
+      // }
+
+      // var options = '';
+      //               var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+      //         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aaa");
+      //         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+      // $("#aaa").append($ctrl);
+      //               $.each(res, function(index,country){
+      //                 $('#aaa').append($('<option>', { 
+      //         value: country,
+      //         text : country,
+      //         id: country 
+      //     }));
+      //                 console.log(country);
+      // options += '<option type="checkbox" name="' + country + '" id="' + country + '" value="' + country + '" class="custom" />';
+      // options += '<label for="' + country + '">' + country + '</label>';
+
+      // var $ctrl = $('<option/>').attr({ type: 'checkbox', name: country, value:country, id:country}).addClass("text");
+      // $('<label />', { for: country, text: country }).appendTo("#aa");
+      // console.log($ctrl);
+      // $('#aa').append($ctrl);
+
+      // });
+      // $('#aa').append(options);
+
+
+      //   },
+      //   error: function(error){
+      //     console.log(error);
+      //   }
+      // });
+      //         var $ctrl = $('<option/>').attr({ type: 'checkbox', name:'text', value:'bbbbbbbbbbbb'}).addClass("text");
+      //         $('<label />', { 'for': 'text', text: "mmmmm" }).appendTo("#aa");
+      //         // $('<label />', { 'for': 'text'+id, text: name }).appendTo("#aa");
+
+      // $("#aa").append($ctrl);
+
+      $('#cmp_btn').on('click', function (e) {
+        console.log($('.fs-label').text());
+        var cl = $('.fs-label').text().split(',');
+        var c1 = cl[0].trim();
+        var c2 = cl[1].trim();
+        localStorage.setItem('selected_country', c1);
+        localStorage.setItem('selected_country_2', c2);
+        window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+      });
+    });
+  </script>
+  <script>
+    (function ($) {
+      $(function () {
+        $('.test').fSelect();
+      });
+    })(jQuery);
+  </script>
 
 </body>
 
