@@ -40,7 +40,7 @@
   
   #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    /* background: #6d7fcc;*/ 
+    /* background: #6d7fcc;  */
   }
   ul ul a {
     font-size: 0.9em !important;
