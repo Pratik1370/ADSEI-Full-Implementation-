@@ -1,213 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Analytics Pro</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <title>Analytics Pro</title>
 
-    <!-- Libraries CSS Files -->
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="../build/css/bootstrap.min.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="../build/css/jquery.mCustomScrollbar.min.css">
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-  </head>
 
-  <body id= "line" class="nav-md-0">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3">
-       
+  <!--Progress bar-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-            <div class="clearfix"></div>
 
+  <link href="../build/css/fSelect.css" rel="stylesheet">
+  <link href="../build/css/model.css" rel="stylesheet">
+  <link href="../build/css/slider.css" rel="stylesheet">
+  <link href="../build/css/style3.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="glyphicon glyphicon-arrow-left"></i>
+      </div>
+
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <p>Detailed Temperature view</p>
+        <li class="active">
+          <a href="#">Graphs</a>
+        </li>
+        <li>
+          <a href="/heatmap">Heat Map</a>
+        </li>
+        <li>
+          <a href="/cities">Cities</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="/map" class="article">Back</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Page Content Holder -->
+    <div id="content">
+      <header id="header" style="background-color: #2C3A47">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                    <span>Sidebar</span>
+                </button>
+            </div>
+          <div id="logo" class="pull-left">
+            <h1><a href="/" class="scrollto">Analytics Pro > Compare</a></h1>
           </div>
+
+          <!--         <button id="import_button" style="float: right;" type="button" class="btn btn-dark"> Import</button>
+        <button id="dashboard_button" style="float: right;" type="button" class="btn btn-dark"> Dashboard</button>
+        <button id="bubblechart_button" style="float: right;" type="button" class="btn btn-dark"> Bubble Chart</button>  -->
+          <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
+            Back to Maps </button>
+        </div>
+      </header><!-- #header -->
+
+      <br><br><br><br><br>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="row">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 1
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu" id="country1_dropdown">
+            </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="form-group">
+            <label>Select year and month to compare:</label>
+            <input class="yearselect" type="year" id="start" name="start" value="2000">
+          </div>
+
         </div>
 
-          <header id="header" style="background-color: #2C3A47">
-          <div class="container-fluid">
+        <div class="col-sm-6">
+          <div class="row">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 2
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu" id="country2_dropdown">
+              <!-- <li><a href="#">Country 2</a></li> -->
+            </ul>
+          </div>
+          <div class="form-group">
+            <label>Select year and month to compare:</label>
+            <input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000">
+          </div>
 
-            <div id="logo" class="pull-left">
-              <h1><a href="/" class="scrollto">Analytics Pro > Compare</a></h1>
+
+        </div>
+      </div>
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Climate Changes</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div id="echart_line" style="height:70vh;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Climate Changes</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <div id="echart_line_2" style="height:70vh;"></div>
+
+                </div>
+              </div>
             </div>
 
-<!--         <button id="import_button" style="float: right;" type="button" class="btn btn-dark"> Import</button>
-        <button id="dashboard_button" style="float: right;" type="button" class="btn btn-dark"> Dashboard</button>
-        <button id="bubblechart_button" style="float: right;" type="button" class="btn btn-dark"> Bubble Chart</button>  -->          
-        <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
+
+
           </div>
-        </header><!-- #header -->
+          <!-- /page content -->
 
-<br><br><br><br><br>
-
-<div class="row">
-  <div class="col-sm-6"> <div class="row">
-  <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 1
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu" id="country1_dropdown">
-  </ul>
-</div>
-<div class="clear"></div>
-<div class="form-group">
-    <label>Select year and month to compare:</label>
-    <input class="yearselect" type="year" id="start" name="start" value="2000">
-</div>
-
-<button id="charts" style="float: right;" type="button" class="btn btn-dark" onclick=" ">Submit</button>
-
-</div>
-
-<div class="col-sm-6"><div class="row">
-  <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 2
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu" id="country2_dropdown">
-  <!-- <li><a href="#">Country 2</a></li> -->
-  </ul>
-</div>
-<div class="form-group">
-    <label>Select year and month to compare:</label>
-    <input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000">
-</div>
-
-<button id="charts" style="float: right;" type="button" class="btn btn-dark" onclick=" ">Submit</button>
-
-</div>
-</div>
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">                       
-            <div class="clearfix"></div>
-            <div class="row">
-               <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Climate Changes</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div id="echart_line" style="height:70vh;"></div>
-                  </div>
-                </div>
-              </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Climate Changes</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <div id="echart_line_2" style="height:70vh;"></div>
-
-                  </div>
-                </div>
-              </div>
-
-
-
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content 
+          <!-- footer content 
         <footer>
           <div class="pull-right">
             Analytics Pro 
           </div>
           <div class="clearfix"></div>
         </footer> -->
-        <!-- /footer content -->
+          <!-- /footer content -->
+        </div>
       </div>
-    </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- ECharts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/map/js/world.js"></script>
-    <script src="../build/js/custom.js"></script>
-    <script src="../build/js/center-loader.js"></script>
-    <script src="../build/js/year-select.js"></script>
+      <!-- jQuery -->
+      <script src="../vendors/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- FastClick -->
+      <script src="../vendors/fastclick/lib/fastclick.js"></script>
+      <!-- NProgress -->
+      <script src="../vendors/nprogress/nprogress.js"></script>
+      <!-- ECharts -->
+      <script src="../vendors/echarts/dist/echarts.min.js"></script>
+      <script src="../vendors/echarts/map/js/world.js"></script>
+      <script src="../build/js/custom.js"></script>
+      <script src="../build/js/center-loader.js"></script>
+      <script src="../build/js/year-select.js"></script>
+
+
+       <!-- jQuery CDN -->
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
 
     <script type="text/javascript">
-      $(document).ready(function (e) {
-        $('.yearselect').yearselect();
-        $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
-        var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
-          var options='';
-          $.each(res, function(index,country){
-                console.log(country);
-                country = country.replace(/"/g, '');
+      $(document).ready(function () {
+          $("#sidebar").mCustomScrollbar({
+              theme: "minimal"
+          });
 
-                $("#country1_dropdown")
-                .append('  <li><a class="country1_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
-                $("#country2_dropdown")
-                .append('  <li><a class="country2_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
-  
-                        });
-$('.country1_dropdown_class').on('click',function(e){
-  var c1_id = $(this).attr('id');
-  localStorage.setItem('selected_country', c1_id);
-  var c1 = c1_id;
-  var c2= localStorage.getItem('selected_country_2');
+          $('#dismiss, .overlay').on('click', function () {
+              $('#sidebar').removeClass('active');
+              $('.overlay').fadeOut();
+          });
 
-  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
-
-
-});
-
-$('.country2_dropdown_class').on('click',function(e){
-  var c2_id = $(this).attr('id');
-  localStorage.setItem('selected_country_2', c2_id);
-  var c2 = c2_id;
-  var c1= localStorage.getItem('selected_country');
-
-  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
-
-
-});
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').addClass('active');
+              $('.overlay').fadeIn();
+              $('.collapse.in').toggleClass('in');
+              $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+          });
       });
-    </script>
+  </script>
+
+      <script type="text/javascript">
+        $(document).ready(function (e) {
+          $('.yearselect').yearselect();
+          $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+          var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
+          var options = '';
+          $.each(res, function (index, country) {
+            console.log(country);
+            country = country.replace(/"/g, '');
+
+            $("#country1_dropdown")
+              .append('  <li><a class="country1_dropdown_class" href="#" id="' + country + '">' + country + '</a></li>');
+            $("#country2_dropdown")
+              .append('  <li><a class="country2_dropdown_class" href="#" id="' + country + '">' + country + '</a></li>');
+
+          });
+          $('.country1_dropdown_class').on('click', function (e) {
+            var c1_id = $(this).attr('id');
+            localStorage.setItem('selected_country', c1_id);
+            var c1 = c1_id;
+            var c2 = localStorage.getItem('selected_country_2');
+
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
 
 
-    <!-- Custom Theme Scripts -->
-    
+          });
+
+          $('.country2_dropdown_class').on('click', function (e) {
+            var c2_id = $(this).attr('id');
+            localStorage.setItem('selected_country_2', c2_id);
+            var c2 = c2_id;
+            var c1 = localStorage.getItem('selected_country');
+
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
 
 
-  
-  </body>
+          });
+        });
+      </script>
+
+
+      <!-- Custom Theme Scripts -->
+
+
+
+
+</body>
+
 </html>
