@@ -1,45 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Charts</title>
-    <!-- including ECharts file -->
-    <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
-    <script src="../vendors/echarts/dist/echarts.min.js"></script> -->
-    <!-- <script src="../vendors/echarts/dist/echarts.js"></script> -->
-    <!-- <script src="../vendors/echarts/dist/echarts.common.min.js"></script> 
-    -->
+  <meta charset="utf-8">
+  <title>Charts</title>
 
-    <!--Echarts New-->
-    <script type="text/javascript" src="../js/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="../js/echarts/echarts-gl.min.js"></script>
-    <script type="text/javascript" src="../js/echarts/ecStat.min.js"></script>
-    <script type="text/javascript" src="../js/echarts/dataTool.min.js"></script>
-    <script type="text/javascript" src="../js/echarts/china.js"></script>
-    <script type="text/javascript" src="../js/world.js"></script>
-    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
-    <script type="text/javascript" src="../js/bmap.min.js"></script>
-    <script type="text/javascript" src="../js/simplex.js"></script>
+  <!--Echarts New-->
+  <script type="text/javascript" src="../js/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/ecStat.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/dataTool.min.js"></script>
+  <script type="text/javascript" src="../js/echarts/china.js"></script>
+  <script type="text/javascript" src="../js/world.js"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="../js/bmap.min.js"></script>
+  <script type="text/javascript" src="../js/simplex.js"></script>
 
 
 
 
+  <!-- <script src="../build/js/custom.js"></script> -->
+  <script src="../js/charts.js"></script>
+  <!-- <script src="/public/js/charts.js"></script> -->
 
-
-    <!-- <script src="../build/js/custom.js"></script> -->
-    <script src="../js/charts.js"></script>
-    <!-- <script src="/public/js/charts.js"></script> -->
-
-      <!-- Bootstrap -->
-      <!-- Bootstrap CSS CDN -->
+  <!-- Bootstrap -->
+  <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- Font Awesome -->
@@ -64,41 +49,140 @@
   <!--fixing the bootstrap-->
   <script src="../js/popper.min.js"></script>
   <link href="css/charts.css" rel="stylesheet">
+  <link href="../build/css/style5.css" rel="stylesheet">
 
-<!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-</head>
-<<<<<<< HEAD
-<body onload="showLine()">
-=======
+
+
 <body>
->>>>>>> 0e360d415de85261af3756fba70b0c94a40c80e2
 
-  <!-- <div class="body"> -->
-    <div class="main_container">
-      <div class="col-md-3">
 
-        <div class="clearfix"></div>
-
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
       </div>
-    </div>
+
+      <ul class="list-unstyled components">
+        <p>Learning Data Visualization</p>
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Graphs</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+              <a onclick="showLine()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Line Chart</a>
+            </li>
+            <li>
+              <a onclick="showPie()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pie Chart</a>
+            </li>
+            <li>
+              <a onclick="showBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bar Chart</a>
+            </li>
+            <li>
+              <a onclick="showScatter()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Scatter
+                Chart</a>
+            </li>
+            <li>
+              <a onclick="showMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Map</a>
+            </li>
+            <li>
+              <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
+            </li>
+            <li>
+              <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
+            </li>
+            <li>
+              <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
+            </li>
+            <li>
+              <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
+            </li>
+            <li>
+              <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
+            </li>
+            <li>
+              <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
+            </li>
+            <li>
+              <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
+            </li>
+            <li>
+              <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
+            </li>
+            <li>
+              <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
+            </li>
+            <li>
+              <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
+            </li>
+            <li>
+              <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
+            </li>
+            <li>
+              <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
+            </li>
+            <li>
+              <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
+            </li>
+            <li>
+              <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/map">World Map</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="/map" class="article">Back</a></li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+      <header id="header" style="background-color: #2C3A47">
+        <div class="container-fluid">
 
 
-    <header id="header" style="background-color: #2C3A47">
-      <div class="container-fluid">
 
-        <div id="logo" class="pull-left">
-          <h1><a href="/" class="scrollto">Analytics Pro > Learning</a></h1>
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div id="logo" class="pull-left">
+            <h1><a href="/" class="scrollto">Analytics Pro > Learning</a></h1>
+          </div>
+
+      </header>
+      <div class="row" id="chartContent">
+          <br><br>
+          <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+          <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
         </div>
 
-        <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
-    </header>
 
-    <br><br><br><br>
- <!-- Sidebar -->
- <div class="wrapper">
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+
+</script>
+
+
+  <!-- <br><br><br><br>
 
   <nav id="sidebar" style="background-color: #2C3A47">
     <ul class="list-unstyled components">
@@ -121,63 +205,58 @@
         <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
       </li>
       <li class="active">
-          <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
+        <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
       </li>
       <li class="active">
-          <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
+        <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
       </li>
       <li class="active">
-          <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
+        <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
       </li>
       <li class="active">
-          <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
+        <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
       </li>
       <li class="active">
-          <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
+        <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
       </li>
       <li class="active">
-          <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
+        <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
       </li>
       <li class="active">
-          <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
+        <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
       </li>
       <li class="active">
-          <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
+        <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
       </li>
       <li class="active">
-          <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
+        <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
       </li>
       <li class="active">
-          <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
+        <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
       </li>
       <li class="active">
-          <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
+        <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
       </li>
       <li class="active">
-          <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
+        <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
       </li>
       <li class="active">
-          <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
+        <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
       </li>
     </ul>
   </nav>
 
-<!--************************ This is the content part ***********************-->
-<div id="content">
-  <div class="row" id="chartContent">
-    <br><br>
-    <div id="main" style="width: 700px;height:480px;"class="col-sm-6"></div>
-    <div id="textContent" style="width: 640px;height:480px;"class="col-sm-6"></div>
-    <!-- <h4>
-    A Bar Graph is a graph that is drawn using rectangular bars to show how large each value is. 
-    
-    The bars can be horizontal or vertical.
-    </h4> -->
-  </div>
-    
-</div>
-</div>
+  <!--************************ This is the content part ***********************-->
+  <div id="content">
+    <div class="row" id="chartContent">
+      <br><br>
+      <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+      <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+    </div>
+
+  </div> -->
 
 
 </body>
+
 </html>
