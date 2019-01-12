@@ -1,5 +1,6 @@
 // ************************This is the introduction of the bar chart*******************************
 function showBar(){
+    // document.getElementById('main').innerHTML="";
   var myChart = echarts.init(document.getElementById('main'));
   
   // specify chart configuration item and data
@@ -37,6 +38,7 @@ function showBar(){
 
 // <!--************************ This is the introduction of the line chart ***********************-->
 function showLine(){
+    // document.getElementById('main').innerHTML="";
     var myChart = echarts.init(document.getElementById('main'));
   
     // specify chart configuration item and data
@@ -75,6 +77,7 @@ function showLine(){
 
 // <!--************************ This is the introduction of the pie chart ***********************-->
 function showPie(){
+    // document.getElementById('main').innerHTML="";
     var myChart = echarts.init(document.getElementById('main'));
   
     // specify chart configuration item and data
@@ -161,6 +164,7 @@ function showPie(){
 
 // <!--************************ This is the introduction of the scatter chart ***********************-->
 function showScatter(){
+    // document.getElementById('main').innerHTML="";
     var myChart = echarts.init(document.getElementById('main'));
   
     // specify chart configuration item and data
@@ -207,6 +211,7 @@ function showScatter(){
 
 // <!--************************ This is the introduction of the map chart ***********************-->
 function showMap(){
+    // document.getElementById('main').innerHTML="";
     var myChart = echarts.init(document.getElementById('main'));
   
     // specify chart configuration item and data
