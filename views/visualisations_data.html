@@ -10,13 +10,27 @@
 
   <title>Analytics Pro</title>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  
+=======
+
+>>>>>>> acebf285aa25a7c914e9c582ce4827d244574b3c
   
 
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="../build/css/bootstrap.min.css">
   <!-- Scrollbar Custom CSS -->
   <link rel="stylesheet" href="../build/css/jquery.mCustomScrollbar.min.css">
 
+<<<<<<< HEAD
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+=======
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
   <!-- Font Awesome -->
   <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->
@@ -33,7 +47,10 @@
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="../build/css/slider.css" rel="stylesheet">
 
+<<<<<<< HEAD
+=======
   <!--Progress bar-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -46,6 +63,7 @@
   <link href="../build/css/style3.css" rel="stylesheet">
 
 
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
 
 </head>
 
@@ -54,6 +72,134 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
+<<<<<<< HEAD
+          <div id="dismiss">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+          </div>
+    
+          <div class="sidebar-header">
+            <h3>Analytics Pro</h3>
+          </div>
+    
+          <ul class="list-unstyled components">
+            <li class="active">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li><a href="#">Home 1</a></li>
+                <li><a href="#">Home 2</a></li>
+                <li><a href="#">Home 3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">About</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Years</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><a href="#">Years 1</a></li>
+                <li><a href="#">Years 2</a></li>
+                <li><a href="#">Years 3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/visualisations_compare">Compare</a>
+            </li>
+            <li>
+              <a href="/charts">Learning Data Visualization</a>
+            </li>
+          </ul>
+    
+          <ul class="list-unstyled CTAs">
+            <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+            <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+          </ul>
+        </nav>
+    
+        <!-- Page Content Holder -->
+        <div id="content">
+    
+    
+    
+          
+       <header id="header" style="background-color: #2C3A47">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                    <span>Open Sidebar</span>
+                  </button>
+                </div>
+    
+    
+          
+    
+                
+            <div id="logo" class="pull-left">
+              <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
+              <!-- Uncomment below if you prefer to use an image logo -->
+              <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+            </div>
+            <!--         <button id="compare" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/visualisations_compare' "> Compare Countries </button> -->
+            <button id="charts" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/charts' ">
+              Learning about Types of Graphs </button>
+              
+            <button id="myBtn" style="float: right;" type="button" class="btn btn-dark" onclick="myCompare()">Compare
+            </button>
+            <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+    
+              <!-- Modal content -->
+              <div class="modal-content">
+                <table style="width:50%; align-self: center">
+                  <tr>
+                    <th>List of countries</th>
+                  </tr>
+                  <tr>
+                    <td><span class="close">&times;</span>
+                      <select class="test" multiple="multiple">
+                        <optgroup id="aaa" label="Group A">
+                        </optgroup>
+                        <!-- <optgroup label="Group B">
+                          <option value="6" selected>Option 6</option>
+                          <option value="7">Option 7</option>
+                          <option value="8">Option 8</option>
+                          <option value="9">Mécanique</option>
+                        </optgroup> -->
+                      </select></td>
+                  
+                  </tr>
+                  <tr>
+                    <td><br></td>
+                  </tr>
+                  <tr>
+                    <td> <button id="cmp_btn" style="float: right;" type="button" class="btn btn-dark" >
+                      Done </button></td>
+                  </tr>
+                </table>
+    
+              </div>
+    
+            </div>
+        </header><!-- #header -->
+    
+    
+        <div id="line" class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2 style="margin-right: 50px">Climate Changes</h2>
+
+                <table style="width:30%" style="width:100%">
+                      <tr>
+                        <td> <label for="start">First Year :</label></td>
+                        <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
+    
+                        <td style="align-content: center"><label for="end"> Last Year :</label></td>
+                        <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td>
+                        <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
+                      </tr>
+    
+                    </table>
+                <!--<button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button>-->
+=======
             <div id="dismiss">
                 <i class="glyphicon glyphicon-arrow-left"></i>
             </div>
@@ -181,10 +327,58 @@
           
         </div>
     </div>
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
 
 
 
+<<<<<<< HEAD
+              </div>
+            </div>
+          </div>
+    
+          <div class="line"></div>
+    
+        </div>
+      </div>
+    
+    
+    
+      <div class="overlay"></div>
+
+  <!-- jQuery CDN -->
+  <script src="../build/js/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="../build/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="../build/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').fadeOut();
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').fadeIn();
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+
+
+
+
+=======
     <div class="overlay"></div>
+>>>>>>> 684b1ab74e7ae80a1ae798e38169b206830decb4
 
 
 
@@ -276,7 +470,6 @@
           var end_year = $('#end').val();
           console.log(start_year);
           console.log(end_year);
-          var country_name = params.name;
           // var country_name = 'India';
 
           // var param_send = {start: start_year, end: end_year, country: country_name};
@@ -361,8 +554,6 @@ echartLine.setOption({
 
 // }
 </script> -->
-
-    <!-- Custom Theme Scripts -->
 
 
 
