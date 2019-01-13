@@ -170,9 +170,7 @@
         var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options='';
           $.each(res, function(index,country){
-                console.log(country);
-                country = country.replace(/"/g, '');
-
+              
                 $("#country1_dropdown")
                 .append('  <li><a class="country1_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
                 $("#country2_dropdown")
