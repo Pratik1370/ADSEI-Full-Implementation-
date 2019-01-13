@@ -94,9 +94,9 @@ $(document).ready(function () {
 // /Tooltip
 
 // Progressbar
-if ($(".progress .progress-bar")[0]) {
-	$('.progress .progress-bar').progressbar();
-}
+// if ($(".progress .progress-bar")[0]) {
+// 	$('.progress .progress-bar').progressbar();
+// }
 // /Progressbar
 
 // Switchery
@@ -928,7 +928,7 @@ $(document).ready(function () {
 
 		}
 	};
-	xhttp.open("GET", "http://localhost:3000/users", true);
+	xhttp.open("GET", "http://localhost:5000/users", true);
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send();
 

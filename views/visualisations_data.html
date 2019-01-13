@@ -10,8 +10,13 @@
 
   <title>Analytics Pro</title>
 
-  <!-- Bootstrap -->
-  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="../build/css/bootstrap.min.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="../build/css/jquery.mCustomScrollbar.min.css">
+
   <!-- Font Awesome -->
   <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->
@@ -29,148 +34,273 @@
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
+  <!--Progress bar-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <link href="../build/css/fSelect.css" rel="stylesheet">
+  <link href="../build/css/model.css" rel="stylesheet">
+  <link href="../build/css/slider.css" rel="stylesheet">
+  <link href="../build/css/style3.css" rel="stylesheet">
+
+
 
 </head>
 
-<body id="page" class="nav-md-0">
-  <div class="container body">
-    <div class="main_container">
-      <div class="col-md-3">
+<body onload="show()">
 
-
-        <div class="clearfix"></div>
-
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="glyphicon glyphicon-arrow-left"></i>
       </div>
-    </div>
 
-
-    <header id="header" style="background-color: #2C3A47">
-      <div class="container-fluid">
-
-        <div id="logo" class="pull-left">
-          <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
-        </div>
-        <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' "> Back to Maps </button>
+      <div class="sidebar-header">
+        <h3>Analytics Pro</h3>
       </div>
-      
-    </header><!-- #header -->
 
-    <br><br><br><br><br>
-    <!-- page content -->
-    <div class="right_col" role="main">
-      <div class="">
+      <ul class="list-unstyled components">
+        <p>Detailed Temperature view</p>
+        <li class="active">
+          <a onclick="show()">Graphs</a>
+        </li>
+        <li>
+          <a onclick="showHeatmap()">Heat Map</a>
+        </li>
+        <li>
+          <a onclick="showPie()">Cities</a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li><a href="/map" class="article">Back</a></li>
+      </ul>
+    </nav>
 
 
-        <div class="clearfix"></div>
-
-        <div class="row">
 
 
-          <div id="line" class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_title">
-                <h2 style="margin-right: 50px">Climate Changes</h2>
-                <table style="width:30%" style="width:100%">
-                  <tr>
-                    <td> <label for="start">First Year :</label></td>
-                    <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
 
-                    <td style="align-content: center"><label for="end"> Last Year :</label></td>
-                    <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td>
-                    <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
-                  </tr>
 
-                </table>
-                <!--<button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button>-->
 
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
 
-                <div id="echart_line" style="height:70vh;"></div>
+    <!-- Page Content Holder -->
+    <div id="content">
 
-              </div>
-            </div>
+
+      <header id="header" style="background-color: #2C3A47">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+              <i class="glyphicon glyphicon-align-left"></i>
+              <span>Sidebar</span>
+            </button>
           </div>
 
 
+
+          <div id="logo" class="pull-left">
+            <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
+          </div>
+          <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
+            Back to Maps </button>
         </div>
 
+      </header><!-- #header -->
+      <br><br><br><br><br>
+
+      <div class="right_col" role="main">
+        <div class="">
+
+
+          <div class="clearfix"></div>
+
+          <div class="row">
+
+
+            <div id="line" class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2 style="margin-right: 50px">Climate Changes</h2>
+
+
+
+                  <table style="width:100%">
+                    <tr>
+                      <td> <label for="start">First Year :</label></td>
+                      <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
+
+                      <td style="align-content: center"><label for="end"> Last Year :</label></td>
+                      <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td>
+                      <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
+                    </tr>
+                    <tr>
+                      <td> <label>Highest Temperature in this year: (Bind data here)</label>
+                      </td>
+                      <td><label>(Bind data here)</label></td>
+                    </tr>
+                    <tr>
+                      <td><label>Month which have highest temperature: (Bind data here)</label></td>
+                      <td><label> (Bind data here)</label></td>
+                    </tr>
+
+                  </table>
+                  <!-- <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button> -->
+
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                      Free Space
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+                      Warning
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                      Danger
+                    </div>
+
+                  </div>
+
+
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="row" id="chartContent">
+                  <br><br>
+                  <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+                  <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+                </div>
+
+                <div class="x_content">
+
+                  <div id="echart_line" style="height:70vh;"></div>
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- ECharts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/map/js/world.js"></script>
-    <script src="../build/js/custom.js"></script>
-    <script src="../build/js/center-loader.js"></script>
-    <script src="../build/js/year-select.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function (e) {
-        $('.yearselect').yearselect();
-        $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+
+  <div class="overlay"></div>
+
+
+
+
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- ECharts -->
+  <script src="../vendors/echarts/dist/echarts.min.js"></script>
+  <script src="../vendors/echarts/map/js/world.js"></script>
+  <script src="../build/js/custom.js"></script>
+  <script src="../build/js/center-loader.js"></script>
+  <script src="../build/js/year-select.js"></script>
+  <script src="../build/js/visualswitch.js"></script>
+
+
+
+  <!-- jQuery CDN -->
+  <!-- Bootstrap Js CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').fadeOut();
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').fadeIn();
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function (e) {
+      $('.yearselect').yearselect();
+      $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      var getParams = function (url) {
+        var params = {};
+        var parser = document.createElement('a');
+        parser.href = url;
+        var query = parser.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          params[pair[0]] = decodeURIComponent(pair[1]);
+        }
+        // console.log(params);
+        document.getElementById('start').value = params.start_year;
+        document.getElementById('end').value = params.end_year;
+        return params;
+      };
+
+      // Get parameters from the current URL
+      var params = getParams(window.location.href);
+
+      $('#cities_button').on('click', function (event) {
+        var country_name = params.name;
+        window.location.href = 'cities?name=' + country_name;
+      });
+
+      $('#year_data').on('click', function (event) {
+        var start_year = $('#start').val();
+        var end_year = $('#end').val();
+        console.log(start_year);
+        console.log(end_year);
+        var country_name = params.name;
+        // var country_name = 'India';
+
+        // var param_send = {start: start_year, end: end_year, country: country_name};
+        // console.log(param_send);
+        window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
 
       });
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function () {
-
-        var getParams = function (url) {
-          var params = {};
-          var parser = document.createElement('a');
-          parser.href = url;
-          var query = parser.search.substring(1);
-          var vars = query.split('&');
-          for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            params[pair[0]] = decodeURIComponent(pair[1]);
-          }
-          // console.log(params);
-          document.getElementById('start').value = params.start_year;
-          document.getElementById('end').value = params.end_year;
-          return params;
-        };
-
-        // Get parameters from the current URL
-        var params = getParams(window.location.href);
-
-        $('#cities_button').on('click', function (event) {
-          var country_name = params.name;
-          window.location.href = 'cities?name=' + country_name;
-        });
-        
-        $('#year_data').on('click', function (event) {
-          var start_year = $('#start').val();
-          var end_year = $('#end').val();
-          console.log(start_year);
-          console.log(end_year);
-          var country_name = params.name;
-          // var country_name = 'India';
-
-          // var param_send = {start: start_year, end: end_year, country: country_name};
-          // console.log(param_send);
-          window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
-
-        });
-      });
-    </script>
-    <!-- <script type="text/javascript">
+    });
+  </script>
+  <!-- <script type="text/javascript">
 // if ($('#echart_line').length) {
 
 var echartLine = echarts.init(document.getElementById('echart_line'), theme);
@@ -246,7 +376,7 @@ echartLine.setOption({
 // }
 </script> -->
 
-    <!-- Custom Theme Scripts -->
+  <!-- Custom Theme Scripts -->
 
 
 

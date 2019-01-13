@@ -81,6 +81,10 @@ app.get('/map', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/map.html'))
 });
 
+app.get('/heatmap', function(req,res,html){
+  res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
+
 app.get('/import', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/import.html'))
 });
