@@ -71,7 +71,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">Compare</a>
+            <a href="visualisations_compare?name=Russia_Canada" id="compare_btn">Compare</a>
         </li>
         <li>
             <a href="/charts">Learning Data Visualisation</a>
@@ -97,6 +97,8 @@
             <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
 
           </div>
+          <button id="switch_button_map" style="float: right;" type="button" class="btn btn-dark">Switch to Continental Visualisations ></button>
+</div>
       </header>
 
 
@@ -198,6 +200,19 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
+
+            $('#compare_btn').on('click', function (e) {
+            // var c2_id = $(this).attr('id');
+            var c1 = "Russia";
+            var c2 = "Canada";
+            localStorage.setItem('selected_country', c1);
+            localStorage.setItem('selected_country_2', c2);
+            // var c1 = localStorage.getItem('selected_country');
+
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+
+
+          });
         });
     </script>
   <script>

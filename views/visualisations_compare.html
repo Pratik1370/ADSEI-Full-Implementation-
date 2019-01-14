@@ -71,7 +71,7 @@
           <a onclick="showPie()">Heat Map</a>
         </li>
         <li>
-          <a onclick="showHeatmap()">Cities</a>
+          <a href="/cities_map" id="">Cities</a>
         </li>
       </ul>
 
@@ -236,7 +236,6 @@
 
 
     <script type="text/javascript">
-<<<<<<< HEAD
       $(document).ready(function (e) {
         $('.yearselect').yearselect();
         $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
@@ -271,8 +270,7 @@ $('.country2_dropdown_class').on('click',function(e){
 
 
 });
-=======
-      $(document).ready(function () {
+      // $(document).ready(function () {
           $("#sidebar").mCustomScrollbar({
               theme: "minimal"
           });
@@ -288,7 +286,6 @@ $('.country2_dropdown_class').on('click',function(e){
               $('.collapse.in').toggleClass('in');
               $('a[aria-expanded=true]').attr('aria-expanded', 'false');
           });
->>>>>>> 0c44e4be084971854f41f2f0abab57c38e088146
       });
   </script>
 

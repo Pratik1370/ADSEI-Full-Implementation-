@@ -130,6 +130,10 @@ app.get('/test', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/test.html'))
 });
 
+app.get('/cities_map', function(req,res,html){
+  // console.log(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
 
 //file upload
 app.use(upload());

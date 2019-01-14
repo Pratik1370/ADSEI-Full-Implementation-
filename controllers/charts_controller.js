@@ -55,11 +55,11 @@ function getYearMapping1(para){
 function getContinentalMapping(country){
 
   var avg_temp = 0;
-  if(data['2013']){
+  if(data['2001']){
         
-   var temp_data = data['2013'][country];
+   var temp_data = data['2001'][country];
   //  console.log(data['2013']);
-   console.log(data['2013'][country]);
+  //  console.log(data['2001'][country]);
   
    
    var count=0;
@@ -75,22 +75,45 @@ function getContinentalMapping(country){
 
 }
 
+function get_years_data(from_year, to_year, data){
+  var continents_names = ['Asia', 'Africa', 'Antartica', 'North America', 'South America', 'Australia', 'Europe'];
+  
+
+  // var country;
+  var avg_temp = 0;
+  if(data['2001']){
+    
+        for(country in data['2001']){
+          if(!(country in continents_names)){
+            var temp_data = data['2001'][country];
+            var count=0;
+            for(var index=0; index < temp_data.length ; index++){
+                count += parseInt(temp_data[index],10);
+            }
+            avg_temp = parseFloat(count/(temp_data.length)).toFixed(2);
+            map_country_json.push({name: country, value: avg_temp});
+          }
+        }
+  } 
+
+  continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2009});
+  continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2009});
+  continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2009});
+  continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2009});
+  continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2009});
+  continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2009});
+  continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2009});
+  
+
+ 
+  return {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
+}
+
 function groupBy( array)
 {
-  var groups = {};    
-  var array2 = []; 
-  var single_country_temp = []; 
-  var china_data = [];
-  var year_temp = 0;
-//   array2['country'] = [];
-//   array2['temp'] = [];
+ 
   var flag = -1;
   var date;
-  var scatter_years = {};
-  var single_country_Unc_temp = [];
-  var six_month_temp = {};
-  var map_data={};
-  var year_check = {};
 
   array.forEach( function( o,i )
   {
@@ -110,63 +133,24 @@ function groupBy( array)
 
             date = moment(o.dt, 'YYYY-MM-DD').toDate();
             array[i].dt = date.getFullYear();
-            year = array[i].dt;
-            if(year > 2000){
-              // if(o.country=='India'){
-              //   console.log(date);                console.log('______________________________________');
-
-              //   console.log(o.AverageTemperature);
-
-              // }
-
-              if(!(year in data)){
-                data[year] = [];
+            var arr_year = array[i].dt;
+            if(arr_year > 2000){
+              if(!(arr_year in data)){
+                data[arr_year] = [];
               }
-              if(!(o.Country in data[year])){
-                data[year][o.Country]=[];
+              if(!(o.Country in data[arr_year])){
+                data[arr_year][o.Country]=[];
               }
-              data[year][o.Country].push(o.AverageTemperature);
+              data[arr_year][o.Country].push(o.AverageTemperature);
              
-
-            }    
+              
+            }
     }
   });
 
+  return data;
 
- 
-  var avg_temp = 0;
-  if(data['2013']){
-        for(country in data['2013']){
-            var temp_data = data['2013'][country];
-            var count=0;
-            for(var index=0; index < temp_data.length ; index++){
-                count += parseInt(temp_data[index],10);
-            }
-            avg_temp = parseFloat(count/(temp_data.length)).toFixed(2);
-            map_country_json.push({name: country, value: avg_temp})
-        }
 }
-console.log(map_country_json);
-
-  // continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2013});
-  // continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2013});
-  // continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2013});
-  // continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2013});
-  // continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2013});
-  // continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2013});
-  // continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2013});
-  
-  
- 
-  // return {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
-  return {'cities': cities, 'cities_2':cities_2, 'world_map_data': map_country_json};
-
-//   return {'single_country_Unc_temp': single_country_Unc_temp, 'single_country_temp': single_country_temp, 'array': array, 'china_data': china_data};
-}
-
-
-
-
 
 exports.index = function(req, res){
     
@@ -184,15 +168,13 @@ exports.index = function(req, res){
             
         });
     }
-    
-  
+    var from_year;
+    var to_year;
+
     setTimeout(function(){
-      res.json(jsonObj1);
+      var result = get_years_data(from_year,to_year,jsonObj1);
+      res.json(result);
     },4000);
-  
-
-
-    
 };
 
 exports.test = function(req,res){
@@ -301,20 +283,20 @@ exports.cities = function(req,res){
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj)=>{
-            jsonObj_cities = cities_data (jsonObj);
+            jsonObj_cities = cities_data (jsonObj,cities_of_country);
             
         });
         setTimeout(function(){
-          console.log(typeof jsonObj_cities);
+          console.log(jsonObj_cities.cities_in_country);
 // return jsonObj_cities;
-          res.send(jsonObj_cities); 
+          res.send(jsonObj_cities.cities_in_country); 
         },4000);
     
 };
 
-function cities_data( array)
+function cities_data( array,cntry_cities)
 {
- 
+//  console.log(array);
   var flag = -1;
   var date;
   var cities_in_country = [];
@@ -340,7 +322,7 @@ function cities_data( array)
             array[i].dt = date.getFullYear();
             year = array[i].dt;
             
-            if(year == 2013 && o.Country == cities_of_country) {
+            if((year == 2001) && (o.Country == cntry_cities)) {
               if(!(o.City in city)){
                 city[o.City] = [];
               }
@@ -363,9 +345,9 @@ function cities_data( array)
           }
     }
     // });
-
+var reslt = {};
   // console.log(cities_in_country);
-return cities_in_country;
+return reslt = { 'cities_in_country': cities_in_country};
 
  }
 
