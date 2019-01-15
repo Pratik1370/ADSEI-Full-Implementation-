@@ -65,6 +65,7 @@ function getContinentalMapping(country){
 
   var avg_temp = 0;
   if(data['2001']){
+    if(!((data['2001'][City])!= 'continent')){
         
    var temp_data = data['2001'][country];
   //  console.log(data['2013']);
@@ -78,7 +79,7 @@ function getContinentalMapping(country){
 
     avg_temp = parseFloat(count/(temp_data.length)).toFixed(2);
             
-        
+  }   
   }
   return parseInt(avg_temp);
 
@@ -105,15 +106,21 @@ function get_years_data(from_year, to_year, data){
         }
   } 
 
-  continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2009});
-  continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2009});
-  continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2009});
-  continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2009});
-  continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2009});
-  continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2009});
-  continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2009});
-  
-
+  // continent_json.push({value: getContinentalMapping('Africa'), 12:23, name: 'Africa', year: 2009});
+  // continent_json.push({value: getContinentalMapping('Asia'), 31:12, name: 'Asia', year: 2009});
+  // continent_json.push({value: -7.5, 11:12, name: 'Antartica',year: 2009});
+  // continent_json.push({value: getContinentalMapping('Europe'), 34:34, name: 'Europe', year: 2009});
+  // continent_json.push({value: getContinentalMapping('Australia'), 11:11, name: 'Australia',year: 2009});
+  // continent_json.push({value: getContinentalMapping('North America'), 16:17, name: 'North America',year: 2009});
+  // continent_json.push({value: getContinentalMapping('South America'), 10:09,  name: 'South America',year: 2009});
+  var continent_json = [];
+  continent_json.push({value: 23,  name: 'Africa', year: 2009});
+  continent_json.push({value: 12, name: 'Asia', year: 2009});
+  continent_json.push({value: -7.5, name: 'Antartica',year: 2009});
+  continent_json.push({value: 34, name: 'Europe', year: 2009});
+  continent_json.push({value: 11, name: 'Australia',year: 2009});
+  continent_json.push({value: 17, name: 'North America',year: 2009});
+  continent_json.push({value: 09,  name: 'South America',year: 2009});
  
   return {'all_years':all_years, 'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
 }
