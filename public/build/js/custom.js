@@ -510,10 +510,32 @@ function init_echarts(xx) {
 		});
 
 	}
+	//year dropdown values
+	$.each(xx.all_years, function(key, value) {   
+		$('.yearselect')
+			.append($("<option></option>")
+					   .attr("value",value)
+					   .attr("id",value)
+					   .text(value)); 
+   });
+
+   
+   
+
+
+
 
 	//echart Line
 
 	if ($('#echart_line').length) {
+//highest temperature inmonth
+var tem_max;
+var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+tem_max = Math.max.apply(null, xx.cities);
+var tem = xx.cities.indexOf(tem_max);
+$('.h_temp').text(tem_max);
+$('.h_mon_temp').text(mon_names[tem]);
+
 
 		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 		var data = [];
@@ -607,13 +629,20 @@ function init_echarts(xx) {
 	//echart Line
 
 	if ($('#echart_line_2').length) {
+//highest temperature inmonth
+var tem_max;
+var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+tem_max = Math.max.apply(null, xx.cities_2);
+var tem = xx.cities.indexOf(tem_max);
+$('.h_temp2').text(tem_max);
+$('.h_mon_temp2').text(mon_names[tem]);
 
 		var echartLine = echarts.init(document.getElementById('echart_line_2'), theme);
 		var data = [];
-		for (key in xx.cities_2) {
+		// for (key in xx.cities_2) {
 			//console.log(xx.cities[key]);
 			var obj_data = {
-				name: key,
+				name: localStorage.getItem('start_year'),
 				type: 'line',
 				smooth: true,
 				itemStyle: {
@@ -623,10 +652,10 @@ function init_echarts(xx) {
 						// }
 					}
 				},
-				data: xx.cities_2[key]
+				data: xx.cities_2
 			}
 			data.push(obj_data);
-		}
+		// }
 
 
 		echartLine.setOption({
@@ -640,7 +669,7 @@ function init_echarts(xx) {
 			legend: {
 				x: 220,
 				y: 40,
-				data: Object.keys(xx.cities_2)
+				// data: Object.keys(xx.cities_2)
 			},
 			toolbox: {
 				show: true,

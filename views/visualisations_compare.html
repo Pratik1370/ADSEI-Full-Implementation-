@@ -134,14 +134,15 @@
           <br>
           <div class="clear"></div>
           <div class="form-group">
-            <label>Select year and month to compare:</label>
-            <input class="yearselect" type="year" id="start" name="start" value="2000">
+            <label>Select year to compare:</label>
+            <select class="yearselect" id="start_y1" name="start">
+            <!-- <input class="yearselect" type="year" id="start" name="start" value="2000"> -->
           </div>
           <label>Highest average temperature in above year: (Bind data here)</label>
           <label>Month which has highest temperature: (Bind data here)</label>
 
         </div>
-
+<!-- <div class="clear"></div> -->
         <div class="col-sm-6">
           <div class="row">
             <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 2
@@ -152,11 +153,11 @@
           </div>
           <br>
           <div class="form-group">
-            <label>Select year and month to compare:</label>
-            <input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000">
-          </div>
-            <label>Highest average temperature in above year: (Bind data here)</label>
-            <label>Month which has highest temperature: (Bind data here)</label>
+            <label>Select year to compare:</label>
+            <select class="yearselect" id="start_y2" name="start">
+              </div>
+            <!-- <label>Highest average temperature in above year: (Bind data here)</label>
+            <label>Month which has highest temperature: (Bind data here)</label> -->
         </div>
       </div>
 
@@ -257,8 +258,8 @@
 
     <script type="text/javascript">
       $(document).ready(function (e) {
-        $('.yearselect').yearselect();
-        $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+        // $('.yearselect').yearselect();
+        // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
         var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options='';
           $.each(res, function(index,country){
@@ -269,27 +270,27 @@
                 .append('  <li><a class="country2_dropdown_class" href="#" id="'+country+'">'+country+'</a></li>');
   
                         });
-$('.country1_dropdown_class').on('click',function(e){
-  var c1_id = $(this).attr('id');
-  localStorage.setItem('selected_country', c1_id);
-  var c1 = c1_id;
-  var c2= localStorage.getItem('selected_country_2');
+// $('.country1_dropdown_class').on('click',function(e){
+//   var c1_id = $(this).attr('id');
+//   localStorage.setItem('selected_country', c1_id);
+//   var c1 = c1_id;
+//   var c2= localStorage.getItem('selected_country_2');
 
-  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
-
-
-});
-
-$('.country2_dropdown_class').on('click',function(e){
-  var c2_id = $(this).attr('id');
-  localStorage.setItem('selected_country_2', c2_id);
-  var c2 = c2_id;
-  var c1= localStorage.getItem('selected_country');
-
-  window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+//   window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
 
 
-});
+// });
+
+// $('.country2_dropdown_class').on('click',function(e){
+//   var c2_id = $(this).attr('id');
+//   localStorage.setItem('selected_country_2', c2_id);
+//   var c2 = c2_id;
+//   var c1= localStorage.getItem('selected_country');
+
+//   window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
+
+
+// });
       // $(document).ready(function () {
           $("#sidebar").mCustomScrollbar({
               theme: "minimal"
@@ -306,13 +307,24 @@ $('.country2_dropdown_class').on('click',function(e){
               $('.collapse.in').toggleClass('in');
               $('a[aria-expanded=true]').attr('aria-expanded', 'false');
           });
+
+          $( ".yearselect" ).change(function() {
+            var id = $(this).children(":selected").attr("id");
+            // localStorage.setItem('selected_country', c1_id);
+            var c1 = localStorage.getItem('selected_country');
+            var c2 = localStorage.getItem('selected_country_2');
+            var start_year = localStorage.setItem('start_year',id);
+
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+id+'&end_year=2001';
+
+          });
       });
   </script>
 
       <script type="text/javascript">
         $(document).ready(function (e) {
-          $('.yearselect').yearselect();
-          $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+          // $('.yearselect').yearselect();
+          // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
           var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options = '';
           $.each(res, function (index, country) {
@@ -331,7 +343,7 @@ $('.country2_dropdown_class').on('click',function(e){
             var c1 = c1_id;
             var c2 = localStorage.getItem('selected_country_2');
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
 
 
           });
@@ -342,7 +354,7 @@ $('.country2_dropdown_class').on('click',function(e){
             var c2 = c2_id;
             var c1 = localStorage.getItem('selected_country');
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
 
 
           });

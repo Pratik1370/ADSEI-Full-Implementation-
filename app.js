@@ -63,7 +63,7 @@ app.get('/visualisations_data', function(req,res,html){
 
 app.get('/visualisations_compare', function(req,res,html){
     //console.log(req.query.name);
-  charts_controller.test_compare(req.query.name);
+  charts_controller.test_compare(req.query);
   res.sendFile(path.join(__dirname+ '/views/visualisations_compare.html'))
 });
 
