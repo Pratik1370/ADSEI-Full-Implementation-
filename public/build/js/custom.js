@@ -784,7 +784,7 @@ $('.h_mon_temp2').text(mon_names[tem]);
 		echartPieCollapse.setOption({
 			title: {
 				text: 'Continental Visualisations',
-				subtext: 'Avg Temperature (2013)\n\n',
+				subtext: 'Avg Temperature (2001)\n\n',
 				x: 'center',
 				y: 'top'
 			},

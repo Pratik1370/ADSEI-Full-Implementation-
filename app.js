@@ -78,8 +78,11 @@ app.get('/bubble_compare1',function(req, res){
 });
 
 app.get('/map', function(req,res,html){
+  // charts_controller.index(req.query);
   res.sendFile(path.join(__dirname+ '/views/map.html'))
 });
+
+
 
 app.get('/heatmap', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
