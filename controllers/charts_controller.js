@@ -90,11 +90,11 @@ function get_years_data(from_year, to_year, data){
 
   // var country;
   var avg_temp = 0;
-  if(data['2001']){
+  if(data[from_year]){
     
-        for(country in data['2001']){
+        for(country in data[from_year]){
           if(!(country in continents_names)){
-            var temp_data = data['2001'][country];
+            var temp_data = data[from_year][country];
             var count=0;
             for(var index=0; index < temp_data.length ; index++){
                 count += parseInt(temp_data[index],10);
@@ -166,7 +166,7 @@ all_years.reverse();
 }
 
 exports.index = function(req, res){
-    
+    console.log(req.query);
     var currentPath = process.cwd();
 
     if (jsonObj1 == ''){
@@ -181,7 +181,7 @@ exports.index = function(req, res){
             
         });
     }
-    var from_year;
+    var from_year = '2001';
     var to_year;
 
     setTimeout(function(){
