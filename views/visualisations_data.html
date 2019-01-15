@@ -142,26 +142,27 @@
                   <table style="width:100%">
                     <tr>
                       <td> <label for="start">Year :</label></td>
-                      <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
+                      <td><select class="yearselect" id="start" name="start"></td>
+                      <!-- <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td> -->
 
                       <!-- <td style="align-content: center"><label for="end"> Last Year :</label></td>
                       <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td> -->
                       <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
                     </tr>
                     <tr>
-                      <td> <label>Highest Temperature in this year: (Bind data here)</label>
+                      <td> <label>Highest Temperature in this year: <span class="h_temp"></span></label>
                       </td>
-                      <td><label>(Bind data here)</label></td>
+                      <!-- <td><label>(Bind data here)</label></td> -->
                     </tr>
                     <tr>
-                      <td><label>Month which have highest temperature: (Bind data here)</label></td>
-                      <td><label> (Bind data here)</label></td>
+                      <td><label>Month which have highest temperature: <span class="h_mon_temp"></span></label></td>
+                      <!-- <td><label> (Bind data here)</label></td> -->
                     </tr>
 
                   </table>
                   <!-- <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button> -->
 
-                  <div class="progress">
+                  <div class="progress" style="display:none;">
                     <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
                       Free Space
                     </div>
@@ -263,8 +264,8 @@
 
   <script type="text/javascript">
     $(document).ready(function (e) {
-      $('.yearselect').yearselect();
-      $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+      // $('.yearselect').yearselect();
+      // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
 
     });
   </script>
@@ -272,6 +273,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
+// alert(  localStorage.getItem(all_years));
       var getParams = function (url) {
         var params = {};
         var parser = document.createElement('a');
@@ -290,6 +292,7 @@
 
       // Get parameters from the current URL
       var params = getParams(window.location.href);
+
 
       $('#cities_button').on('click', function (event) {
         var country_name = localStorage.getItem('selected_country');

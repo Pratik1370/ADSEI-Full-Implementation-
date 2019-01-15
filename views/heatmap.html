@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="height: 100%">
 <meta charset="utf-8">
-<title>Heagggggtmap</title>
+<title>Heatmap</title>
 
 <head>
 
@@ -16,16 +16,68 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+      <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!--Progress bar-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <link href="../build/css/fSelect.css" rel="stylesheet">
+  <link href="../build/css/model.css" rel="stylesheet">
+  <link href="../build/css/slider.css" rel="stylesheet">
+  <link href="../build/css/style3.css" rel="stylesheet">
 </head>
 <br><br><br><br><br><br><br><br>
 <header id="header" style="background-color: #2C3A47">
+    
+  <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+          <div id="dismiss">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+          </div>
+    
+          <div class="sidebar-header">
+            <h3>Analytics Pro</h3>
+          </div>
+    
+          <ul class="list-unstyled components">
+            <p>Detailed Temperature view</p>
+            <li class="active">
+              <a onclick="show()">Graphs</a>
+            </li>
+            <li>
+              <!-- <a onclick="showHeatmap()">Heat Map</a> -->
+              <a id="heat_map">Heat Map</a>
+            </li>
+            <li>
+              <a id="cities_button">Cities</a>
+            </li>
+          </ul>
+    
+          <ul class="list-unstyled CTAs">
+            <li><a href="/map" class="article">Back</a></li>
+          </ul>
+        </nav>
+    
+    
     <div class="container-fluid">
-        <div id="logo" class="pull-left">
-            <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+            <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                      <i class="glyphicon glyphicon-align-left"></i>
+                      <span>Sidebar</span>
+                    </button>
+                  </div>
+            <div id="logo" class="pull-left">
+                    <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
+                  </div>
+                  <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
+                    Back to Maps </button>
+                </div>
         </div>
 </header>
 
@@ -55,10 +107,11 @@
         var dom = document.getElementById("container");
         var myChart = echarts.init(dom);
         var app = {};
+        var datar = [];
         option = null;
         app.title = '笛卡尔坐标系上的热力图';
         var days = res.years_arr;
-        var data = res.heat_array;
+        datar = res.heat_array;
         var hours = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
             'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         // var days = ['Saturday', 'Friday', 'Thursday',
@@ -66,7 +119,7 @@
 
         // var data = [[0,0,17],[0,1,20],[0,2,25],[0,3,29],[0,4,30],[0,5,29],[0,6,28],[0,7,28],[0,8,28],[0,9,26],[0,10,22],[0,11,18],[1,0,19],[1,1,22],[1,2,27],[1,3,30],[1,4,32],[1,5,30],[1,6,28],[1,7,26],[1,8,27],[1,9,26],[1,10,24],[1,11,19],[2,0,20],[2,1,23],[2,2,28],[2,3,32],[2,4,32],[2,5,30],[2,6,27],[2,7,26],[2,8,27],[2,9,28],[2,10,24],[2,11,21],[3,0,20],[3,1,22],[3,2,26],[3,3,30],[3,4,32],[3,5,31],[3,6,28],[3,7,27],[3,8,27],[3,9,26],[3,10,22],[3,11,19],[4,0,20],[4,1,22],[4,2,27],[4,3,31],[4,4,32],[4,5,30],[4,6,27],[4,7,26],[4,8,27],[4,9,27],[4,10,24],[4,11,21],[5,0,18],[5,1,22],[5,2,28],[5,3,30],[5,4,31],[5,5,29],[5,6,28],[5,7,28],[5,8,28],[5,9,28],[5,10,24],[5,11,22],[6,0,20],[6,1,23],[6,2,27],[6,3,30],[6,4,32],[6,5,29],[6,6,27],[6,7,27],[6,8,27],[6,9,27],[6,10,24],[6,11,22]];
 
-        data = data.map(function (item) {
+        data = datar.map(function (item) {
             return [item[1], item[0], item[2] || '-'];
         });
 

@@ -71,7 +71,7 @@
             </ul>
         </li>
         <li>
-            <a href="visualisations_compare?name=Russia_Canada" id="compare_btn">Compare</a>
+            <a href="visualisations_compare?name=Brazil_Canada&start_year=2001&end_year=2001" id="compare_btn">Compare</a>
         </li>
         <li>
             <a href="/charts">Learning Data Visualisation</a>
@@ -203,13 +203,16 @@
 
             $('#compare_btn').on('click', function (e) {
             // var c2_id = $(this).attr('id');
-            var c1 = "Russia";
+            var c1 = "Brazil";
             var c2 = "Canada";
             localStorage.setItem('selected_country', c1);
             localStorage.setItem('selected_country_2', c2);
+            localStorage.setItem('start_year', 2001);
+            localStorage.setItem('start_year2', 2001);
+            // localStorage.setItem('selected_country_2', c2);
             // var c1 = localStorage.getItem('selected_country');
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
 
 
           });
