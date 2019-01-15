@@ -32,23 +32,26 @@ function getYearMapping(country){
 }
 
 function getYearMapping1(para){
-
+    console.log(para);
+var country = para.name;
+var s_year = para.start_year;
   var yearMapping = {};
-  for (years in data){
-    // console.log(para['end']);
-   if(!(data[years]in yearMapping) && (years <= para.end_year)){
-      yearMapping[years] = [];
-    }
+  // for (years in data){
+  //   console.log(years);
+  //  if(!(data[years]in yearMapping) && (years <= para.end_year)){
+  //     yearMapping[years] = [];
+  //   }
 
-    for(avgTemp in data[years][para.name]){
-      console.log(years);
-      if ((years >= para.start_year) && (years <= para.end_year))
-        yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
-    }
+//     for(avgTemp in data[s_year][para.name]){
+//       console.log(avgTemp);
+//       if ((years >= para.start_year) && (years <= para.end_year))
+//         yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
+//     }
 
-  }
-
-  return yearMapping;
+//   // }
+// console.log(yearMapping['2001']);
+//   return yearMapping;
+return data[s_year][para.name];
 
 }
 
@@ -134,7 +137,8 @@ function groupBy( array)
             date = moment(o.dt, 'YYYY-MM-DD').toDate();
             array[i].dt = date.getFullYear();
             var arr_year = array[i].dt;
-            if(arr_year > 2000){
+            // console.log(arr_year);
+            // if(arr_year >= 2000){
               if(!(arr_year in data)){
                 data[arr_year] = [];
               }
@@ -144,10 +148,10 @@ function groupBy( array)
               data[arr_year][o.Country].push(o.AverageTemperature);
              
               
-            }
+            // }
     }
   });
-
+// console.log(data);
   return data;
 
 }
@@ -200,10 +204,10 @@ var sent_data = req;
    var selected_country = sent_data.name;
     if (selected_country != ''){
      cities = getYearMapping1(sent_data);
-     jsonObj1 = {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
-     console.log('...................................................................');
-     console.log(jsonObj1);
-     console.log('...................................................................');
+     var result = {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
+    //  console.log('...................................................................');
+    //  console.log(jsonObj1);
+    //  console.log('...................................................................');
      }
 };
 
@@ -247,13 +251,13 @@ exports.bubble_compare1 = function(req,res){
     if (jsonObj1 == ''){
      
       const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
-console.log(csvFilePath);
+// console.log(csvFilePath);
     const csv=require('csvtojson')
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj)=>{
             jsonObj1 = groupBy (jsonObj);
-            console.log(jsonObj1);
+            // console.log(jsonObj1);
             
         });
         
@@ -311,7 +315,7 @@ function cities_data( array,cntry_cities)
 
       
         
-        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === '' || o.City === ''){
+        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === '' || o.City === '' || o.City === 'continent'){
 
             flag = i;
         } else {
@@ -328,10 +332,7 @@ function cities_data( array,cntry_cities)
               }
               city[o.City].push(o.AverageTemperature);
             }
-            
-            
-
-    }
+      }
   });
   // console.log(city);
       // city.forEach(function(p,j){
@@ -392,8 +393,110 @@ var jsonObj1ss;
     // console.log(jsonObj1ss);
     res.send(jsonObj1ss);
   },4000);
+};
 
 
+function getcountryyeardata(gvn_data,para){
+  console.log(para);
+  var date_year;
+  var date_month;
+  var cntry_cities = para.name;
+  var flag;
+  var date;
+  var len = 0;
+  var years_arr = [];
+  var reslt_array = {};
+  var min_val;
+  gvn_data.forEach( function( o,i )
+  {
+      if(flag != -1){
+        var a = gvn_data.slice(flag,1);
+        flag = -1;
+      }
 
-  
+      
+        
+        if(o.dt === '' || o.AverageTemperature === '' || o.AverageTemperatureUncertainty === '' || o.Country === '' || o.City === '' || o.City === 'continent'){
+
+            flag = i;
+        } else {
+            o.AverageTemperature = parseFloat(o.AverageTemperature);
+            // UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
+
+            date = moment(o.dt, 'YYYY-MM-DD').toDate();
+            // array[i].dt = date.getFullYear();
+            date_year = date.getFullYear();
+            date_month = date.getMonth();
+            if((date_year < 2012) && (o.Country == cntry_cities)) {
+              if(!(date_year in reslt_array)){
+                reslt_array[date_year]=[];
+                if(years_arr.length < 7){
+                  years_arr.push(date_year);
+                }else{
+                 min_val = Math.min.apply(null,years_arr);
+                 var index = years_arr.indexOf(min_val);
+                 years_arr[index] = date_year;
+                }
+                len++;
+              }
+              reslt_array[date_year][date_month] = o.AverageTemperature;
+            }
+          }
+        });
+
+        var i;
+        var iteration = len-7;
+        var heat_array = [];
+        var k=0;
+        years_arr.sort();
+        console.log(years_arr);
+        var j=0;
+        var y;
+        for(i=0;i<7;i++){
+            y = years_arr[i];
+          for(j=0;j<12;j++){
+            // console.log(reslt_array[y][j]);
+            var arr = [];
+            // console.log(arr[0]);
+
+            arr[0]=i;
+            arr[1]=j;
+              arr[2]=Math.trunc(reslt_array[y][j]);
+              heat_array.push(arr);
+            }
+          k++;
+        }
+                      console.log(heat_array);
+
+        var heat_data = {};
+ return heat_data={'heat_array':heat_array,'years_arr':years_arr };
+}
+
+exports.heat_map_data = function(req,res){
+  var req_data = req;
+  // req_data.name = 'India';
+  // req_data.start_year = '2001';
+  // req_data.end_year = '2001';
+  var currentPath = process.cwd();
+  // console.log('req_data');
+  // console.log(req);
+  var relt;
+  if (jsonObj1 == ''){
+     
+    const csvFilePath = currentPath+'/controllers/GlobalLandTemperaturesByMajorCity.csv'
+
+  const csv=require('csvtojson')
+  csv()
+      .fromFile(csvFilePath)
+      .then((jsonObj)=>{
+          // jsonObj1 = groupBy (jsonObj);
+          relt = getcountryyeardata(jsonObj,req_data);
+
+          
+      });
+  }    
+  setTimeout(function(){
+    // console.log(relt);
+    res.send(relt);
+  },5000);
 };

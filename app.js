@@ -120,9 +120,6 @@ app.get('/testapi', function(req,res){
 
 app.get('/country_names', function(req,res){
   charts_controller.country_names(req.query,res);
-
-  console.log('*********country names*************');
-  // res.send('nmscmscsmcmscmscm');
 });
 
 app.get('/test', function(req,res,html){
@@ -133,6 +130,15 @@ app.get('/test', function(req,res,html){
 app.get('/cities_map', function(req,res,html){
   // console.log(req.query.name);
   res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
+
+app.get('/heat_map', function(req,res){
+  // charts_controller.cities(req.query,res);
+  res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
+
+app.get('/heat_map_data', function(req,res){
+  charts_controller.heat_map_data(req.query,res);
 });
 
 //file upload

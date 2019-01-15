@@ -517,10 +517,10 @@ function init_echarts(xx) {
 
 		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 		var data = [];
-		for (key in xx.cities) {
+		// for (key in xx.cities) {
 			//console.log(xx.cities[key]);
 			var obj_data = {
-				name: key,
+				name:  localStorage.getItem('start_year'),
 				type: 'line',
 				smooth: true,
 				itemStyle: {
@@ -530,11 +530,28 @@ function init_echarts(xx) {
 						// }
 					}
 				},
-				data: xx.cities[key]
+				data: xx.cities
 			}
 			data.push(obj_data);
-		}
+		// }
 
+		// for (key in xx.cities) {
+		// 	//console.log(xx.cities[key]);
+		// 	var obj_data = {
+		// 		name: key,
+		// 		type: 'line',
+		// 		smooth: true,
+		// 		itemStyle: {
+		// 			normal: {
+		// 				// areaStyle: {
+		// 				// type: 'none'
+		// 				// }
+		// 			}
+		// 		},
+		// 		data: xx.cities[key]
+		// 	}
+		// 	data.push(obj_data);
+		// }
 
 		echartLine.setOption({
 			title: {
@@ -547,7 +564,7 @@ function init_echarts(xx) {
 			legend: {
 				x: 220,
 				y: 40,
-				data: Object.keys(xx.cities)
+				// data: Object.keys(xx.cities)
 			},
 			toolbox: {
 				show: true,
@@ -874,6 +891,7 @@ function init_echarts(xx) {
 
 			country_name = param.data.name;
 			localStorage.setItem('selected_country', country_name);
+			localStorage.setItem('start_year', 2001);
 			var start_year = 2001;
 			var end_year = 2005;
 			// var param_send = {start: start_year, end: end_year, country: country_name};

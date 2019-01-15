@@ -68,7 +68,8 @@
           <a onclick="show()">Graphs</a>
         </li>
         <li>
-          <a onclick="showHeatmap()">Heat Map</a>
+          <!-- <a onclick="showHeatmap()">Heat Map</a> -->
+          <a id="heat_map">Heat Map</a>
         </li>
         <li>
           <a id="cities_button">Cities</a>
@@ -130,11 +131,11 @@
 
                   <table style="width:100%">
                     <tr>
-                      <td> <label for="start">First Year :</label></td>
+                      <td> <label for="start">Year :</label></td>
                       <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
 
-                      <td style="align-content: center"><label for="end"> Last Year :</label></td>
-                      <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td>
+                      <!-- <td style="align-content: center"><label for="end"> Last Year :</label></td>
+                      <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td> -->
                       <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
                     </tr>
                     <tr>
@@ -273,7 +274,7 @@
         }
         // console.log(params);
         document.getElementById('start').value = params.start_year;
-        document.getElementById('end').value = params.end_year;
+        // document.getElementById('end').value = params.end_year;
         return params;
       };
 
@@ -287,17 +288,25 @@
         window.location.href = 'cities?name=' + country_name;
       });
 
+      $('#heat_map').on('click', function (event) {
+        var country_name = localStorage.getItem('selected_country');
+        window.location.href = 'heat_map?name=' + country_name +'&start_year=2001&end_year=2007';
+      });
+
       $('#year_data').on('click', function (event) {
         var start_year = $('#start').val();
-        var end_year = $('#end').val();
+        localStorage.setItem('start_year', start_year);
+
+        // var end_year = $('#end').val();
         console.log(start_year);
-        console.log(end_year);
+        // console.log(end_year);
         var country_name = params.name;
         // var country_name = 'India';
 
         // var param_send = {start: start_year, end: end_year, country: country_name};
         // console.log(param_send);
-        window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
+        // window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
+        window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year;
 
       });
     });
