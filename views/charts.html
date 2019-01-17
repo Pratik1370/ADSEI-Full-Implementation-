@@ -38,9 +38,9 @@
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../build/css/bootstrap.min.css">
+  <script src="../build/js/jquery.min.js"></script>
+  <script src="../build/js/bootstrap.min.js"></script>
   <!--fixing the bootstrap-->
   <script src="../js/popper.min.js"></script>
   <link href="css/charts.css" rel="stylesheet">
@@ -59,78 +59,95 @@
       </div>
 
       <ul class="list-unstyled components">
-        <p>Learning Data Visualization</p>
         <li class="active">
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Graphs</a>
-          <ul class="collapse list-unstyled" id="homeSubmenu">
-            <li>
-              <a onclick="showLine()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Line Chart</a>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Data Visualization</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li class="active">
+              <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Learning Data Visualization</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li class="active">
+                  <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Graphs</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                      <a onclick="showLine()" >Line
+                        Chart</a>
+                    </li>
+                    <li>
+                      <a onclick="showPie()">Pie
+                        Chart</a>
+                    </li>
+                    <li>
+                      <a onclick="showBar()">Bar
+                        Chart</a>
+                    </li>
+                    <li>
+                      <a onclick="showScatter()">Scatter
+                        Chart</a>
+                    </li>
+                    <li>
+                      <a onclick="showMap()">Map</a>
+                    </li>
+                    <li>
+                      <a onclick="showCandlestick()">Candlestick</a>
+                    </li>
+                    <li>
+                      <a onclick="showRadar()">Radar</a>
+                    </li>
+                    <li>
+                      <a onclick="showHeatmap()">Heatmap</a>
+                    </li>
+                    <li>
+                      <a onclick="showTree()">Tree
+                        Chart</a>
+                    </li>
+                    <li>
+                      <a onclick="showTreeMap()">Tree
+                        Map</a>
+                    </li>
+                    <li>
+                      <a onclick="showSunburst()">Sunburst</a>
+                    </li>
+                    <li>
+                      <a onclick="showParallel()">Parallel</a>
+                    </li>
+                    <li>
+                      <a onclick="showSankey()" >Sankey</a>
+                    </li>
+                    <li>
+                      <a onclick="showFunnel()">Funnel</a>
+                    </li>
+                    <li>
+                      <a onclick="showGauge()">Gauge</a>
+                    </li>
+                    <li>
+                      <a onclick="showThemeriver()">Themeriver</a>
+                    </li>
+                    <li>
+                      <a onclick="showCalendar()">Calendar</a>
+                    </li>
+                    <li>
+                      <a onclick="showDataset()">Dataset</a>
+                    </li>
+                    <li>
+                      <a onclick="show3DBar()">3D
+                        Bar</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a onclick="showPie()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pie Chart</a>
-            </li>
-            <li>
-              <a onclick="showBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bar Chart</a>
-            </li>
-            <li>
-              <a onclick="showScatter()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Scatter
-                Chart</a>
-            </li>
-            <li>
-              <a onclick="showMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Map</a>
-            </li>
-            <li>
-              <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
-            </li>
-            <li>
-              <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
-            </li>
-            <li>
-              <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
-            </li>
-            <li>
-              <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
-            </li>
-            <li>
-              <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
-            </li>
-            <li>
-              <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
-            </li>
-            <li>
-              <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
-            </li>
-            <li>
-              <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
-            </li>
-            <li>
-              <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
-            </li>
-            <li>
-              <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
-            </li>
-            <li>
-              <a onclick="showThemeriver()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Themeriver</a>
-            </li>
-            <li>
-              <a onclick="showCalendar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Calendar</a>
-            </li>
-            <li>
-              <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
-            </li>
-            <li>
-              <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
+            <li class="active">
+              <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">Dynamic Data Visualization</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu3">
+                <a href="/map">Map</a>
+              </ul>
             </li>
           </ul>
         </li>
-        <li>
-          <a href="/map">World Map</a>
-        </li>
       </ul>
-
       <ul class="list-unstyled CTAs">
-        <li><a href="/map" class="article">Back</a></li>
-      </ul>
+          <li><a href="/map" class="article">Back</a></li>
+        </ul>
     </nav>
 
     <div id="content">

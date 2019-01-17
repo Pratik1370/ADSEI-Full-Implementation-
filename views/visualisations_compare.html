@@ -63,15 +63,33 @@
       </div>
 
       <ul class="list-unstyled components">
-        <p>Detailed Temperature view</p>
         <li class="active">
-          <a onclick="show()">Graphs</a>
-        </li>
-        <li>
-          <a onclick="showPie()">Heat Map</a>
-        </li>
-        <li>
-          <a onclick="showHeatmap()">Cities</a>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Data Visualization</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li><a href="/charts">Learning Data Visualization</a>
+            </li>
+            <li class="active">
+              <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Dynamic Data Visualization</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li><a href="#">Continental View</a></li>
+                <li><a href="#">Compare</a></li>
+                <li><a href="/map">Map</a></li>
+                <li class="active">
+                  <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Detailed View</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                      <a onclick="show()">Graphs</a>
+                    </li>
+                    <li>
+                      <a onclick="showHeatmap()">Heat Map</a>
+                    </li>
+                    <li>
+                      <a onclick="showPie()">Cities</a>
+                    </li>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -85,21 +103,16 @@
     <div id="content">
       <header id="header" style="background-color: #2C3A47">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                    <i class="glyphicon glyphicon-align-left"></i>
-                    <span>Sidebar</span>
-                </button>
-            </div>
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+              <i class="glyphicon glyphicon-align-left"></i>
+              <span>Menu</span>
+            </button>
+          </div>
           <div id="logo" class="pull-left">
             <h1><a href="/" class="scrollto">Analytics Pro > Compare</a></h1>
           </div>
 
-          <!--         <button id="import_button" style="float: right;" type="button" class="btn btn-dark"> Import</button>
-        <button id="dashboard_button" style="float: right;" type="button" class="btn btn-dark"> Dashboard</button>
-        <button id="bubblechart_button" style="float: right;" type="button" class="btn btn-dark"> Bubble Chart</button>  -->
-          <button id="map" style="float: right;" type="button" class="btn btn-dark" onclick="location.href = '/map' ">
-            Back to Maps </button>
         </div>
       </header><!-- #header -->
 
@@ -118,8 +131,21 @@
             <label>Select year and month to compare:</label>
             <input class="yearselect" type="year" id="start" name="start" value="2000">
           </div>
-          <label>Highest Temperature in this year: (Bind data here)</label>
-          <label>Month which have highest temperature: (Bind data here)</label>
+          <label>Highest Temperature in this year: </label> <label id=" HYear">(Bind data here)</label>
+          <label>Month which have highest temperature: </label><label id=" HMonth">(Bind data here)</label>
+          
+          <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                Low Temperature
+              </div>
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+                Medium Temperature
+              </div>
+              <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                High Temperature
+              </div>
+           
+            </div>
 
         </div>
 
@@ -135,8 +161,21 @@
             <label>Select year and month to compare:</label>
             <input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000">
           </div>
-            <label>Highest Temperature in this year: (Bind data here)</label>
-            <label>Month which have highest temperature: (Bind data here)</label>
+          <label>Highest Temperature in this year: (Bind data here)</label>
+          <label>Month which have highest temperature: (Bind data here)</label>
+          
+          <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                Low Temperature
+              </div>
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+                Medium Temperature
+              </div>
+              <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                High Temperature
+              </div>
+           
+            </div>
         </div>
       </div>
 
@@ -158,10 +197,10 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="row" id="chartContent">
-                    <br><br>
-                    <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
-                    <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
-                  </div>
+                  <br><br>
+                  <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+                  <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+                </div>
 
                 <div class="x_content">
                   <div id="echart_line" style="height:70vh;"></div>
@@ -181,10 +220,10 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="row" id="chartContent_2">
-                    <br><br>
-                    <div id="main_2" style="width: 700px;height:480px;" class="col-sm-6"></div>
-                    <div id="textContent_2" style="width: 640px;height:480px;" class="col-sm-6"></div>
-                  </div>
+                  <br><br>
+                  <div id="main_2" style="width: 700px;height:480px;" class="col-sm-6"></div>
+                  <div id="textContent_2" style="width: 640px;height:480px;" class="col-sm-6"></div>
+                </div>
 
                 <div class="x_content">
 
@@ -227,33 +266,33 @@
       <script src="../build/js/visualcompare.js"></script>
 
 
-       <!-- jQuery CDN -->
-    <!-- Bootstrap Js CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+      <!-- jQuery CDN -->
+      <!-- Bootstrap Js CDN -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
 
-    <script type="text/javascript">
-      $(document).ready(function () {
+      <script type="text/javascript">
+        $(document).ready(function () {
           $("#sidebar").mCustomScrollbar({
-              theme: "minimal"
+            theme: "minimal"
           });
 
           $('#dismiss, .overlay').on('click', function () {
-              $('#sidebar').removeClass('active');
-              $('.overlay').fadeOut();
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
           });
 
           $('#sidebarCollapse').on('click', function () {
-              $('#sidebar').addClass('active');
-              $('.overlay').fadeIn();
-              $('.collapse.in').toggleClass('in');
-              $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            $('#sidebar').addClass('active');
+            $('.overlay').fadeIn();
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
           });
-      });
-  </script>
+        });
+      </script>
 
       <script type="text/javascript">
         $(document).ready(function (e) {
