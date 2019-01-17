@@ -60,21 +60,21 @@
       <ul class="list-unstyled components">
         <p>Temperature Data Visualization</p>
         <li>
-            <a href="#">Continent Visualisation</a>
+            <a href="#">Continental Visualization</a>
         </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Years</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li><a href="/map?year=2001">2001</a></li>
-                <li><a href="/map?year=1899">1899</a></li>
-                <li><a href="/map?year=1898">1898</a></li>
+                <li><a href="#">Year 1</a></li>
+                <li><a href="#">Year 2</a></li>
+                <li><a href="#">Year 3</a></li>
             </ul>
         </li>
         <li>
-            <a href="visualisations_compare?name=Brazil_Canada&start_year=2001&end_year=2001" id="compare_btn">Compare</a>
+            <a href="#">Compare</a>
         </li>
         <li>
-            <a href="/charts">Learning Data Visualisation</a>
+            <a href="/charts">Learning Data Visualization</a>
         </li>
       </ul>
     </nav>
@@ -97,8 +97,6 @@
             <h1><a href="/" class="scrollto">Analytics Pro</a></h1>
 
           </div>
-          <button id="switch_button_map" style="float: right;" type="button" class="btn btn-dark">Switch to Continental Visualisations ></button>
-</div>
       </header>
 
 
@@ -200,22 +198,6 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
-
-            $('#compare_btn').on('click', function (e) {
-            // var c2_id = $(this).attr('id');
-            var c1 = "Brazil";
-            var c2 = "Canada";
-            localStorage.setItem('selected_country', c1);
-            localStorage.setItem('selected_country_2', c2);
-            localStorage.setItem('start_year', 2001);
-            localStorage.setItem('start_year2', 2001);
-            // localStorage.setItem('selected_country_2', c2);
-            // var c1 = localStorage.getItem('selected_country');
-
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
-
-
-          });
         });
     </script>
   <script>

@@ -46,7 +46,10 @@
   <link href="css/charts.css" rel="stylesheet">
   <link href="../build/css/style5.css" rel="stylesheet">
 
+
+
 <body>
+
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -61,49 +64,49 @@
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Graphs</a>
           <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <a onclick="showLine()" >Line Chart</a>
+              <a onclick="showLine()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Line Chart</a>
             </li>
             <li>
-              <a onclick="showPie()" >Pie Chart</a>
+              <a onclick="showPie()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pie Chart</a>
             </li>
             <li>
-              <a onclick="showBar()" >Bar Chart</a>
+              <a onclick="showBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bar Chart</a>
             </li>
             <li>
-              <a onclick="showScatter()" >Scatter
+              <a onclick="showScatter()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Scatter
                 Chart</a>
             </li>
-<!--             <li>
-              <a onclick="showMap()" >Map</a>
-            </li> -->
             <li>
-              <a onclick="showCandlestick()" >Candlestick</a>
+              <a onclick="showMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Map</a>
             </li>
             <li>
-              <a onclick="showRadar()" >Radar</a>
+              <a onclick="showCandlestick()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candlestick</a>
             </li>
             <li>
-              <a onclick="showHeatmap()" >Heatmap</a>
-            </li>
-<!--             <li>
-              <a onclick="showTree()" >Tree Chart</a>
-            </li> -->
-            <li>
-              <a onclick="showTreeMap()" >Tree Map</a>
+              <a onclick="showRadar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Radar</a>
             </li>
             <li>
-              <a onclick="showSunburst()" >Sunburst</a>
+              <a onclick="showHeatmap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Heatmap</a>
             </li>
             <li>
-              <a onclick="showParallel()" >Parallel</a>
+              <a onclick="showTree()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Chart</a>
             </li>
-<!--             <li>
+            <li>
+              <a onclick="showTreeMap()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tree Map</a>
+            </li>
+            <li>
+              <a onclick="showSunburst()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sunburst</a>
+            </li>
+            <li>
+              <a onclick="showParallel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parallel</a>
+            </li>
+            <li>
               <a onclick="showSankey()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sankey</a>
-            </li> -->
-            <li>
-              <a onclick="showFunnel()" >Funnel</a>
             </li>
-<!--             <li>
+            <li>
+              <a onclick="showFunnel()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funnel</a>
+            </li>
+            <li>
               <a onclick="showGauge()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gauge</a>
             </li>
             <li>
@@ -114,9 +117,9 @@
             </li>
             <li>
               <a onclick="showDataset()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dataset</a>
-            </li> -->
+            </li>
             <li>
-              <a onclick="show3DBar()" >3D Bar</a>
+              <a onclick="show3DBar()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">3D Bar</a>
             </li>
           </ul>
         </li>
@@ -138,39 +141,25 @@
           <div class="navbar-header">
             <button type="button" id="sidebarCollapse" class="navbar-btn">
               <span></span>
- 
+              <span></span>
+              <span></span>
             </button>
           </div>
 
           <div id="logo" class="pull-left">
             <h1><a href="/" class="scrollto">Analytics Pro > Learning</a></h1>
           </div>
+
       </header>
-
-      <br><br><br>
-
-      <div class="column">
-        <div class="col-sm-12">
-          <div class="column">
-            <br>
-
-                The purpose of the learning tool is to show you what the other common types of charts are and to give an insight of what sort of data is shown and how they relate graphically.
-
-        <br><br><br>        
-      </div>
-    </div>
-  </div>
-
 
       <!--************************ This is the content part ***********************-->
       <div id="content">
-        <div class="row" id="chartContent" margin="auto">
-          <br>
-          <div id="main" style="width:700px;height:480px;" class="col-sm-6" margin="auto"></div>
-          <br><br><br>
-          <br><br><br>
-          <div id="textContent" style="width:640px;height:480px;" class="col-sm-6" margin="auto"></div>
+        <div class="row" id="chartContent">
+          <br><br>
+          <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
+          <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
         </div>
+
       </div>
     </div>
     <script type="text/javascript">

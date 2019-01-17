@@ -21,7 +21,7 @@
 
     $(document).ready(function (e) {
         $('#main').loader('show', '<img src="../img/ring.gif">');
-        // console.log('res');
+        console.log('res');
 
         var getParams = function (url) {
             var params = {};
@@ -33,23 +33,19 @@
                 var pair = vars[i].split('=');
                 params[pair[0]] = decodeURIComponent(pair[1]);
             }
-            // console.log(params.name);
+            console.log(params.name);
 
             return params;
         };
 
         // Get parameters from the current URL
         var params = getParams(window.location.href);
-        var country_name = localStorage.getItem('selected_country');
-
-        console.log(params);
         $.ajax({
-            url: "http://localhost:5000/cities_data?name=" + country_name,
+            url: "http://localhost:5000/cities_data?name=" + params.name,
             type: "GET",
             success: function (res) {
                 $('#main').loader('hide');
                 console.log('res');
-                console.log(res);
                 var myChart = echarts.init(document.getElementById('main'));
 
                 option = {

@@ -510,39 +510,17 @@ function init_echarts(xx) {
 		});
 
 	}
-	//year dropdown values
-	$.each(xx.all_years, function(key, value) {   
-		$('.yearselect')
-			.append($("<option></option>")
-					   .attr("value",value)
-					   .attr("id",value)
-					   .text(value)); 
-   });
-
-   
-   
-
-
-
 
 	//echart Line
 
 	if ($('#echart_line').length) {
-//highest temperature inmonth
-var tem_max;
-var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-tem_max = Math.max.apply(null, xx.cities);
-var tem = xx.cities.indexOf(tem_max);
-$('.h_temp').text(tem_max);
-$('.h_mon_temp').text(mon_names[tem]);
-
 
 		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 		var data = [];
-		// for (key in xx.cities) {
+		for (key in xx.cities) {
 			//console.log(xx.cities[key]);
 			var obj_data = {
-				name:  localStorage.getItem('start_year'),
+				name: key,
 				type: 'line',
 				smooth: true,
 				itemStyle: {
@@ -552,28 +530,11 @@ $('.h_mon_temp').text(mon_names[tem]);
 						// }
 					}
 				},
-				data: xx.cities
+				data: xx.cities[key]
 			}
 			data.push(obj_data);
-		// }
+		}
 
-		// for (key in xx.cities) {
-		// 	//console.log(xx.cities[key]);
-		// 	var obj_data = {
-		// 		name: key,
-		// 		type: 'line',
-		// 		smooth: true,
-		// 		itemStyle: {
-		// 			normal: {
-		// 				// areaStyle: {
-		// 				// type: 'none'
-		// 				// }
-		// 			}
-		// 		},
-		// 		data: xx.cities[key]
-		// 	}
-		// 	data.push(obj_data);
-		// }
 
 		echartLine.setOption({
 			title: {
@@ -586,7 +547,7 @@ $('.h_mon_temp').text(mon_names[tem]);
 			legend: {
 				x: 220,
 				y: 40,
-				// data: Object.keys(xx.cities)
+				data: Object.keys(xx.cities)
 			},
 			toolbox: {
 				show: true,
@@ -629,20 +590,13 @@ $('.h_mon_temp').text(mon_names[tem]);
 	//echart Line
 
 	if ($('#echart_line_2').length) {
-//highest temperature inmonth
-var tem_max;
-var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-tem_max = Math.max.apply(null, xx.cities_2);
-var tem = xx.cities.indexOf(tem_max);
-$('.h_temp2').text(tem_max);
-$('.h_mon_temp2').text(mon_names[tem]);
 
 		var echartLine = echarts.init(document.getElementById('echart_line_2'), theme);
 		var data = [];
-		// for (key in xx.cities_2) {
+		for (key in xx.cities_2) {
 			//console.log(xx.cities[key]);
 			var obj_data = {
-				name: localStorage.getItem('start_year'),
+				name: key,
 				type: 'line',
 				smooth: true,
 				itemStyle: {
@@ -652,10 +606,10 @@ $('.h_mon_temp2').text(mon_names[tem]);
 						// }
 					}
 				},
-				data: xx.cities_2
+				data: xx.cities_2[key]
 			}
 			data.push(obj_data);
-		// }
+		}
 
 
 		echartLine.setOption({
@@ -669,7 +623,7 @@ $('.h_mon_temp2').text(mon_names[tem]);
 			legend: {
 				x: 220,
 				y: 40,
-				// data: Object.keys(xx.cities_2)
+				data: Object.keys(xx.cities_2)
 			},
 			toolbox: {
 				show: true,
@@ -784,7 +738,7 @@ $('.h_mon_temp2').text(mon_names[tem]);
 		echartPieCollapse.setOption({
 			title: {
 				text: 'Continental Visualisations',
-				subtext: 'Avg Temperature (2001)\n\n',
+				subtext: 'Avg Temperature (2013)\n\n',
 				x: 'center',
 				y: 'top'
 			},
@@ -920,7 +874,6 @@ $('.h_mon_temp2').text(mon_names[tem]);
 
 			country_name = param.data.name;
 			localStorage.setItem('selected_country', country_name);
-			localStorage.setItem('start_year', 2001);
 			var start_year = 2001;
 			var end_year = 2005;
 			// var param_send = {start: start_year, end: end_year, country: country_name};
