@@ -232,8 +232,8 @@ function showMap(){
     
     option = {
         title: {
-            text: 'iphone销量',
-            subtext: '纯属虚构',
+            text: 'iphone sales',
+            subtext: 'the data is not real',
             left: 'center'
         },
         tooltip: {
@@ -249,7 +249,7 @@ function showMap(){
             max: 2500,
             left: 'left',
             top: 'bottom',
-            text: ['高','低'],           // 文本，默认为数值文本
+            text: ['high','low'],           // 文本，默认为数值文本
             calculable: true
         },
         toolbox: {
@@ -428,8 +428,8 @@ function showRadar(){
   
     option = {
         title: {
-            text: '浏览器占比变化',
-            subtext: '纯属虚构',
+            text: 'percentage of browsers',
+            subtext: 'the data is not real',
             top: 10,
             left: 10
         },
@@ -467,7 +467,7 @@ function showRadar(){
             var series = [];
             for (var i = 1; i <= 28; i++) {
                 series.push({
-                    name:'浏览器（数据纯属虚构）',
+                    name:'Browser (the data is fake)',
                     type: 'radar',
                     symbol: 'none',
                     lineStyle: {
