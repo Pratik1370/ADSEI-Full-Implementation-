@@ -266,7 +266,7 @@
 
   <script type="text/javascript">
     $(document).ready(function (e) {
-      // $('.yearselect').yearselect();
+      $('.yearselect').yearselect({end: 2013, order: 'desc'});
       // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
 
     });
@@ -305,17 +305,18 @@
       $('#year_data').on('click', function (event) {
         var start_year = $('#start_year_data').val();
         var end_year = $('#end_year_data').val();
-        console.log(start_year);
-        console.log(end_year);
-        var country_name = params.name;
-        // var country_name = 'India';
-        localStorage.setItem('start_year',start_year);
-        localStorage.setItem('end_year',end_year);
+        if(start_year > end_year){
+          alert('Last year should be greater than First year');
+        }else{
+              var country_name = params.name;
+              // var country_name = 'India';
+              localStorage.setItem('start_year',start_year);
+              localStorage.setItem('end_year',end_year);
 
-        // var param_send = {start: start_year, end: end_year, country: country_name};
-        // console.log(param_send);
-        window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
-
+              // var param_send = {start: start_year, end: end_year, country: country_name};
+              // console.log(param_send);
+              window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
+        }
       });
     });
   </script>

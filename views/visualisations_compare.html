@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../vendors/echarts/dist/echarts.min.js"></script>
+  <!-- <script src="../vendors/echarts/dist/echarts.common.min.js"></script> -->
 
 
   <link href="../build/css/fSelect.css" rel="stylesheet">
@@ -130,19 +132,19 @@
           <div class="clear"></div>
           <div class="form-group">
             <label>Select year and month to compare:</label>
-            <select class="yearselect" id="start_y1" name="start">
+            <input class="yearselect" id="start_y1" name="start">
               </div>
-          <label>Highest Temperature in this year: </label> <label id=" HYear">(Bind data here)</label>
-          <label>Month which have highest temperature: </label><label id=" HMonth">(Bind data here)</label>
+          <label>Highest Temperature in this year: </label> <label id=" HYear1"><span id="HighTem"></span></label>
+          <label>Month which have highest temperature: </label><label id=" HMonth1"><span id="HighTemMon"></span></label>
           
           <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+              <div class="progress-bar progress-bar-success" style="width: 100%" id="low" role="progressbar">
                 Low Temperature
               </div>
-              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+              <div class="progress-bar progress-bar-warning" style="width: 100%" id="medium" role="progressbar">
                 Medium Temperature
               </div>
-              <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+              <div class="progress-bar progress-bar-danger" style="width: 100%" id="high" role="progressbar">
                 High Temperature
               </div>
            
@@ -160,24 +162,24 @@
           </div>
           <div class="form-group">
             <label>Select year and month to compare:</label>
-                <select class="yearselect" id="start_y2" name="start">
-
-            </div>
-          <label>Highest Temperature in this year: (Bind data here)</label>
-          <label>Month which have highest temperature: (Bind data here)</label>
+                <input class="yearselect2" id="start_y2" name="start">
           
-          <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
-                Low Temperature
-              </div>
-              <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
-                Medium Temperature
-              </div>
-              <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
-                High Temperature
-              </div>
-           
             </div>
+            <label>Highest Temperature in this year: </label> <label id=" HYear2"><span id="HighTem2"></span></label>
+            <label>Month which have highest temperature: </label><label id=" HMonth2"><span id="HighTemMon2"></span></label>
+            
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 100%" id="low2" role="progressbar">
+                  Low Temperature
+                </div>
+                <div class="progress-bar progress-bar-warning" style="width: 100%" id="medium2" role="progressbar">
+                  Medium Temperature
+                </div>
+                <div class="progress-bar progress-bar-danger" style="width: 100%" id="high2" role="progressbar">
+                  High Temperature
+                </div>
+             
+              </div>
         </div>
       </div>
 
@@ -252,7 +254,7 @@
       </div>
 
       <!-- jQuery -->
-      <script src="../vendors/jquery/dist/jquery.min.js"></script>
+      <script src="../vendors/jquery/dist/jquery.min.js"></script>     
       <!-- Bootstrap -->
       <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
       <!-- FastClick -->
@@ -260,13 +262,11 @@
       <!-- NProgress -->
       <script src="../vendors/nprogress/nprogress.js"></script>
       <!-- ECharts -->
-      <script src="../vendors/echarts/dist/echarts.min.js"></script>
       <script src="../vendors/echarts/map/js/world.js"></script>
       <script src="../build/js/custom.js"></script>
       <script src="../build/js/center-loader.js"></script>
       <script src="../build/js/year-select.js"></script>
       <script src="../build/js/visualcompare.js"></script>
-
 
       <!-- jQuery CDN -->
       <!-- Bootstrap Js CDN -->
@@ -298,12 +298,13 @@
 
       <script type="text/javascript">
         $(document).ready(function (e) {
-          // $('.yearselect').yearselect();
+          $('.yearselect').yearselect({end: 2013, order: 'desc'});
+          $('.yearselect2').yearselect({end: 2013, order: 'desc'});
           // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
           var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options = '';
           $.each(res, function (index, country) {
-            console.log(country);
+            // console.log(country);
             country = country.replace(/"/g, '');
 
             $("#country1_dropdown")
@@ -329,19 +330,30 @@
             localStorage.setItem('selected_country_2', c2_id);
             var c2 = c2_id;
             var c1 = localStorage.getItem('selected_country');
-            var start_year = localStorage.getItem('start_year',id);
+            var start_year = localStorage.getItem('start_year');
+            var end_year = localStorage.getItem('end_year');
 
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+start_year+'&end_year='+start_year;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+start_year+'&end_year='+end_year;
           });
 
           $( ".yearselect" ).change(function() {
-            var id = $(this).children(":selected").attr("id");
-            // localStorage.setItem('selected_country', c1_id);
+            // var id = $(this).children(":selected").attr("id");
+            var id = this.options[this.selectedIndex].value;
+            // console.log(id);
+            var end_year = localStorage.getItem('end_year');
             var c1 = localStorage.getItem('selected_country');
             var c2 = localStorage.getItem('selected_country_2');
             var start_year = localStorage.setItem('start_year',id);
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+id+'&end_year='+id;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+id+'&end_year='+end_year;
+          });
+          $( ".yearselect2" ).change(function() {
+            var id = this.options[this.selectedIndex].value;
+            var start_year = localStorage.getItem('start_year');
+            var c1 = localStorage.getItem('selected_country');
+            var c2 = localStorage.getItem('selected_country_2');
+            var end_year = localStorage.setItem('end_year',id);
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+start_year+'&end_year='+id;
           });
           // $('#heat_map').on('click',function(e){
           //     $("#textContent").show();

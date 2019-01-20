@@ -518,6 +518,13 @@ function init_echarts(xx) {
 					   .attr("value",value)
 					   .attr("id",value)
 					   .text(value)); 
+
+		$('.yearselect2')
+		.append($("<option></option>")
+					.attr("value",value)
+					.attr("id",value)
+					.text(value)); 
+					   
    });
 
 	//echart Line
@@ -627,9 +634,22 @@ if(tem_max < 22){
 var tem_max;
 var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 tem_max = Math.max.apply(null, xx.cities_2);
-var tem = xx.cities.indexOf(tem_max);
-$('.h_temp2').text(tem_max);
-$('.h_mon_temp2').text(mon_names[tem]);
+var tem = xx.cities_2.indexOf(tem_max);
+$('#HighTem2').text(tem_max);
+$('#HighTemMon2').text(mon_names[tem]);
+if(tem_max < 22){
+	$('#high2').hide();
+	$('#medium2').hide();
+	$('#low2').show();
+}else if(tem_max > 22 && tem_max < 31){
+	$('#high2').hide();
+	$('#medium2').show();
+	$('#low2').hide();
+}else{
+	$('#high2').show();
+	$('#medium2').hide();
+	$('#low2').hide();
+}
 
 		var echartLine = echarts.init(document.getElementById('echart_line_2'), theme);
 		var data = [];
@@ -637,7 +657,7 @@ $('.h_mon_temp2').text(mon_names[tem]);
 			//console.log(xx.cities[key]);
 			var obj_data = {
 				// name: key,
-				name: localStorage.getItem('start_year'),
+				name: localStorage.getItem('end_year'),
 				type: 'line',
 				smooth: true,
 				itemStyle: {

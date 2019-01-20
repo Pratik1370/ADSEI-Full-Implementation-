@@ -346,7 +346,7 @@ function cities_data( array,req_data)
 
             flag = i;
         } else {
-          
+
           o.AverageTemperature = Math.floor(o.AverageTemperature * 100) / 100 ;
             // o.AverageTemperature = parseFloat(o.AverageTemperature).toFixed(2);
             // UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
@@ -437,7 +437,7 @@ function cities_data( array,req_data)
   var country_list = [];
 
   result.forEach( function( o,i ){
-    if(!(o.name in country_list)){
+    if(!(o.name in country_list) && (o.City != 'continent')){
         country_list.push(o.name);
     }
  });
