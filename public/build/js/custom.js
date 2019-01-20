@@ -1027,15 +1027,15 @@ $(document).ready(function () {
 	$('#switch_button_map').on('click', function (e) {
 
 
-		if ($("#switch_button_map").text() == "Switch to Continental Visualisations >") {
+		if ($("#switch_button_map").text() == "Continental View") {
 
-			$("#switch_button_map").text("Switch to Map Visualisations >");
+			$("#switch_button_map").text("Map Visualisations");
 			$("#pie_visualisaton").show();
 			$("#map_visualisaton").hide();
 
 		}
 		else {
-			$("#switch_button_map").text("Switch to Continental Visualisations >");
+			$("#switch_button_map").text("Continental View");
 			$("#pie_visualisaton").hide();
 			$("#map_visualisaton").show();
 		}
