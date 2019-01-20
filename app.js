@@ -63,8 +63,8 @@ app.get('/visualisations_data', function(req,res,html){
 
 app.get('/visualisations_compare', function(req,res,html){
     //console.log(req.query.name);
-  charts_controller.test_compare(req.query.name);
-  res.sendFile(path.join(__dirname+ '/views/visualisations_compare.html'))
+    charts_controller.test_compare(req.query);
+    res.sendFile(path.join(__dirname+ '/views/visualisations_compare.html'))
 });
 
 app.get('/bubble_compare',function(req, res){
@@ -113,7 +113,7 @@ charts_controller.cities(req.query,res);
 
 
 app.get('/testapi', function(req,res){
-  console.log('dbsjbjs');
+  // console.log('dbsjbjs');
   // res.send('nmscmscsmcmscmscm');
 });
 
@@ -121,8 +121,6 @@ app.get('/testapi', function(req,res){
 app.get('/country_names', function(req,res){
   charts_controller.country_names(req.query,res);
 
-  console.log('*********country names*************');
-  // res.send('nmscmscsmcmscmscm');
 });
 
 app.get('/test', function(req,res,html){
@@ -130,6 +128,19 @@ app.get('/test', function(req,res,html){
   res.sendFile(path.join(__dirname+ '/views/test.html'))
 });
 
+app.get('/cities_map', function(req,res,html){
+  // console.log(req.query.name);
+  res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
+
+app.get('/heat_map', function(req,res){
+  // charts_controller.cities(req.query,res);
+  res.sendFile(path.join(__dirname+ '/views/heatmap.html'))
+});
+
+app.get('/heat_map_data', function(req,res){
+  charts_controller.heat_map_data(req.query,res);
+});
 
 //file upload
 app.use(upload());

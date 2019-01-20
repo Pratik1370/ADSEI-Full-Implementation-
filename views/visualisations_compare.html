@@ -82,9 +82,10 @@
                     </li>
                     <li>
                       <a onclick="showHeatmap()">Heat Map</a>
+                      <!-- <a id="heat_map">Heat Map</a> -->
                     </li>
                     <li>
-                      <a onclick="showPie()">Cities</a>
+                      <a onclick="showPieS()">Cities</a>
                     </li>
                 </li>
               </ul>
@@ -129,8 +130,8 @@
           <div class="clear"></div>
           <div class="form-group">
             <label>Select year and month to compare:</label>
-            <input class="yearselect" type="year" id="start" name="start" value="2000">
-          </div>
+            <select class="yearselect" id="start_y1" name="start">
+              </div>
           <label>Highest Temperature in this year: </label> <label id=" HYear">(Bind data here)</label>
           <label>Month which have highest temperature: </label><label id=" HMonth">(Bind data here)</label>
           
@@ -159,8 +160,9 @@
           </div>
           <div class="form-group">
             <label>Select year and month to compare:</label>
-            <input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000">
-          </div>
+                <select class="yearselect" id="start_y2" name="start">
+
+            </div>
           <label>Highest Temperature in this year: (Bind data here)</label>
           <label>Month which have highest temperature: (Bind data here)</label>
           
@@ -296,8 +298,8 @@
 
       <script type="text/javascript">
         $(document).ready(function (e) {
-          $('.yearselect').yearselect();
-          $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+          // $('.yearselect').yearselect();
+          // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
           var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options = '';
           $.each(res, function (index, country) {
@@ -314,9 +316,10 @@
             var c1_id = $(this).attr('id');
             localStorage.setItem('selected_country', c1_id);
             var c1 = c1_id;
+            var start_year = localStorage.getItem('start_year');
             var c2 = localStorage.getItem('selected_country_2');
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+start_year+'&end_year='+start_year;
 
 
           });
@@ -326,16 +329,48 @@
             localStorage.setItem('selected_country_2', c2_id);
             var c2 = c2_id;
             var c1 = localStorage.getItem('selected_country');
+            var start_year = localStorage.getItem('start_year',id);
 
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2;
 
-
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+start_year+'&end_year='+start_year;
           });
+
+          $( ".yearselect" ).change(function() {
+            var id = $(this).children(":selected").attr("id");
+            // localStorage.setItem('selected_country', c1_id);
+            var c1 = localStorage.getItem('selected_country');
+            var c2 = localStorage.getItem('selected_country_2');
+            var start_year = localStorage.setItem('start_year',id);
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year='+id+'&end_year='+id;
+          });
+          // $('#heat_map').on('click',function(e){
+          //     $("#textContent").show();
+          //     $("#textContent_2").show();
+          //     $("#echart_line").hide();
+          //     $("#echart_line_2").hide();
+          //     $("#chartContent").show();
+          //     $("#chartContent_2").show();
+          //   });
         });
+
+        // $(window).load(function(){
+
+        //       $.ajax({
+        //         url: "http://localhost:5000/heat_map_data?name=Egypt_Canada",
+        //         type: "GET",
+        //         success: function (res) {
+        //             console.log(res);
+                    // showHeatmap(res);
+                    // showPieS(res);
+            //     }
+            // });
+            
+        // });
+
+
       </script>
 
 
-      <!-- Custom Theme Scripts -->
 
 
 
