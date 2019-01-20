@@ -152,10 +152,10 @@
                     </tr>
                     <tr>
                       <td colspan="4">
-                          <label>Highest Temperature in this year: </label> <label id=" HYear">(Bind data here)</label>
+                          <label>Highest Temperature is: </label> <label id=" HYear"><span id="HighTem"></span></label>
                       </td>
                       <td colspan="4">
-                          <label>Month which have highest temperature: </label><label id=" HMonth">(Bind data here)</label>
+                          <label>Month which have highest temperature: </label><label id=" HMonth"><span id="HighTemMon"></span></label>
 
                       </td>
                     </tr>
@@ -164,13 +164,13 @@
                   <!-- <button id="cities_button" style="float: right;" type="button" class="btn btn-dark"> Cities</button> -->
 
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                    <div class="progress-bar progress-bar-success" style="width: 100%" id="low" role="progressbar">
                       Low Temperature
                     </div>
-                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="medium" role="progressbar">
                       Medium Temperature
                     </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                    <div class="progress-bar progress-bar-danger" style="width: 100%" id="high" role="progressbar">
                       High Temperature
                     </div>
                  
@@ -266,8 +266,8 @@
 
   <script type="text/javascript">
     $(document).ready(function (e) {
-      $('.yearselect').yearselect();
-      $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
+      // $('.yearselect').yearselect();
+      // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
 
     });
   </script>
@@ -288,6 +288,9 @@
         // console.log(params);
         document.getElementById('start_year_data').value = params.start_year;
         document.getElementById('end_year_data').value = params.end_year;
+        localStorage.setItem('start_year',params.start_year);
+        localStorage.setItem('end_year',params.end_year);
+        localStorage.setItem('selected_country',params.name);
         return params;
       };
 

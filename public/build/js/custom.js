@@ -529,8 +529,21 @@ var tem_max;
 var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 tem_max = Math.max.apply(null, xx.cities);
 var tem = xx.cities.indexOf(tem_max);
-$('.h_temp').text(tem_max);
-$('.h_mon_temp').text(mon_names[tem]);
+$('#HighTem').text(tem_max);
+$('#HighTemMon').text(mon_names[tem]);
+if(tem_max < 22){
+	$('#high').hide();
+	$('#medium').hide();
+	$('#low').show();
+}else if(tem_max > 22 && tem_max < 31){
+	$('#high').hide();
+	$('#medium').show();
+	$('#low').hide();
+}else{
+	$('#high').show();
+	$('#medium').hide();
+	$('#low').hide();
+}
 
 		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 		var data = [];

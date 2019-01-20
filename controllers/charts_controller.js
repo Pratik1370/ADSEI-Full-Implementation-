@@ -145,8 +145,9 @@ function groupBy( array)
 
             flag = i;
         } else {
-            o.AverageTemperature = parseFloat(o.AverageTemperature);
-            UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
+            // o.AverageTemperature = parseFloat(o.AverageTemperature).toFixed(2);
+            o.AverageTemperature = Math.floor(o.AverageTemperature * 100) / 100 ;
+            // UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
 
             date = moment(o.dt, 'YYYY-MM-DD').toDate();
             array[i].dt = date.getFullYear();
@@ -345,7 +346,9 @@ function cities_data( array,req_data)
 
             flag = i;
         } else {
-            o.AverageTemperature = parseFloat(o.AverageTemperature);
+          
+          o.AverageTemperature = Math.floor(o.AverageTemperature * 100) / 100 ;
+            // o.AverageTemperature = parseFloat(o.AverageTemperature).toFixed(2);
             // UncerAverageTemperature = parseFloat(o.AverageTemperatureUncertainty);
 
             date = moment(o.dt, 'YYYY-MM-DD').toDate();
