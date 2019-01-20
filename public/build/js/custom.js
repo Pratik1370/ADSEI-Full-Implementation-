@@ -905,6 +905,8 @@ $('.h_mon_temp2').text(mon_names[tem]);
 			localStorage.setItem('selected_country', country_name);
 			var start_year = 2001;
 			var end_year = 2005;
+			localStorage.setItem('start_year',start_year);
+			localStorage.setItem('end_year',end_year);
 			// var param_send = {start: start_year, end: end_year, country: country_name};
 			window.location.href = 'visualisations_data?name=' + country_name+'&start_year='+start_year+'&end_year='+end_year;
 

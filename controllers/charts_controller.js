@@ -310,23 +310,27 @@ exports.cities = function(req,res){
     csv()
         .fromFile(csvFilePath)
         .then((jsonObj)=>{
-          jsonObj_cities = cities_data (jsonObj,cities_of_country);
+          jsonObj_cities = cities_data (jsonObj,sent_data);
             
         });
         setTimeout(function(){
           // console.log(jsonObj_cities.cities_in_country);
-          res.send(jsonObj_cities.cities_in_country); 
+          res.send(jsonObj_cities); 
         },4000);
     
 };
 
-function cities_data( array,cntry_cities)
+function cities_data( array,req_data)
 {
- 
+ var gvn_start_year = req_data.start_year;
+ var gvn_end_year = req_data.end_year;
+ var gvn_country = req_data.name;
   var flag = -1;
+  var reslt_array = {};
   var date;
   var cities_in_country = [];
  var city = [];
+ var years_arr = [];
 
   array.forEach( function( o,i )
   {
@@ -348,14 +352,31 @@ function cities_data( array,cntry_cities)
             array[i].dt = date.getFullYear();
             year = array[i].dt;
             
-            if((year == 2001) && (o.Country == cntry_cities)) {
+            if((year == gvn_start_year) && (o.Country == gvn_country)) {
               if(!(o.City in city)){
                 city[o.City] = [];
               }
               city[o.City].push(o.AverageTemperature);
             }
+            date_month = date.getMonth();
+            if((year >= gvn_start_year ) && (year <= gvn_end_year) && (o.Country == gvn_country)) {
+              if(!(year in reslt_array)){
+                reslt_array[year]=[];
+                if(!(years_arr.includes(year)) && (years_arr.length < 7)){
+                  years_arr.push(year);
+                }else{
+                 min_val = Math.min.apply(null,years_arr);
+                 if(min_val < year){
+                      var index = years_arr.indexOf(min_val);
+                      years_arr[index] = year;
+                 }
+                }
+              }
+              reslt_array[year][date_month] = o.AverageTemperature;
+            }
     }
   });
+  // console.log(reslt_array);
   // console.log(city);
       // city.forEach(function(p,j){
         for(var j in city){
@@ -367,8 +388,44 @@ function cities_data( array,cntry_cities)
 
           }
     }
+    var i;
+        // var iteration = len-7;
+        var heat_array = [];
+        // var k=0;
+        years_arr.sort();
+        // console.log(years_arr);
+        var j=0;
+        var y;
+        for(i=0;i<7;i++){
+            y = years_arr[i];
+          for(j=0;j<12;j++){
+            // console.log(reslt_array[y][j]);
+            var arr = [];
+            // console.log(arr[0]);
+
+            arr[0]=i;
+            arr[1]=j;
+            try {
+              arr[2]=Math.trunc(reslt_array[y][j]);
+            }
+            catch(err) {
+              // console.log(reslt_array[y][j]);
+              // console.log('y');
+              // console.log(y);
+              // console.log(j);
+              console.log(err);
+                
+            }
+              heat_array.push(arr);
+            }
+          // k++;
+        }
+                      // console.log(heat_array);
+
+//         var heat_data = {};
+//  return heat_data={'heat_array':heat_array,'years_arr':years_arr };
     var reslt = {};
-    return reslt = { 'cities_in_country': cities_in_country};
+    return reslt = { 'cities_in_country': cities_in_country,'heat_array':heat_array,'years_arr':years_arr};
 
 
  }

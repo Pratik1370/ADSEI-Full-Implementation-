@@ -144,10 +144,10 @@
                   <table style="width:30%" style="width:100%">
                     <tr>
                       <td> <label for="start">First Year :</label></td>
-                      <td><input class="yearselect" type="year" id="start" name="start" value="2000"></td>
+                      <td><input class="yearselect" type="year" id="start_year_data" name="start" value="2000"></td>
 
                       <td style="align-content: center"><label for="end"> Last Year :</label></td>
-                      <td><input class="yearselect" style="width:25px" type="year" id="end" name="start" value="2000"></td>
+                      <td><input class="yearselect" style="width:25px" type="year" id="end_year_data" name="start" value="2000"></td>
                       <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
                     </tr>
                     <tr>
@@ -286,8 +286,8 @@
           params[pair[0]] = decodeURIComponent(pair[1]);
         }
         // console.log(params);
-        document.getElementById('start').value = params.start_year;
-        document.getElementById('end').value = params.end_year;
+        document.getElementById('start_year_data').value = params.start_year;
+        document.getElementById('end_year_data').value = params.end_year;
         return params;
       };
 
@@ -300,12 +300,14 @@
       });
 
       $('#year_data').on('click', function (event) {
-        var start_year = $('#start').val();
-        var end_year = $('#end').val();
+        var start_year = $('#start_year_data').val();
+        var end_year = $('#end_year_data').val();
         console.log(start_year);
         console.log(end_year);
         var country_name = params.name;
         // var country_name = 'India';
+        localStorage.setItem('start_year',start_year);
+        localStorage.setItem('end_year',end_year);
 
         // var param_send = {start: start_year, end: end_year, country: country_name};
         // console.log(param_send);
