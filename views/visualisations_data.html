@@ -72,7 +72,7 @@
               <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Dynamic Data Visualization</a>
               <ul class="collapse list-unstyled" id="pageSubmenu1">
                 <li><a href="#">Continental View</a></li>
-                <li><a href="#">Compare</a></li>
+                <li><a href="#" id="compare_btn">Compare</a></li>
                 <li><a href="/map">Map</a></li>
                 <li class="active">
                   <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Detailed View</a>
@@ -318,6 +318,18 @@
               window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
         }
       });
+      $('#compare_btn').on('click', function (e) {
+            // var c2_id = $(this).attr('id');
+            var c1 = "Brazil";
+            var c2 = "Canada";
+            localStorage.setItem('selected_country', c1);
+            localStorage.setItem('selected_country_2', c2);
+            localStorage.setItem('start_year', 2001);
+            localStorage.setItem('start_year2', 2001);
+            // localStorage.setItem('selected_country_2', c2);
+            // var c1 = localStorage.getItem('selected_country');
+            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
+          });
     });
   </script>
   <!-- <script type="text/javascript">
