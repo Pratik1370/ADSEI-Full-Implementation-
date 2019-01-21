@@ -532,10 +532,18 @@ function init_echarts(xx) {
 	if ($('#echart_line').length) {
 
 		//highest temperature inmonth
-var tem_max;
+var tem_max = 0;
+var tem;
+var index;
 var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-tem_max = Math.max.apply(null, xx.cities);
-var tem = xx.cities.indexOf(tem_max);
+var year = xx.max_temp_year;
+for (key in xx.cities) {
+		tem = Math.max.apply(null, xx.cities[key]);
+		if(tem_max < tem){
+		index = xx.cities[key].indexOf(tem_max);
+		tem_max = tem;
+		}
+}
 $('#HighTem').text(tem_max);
 $('#HighTemMon').text(mon_names[tem]);
 if(tem_max < 22){
@@ -554,11 +562,11 @@ if(tem_max < 22){
 
 		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 		var data = [];
-		// for (key in xx.cities) {
+		for (key in xx.cities) {
 			//console.log(xx.cities[key]);
 			var obj_data = {
-				name:  localStorage.getItem('start_year'),
-				// name: key,
+				// name:  localStorage.getItem('start_year'),
+				name: key,
 				type: 'line',
 				smooth: true,
 				itemStyle: {
@@ -568,11 +576,11 @@ if(tem_max < 22){
 						// }
 					}
 				},
-				data: xx.cities
-				// data: xx.cities[key]
+				// data: xx.cities
+				data: xx.cities[key]
 			}
 			data.push(obj_data);
-		// }
+		}
 
 
 		echartLine.setOption({
@@ -586,7 +594,7 @@ if(tem_max < 22){
 			legend: {
 				x: 220,
 				y: 40,
-				// data: Object.keys(xx.cities)
+				data: Object.keys(xx.cities)
 			},
 			toolbox: {
 				show: true,

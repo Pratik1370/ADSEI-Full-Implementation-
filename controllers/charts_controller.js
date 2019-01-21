@@ -13,52 +13,70 @@ var jsonObj1 = '';
 var all_years = [];
 var cities_of_country = '';
 
-function getYearMapping(country){
+function getYearMapping(para){
 
-  var yearMapping = {};
-  for (years in data){
-   if(!(data[years]in yearMapping) && (years < 2013)){
-      yearMapping[years] = [];
-    }
-
-    for(avgTemp in data[years][country]){
-      if (years < 2013)
-        yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
-    }
-
-  }
-
-  return yearMapping;
-
-}
-
-function getYearMapping1(para){
-  // console.log(para);
-  var country = para.name;
-  var s_year = para.start_year;
-  var yearMapping = {};
+  // var yearMapping = {};
   // for (years in data){
-  //   console.log(years);
-  //  if(!(data[years]in yearMapping) && (years <= para.end_year)){
+  //  if(!(data[years]in yearMapping) && (years < 2013)){
   //     yearMapping[years] = [];
   //   }
 
-//     for(avgTemp in data[s_year][para.name]){
-//       console.log(avgTemp);
-//       if ((years >= para.start_year) && (years <= para.end_year))
-//         yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
-//     }
+  //   for(avgTemp in data[years][country]){
+  //     if (years < 2013)
+  //       yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
+  //   }
 
-//   // }
-// console.log(yearMapping['2001']);
-//   return yearMapping;
-// console.log(country+s_year);
-var r = data[s_year][country];
+  // }
+
+  // return yearMapping;
+  var country = para.name;
+  var s_year = para.start_year;
+  var r = data[s_year][country];
 // console.log(r);
 
 var rr = r.splice(12);
 // console.log(r);
 return r;
+}
+
+function getYearMapping1(para){
+  // console.log(para);
+  var max_temp = 0;
+  var max_temp_year = 0;
+  var country = para.name;
+  var s_year = para.start_year;
+  var yearMapping = {};
+  var temp;
+  for (years in data){
+    // console.log(years);
+   if(!(data[years]in yearMapping) && (years <= para.end_year) && (years >= s_year)){
+      yearMapping[years] = [];
+    }
+
+    for(avgTemp in data[s_year][para.name]){
+      // console.log(avgTemp);
+      if ((years >= para.start_year) && (years <= para.end_year)){
+      temp = data[years][country][avgTemp];
+        if(max_temp < temp){
+          max_temp = temp;
+          max_temp_year = years;
+        }
+        yearMapping[years].push(parseFloat(data[years][country][avgTemp]).toFixed(2));
+      }
+    }
+
+  }
+  var result = {};
+console.log('max_temp_year');
+console.log(max_temp_year);
+  return result = {'yearMapping':yearMapping, 'max_temp_year':max_temp_year};
+// console.log(country+s_year);
+// var r = data[s_year][country];
+// console.log(r);
+
+// var rr = r.splice(12);
+// console.log(r);
+// return r;
 
 }
 
@@ -223,14 +241,13 @@ exports.test = function(req,res){
         });
     }
     // var sent_data = JSON.stringify(req);
-var sent_data = req;
-   var selected_country = sent_data.name;
+    var sent_data = req;
+    var selected_country = sent_data.name;
     if (selected_country != ''){
-     cities = getYearMapping1(sent_data);
-     var result = {'all_years':all_years ,'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
-    //  console.log('...................................................................');
-    //  console.log(jsonObj1);
-    //  console.log('...................................................................');
+     var result_json = getYearMapping1(sent_data);
+     cities = result_json.yearMapping;
+     var max_temp_year = result_json.max_temp_year;
+     var result = {'max_temp_year':max_temp_year, 'all_years':all_years ,'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
      }
 };
 
@@ -254,17 +271,20 @@ exports.test_compare = function(req,res){
     }
 
     var country_name = req.name;
-    // console.log(country_name);
+    console.log(req);
     var selected_country_2 = country_name.split("_");
 
 
     if (country_name != ''){
        
-      var para = {'name':selected_country_2[0], 'start_year':req.start_year}
-      var para1 = {'name':selected_country_2[1], 'start_year':req.start_year}
-         cities = getYearMapping1(para);
-         cities_2 = getYearMapping1(para1);
-         var result = {'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
+      var para = {'name':selected_country_2[0], 'start_year':req.start_year, 'end_year':req.start_year}
+      var para1 = {'name':selected_country_2[1], 'start_year':req.end_year}
+         var result_json = getYearMapping1(para);
+         cities = result_json.yearMapping;
+        //  var max_temp_year = result_json.max_temp_year;
+         cities_2 = getYearMapping(para1);
+
+         var result = {'max_temp_year':result_json.max_temp_year,'cities': cities, 'cities_2':cities_2, 'continent_data': continent_json, 'world_map_data': map_country_json};
   }
 };
 
