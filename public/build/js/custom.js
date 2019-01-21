@@ -982,8 +982,10 @@ if(tem_max < 22){
 
 		}
 	}
-	echartMap.on('click', eConsole_compare);
-	echartMap.on('dblclick', eConsole);
+	echartMap.on('click', eConsole);
+	// echartMap.on('click', eConsole_compare);
+	// echartMap.on('dblclick', eConsole);
+	echartMap.on('dblclick', eConsole_compare);
 }
 
 
