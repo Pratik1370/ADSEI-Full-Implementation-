@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
   <link href="../build/css/fSelect.css" rel="stylesheet">
@@ -50,6 +53,12 @@
 </head>
 
 <body onload="show()">
+
+  <div id="myAlert"  style="background-color: #2C3A47;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Instructions!</strong> This allows you to see the temperature differences of a single country and have them viewable in a line graph. <br>
+    <strong>To use:</strong><br> Please select the range years from the dropdown to see the temperature variations during a period of time.
+</div>
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -97,10 +106,7 @@
       </ul>
     </nav>
 
-
-
-
-    a
+    
 
 
 
@@ -147,15 +153,14 @@
                       <br>
                       <td style="align-content: center"><label for="end"> Last Year :</label></td>
                       <td><input class="yearselect" style="width:25px" type="year" id="end_year_data" name="start" value="2000"></td>
-                      <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
+                      <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Submit</button></td>
                     </tr>
                     <tr>
                       <td colspan="4">
-                          <label>Highest Temperature is: </label> <label id=" HYear"><span id="HighTem"></span></label>
+                          <label>Highest Temperature: </label> <label id=" HYear"><span style="-webkit-text-fill-color:red" id="HighTem"></span></label>
                       </td>
                       <td colspan="4">
-                          <label>Month which have highest temperature: </label><label id=" HMonth"><span id="HighTemMon"></span></label>
-
+                          <label>Hottest Month: </label><label id=" HMonth"><span style="-webkit-text-fill-color: #2C3A47" id="HighTemMon"></span></label>
                       </td>
                     </tr>
 
@@ -240,6 +245,7 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="../build/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
+
   <script type="text/javascript">
     $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
@@ -259,7 +265,6 @@
       });
     });
   </script>
-
 
 
 
@@ -330,6 +335,21 @@
             window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
           });
     });
+  </script>
+  <script>
+
+    var alerted = localStorage.getItem('alertcoun') || '';
+    if (alerted == 'yes') {
+      $(".alert").alert('close')
+
+    }
+    $('#myAlert').on('closed.bs.alert', function () {
+      if (alerted != 'yes') {
+        localStorage.setItem('alertcoun', 'yes');
+      }
+    })
+
+
   </script>
   <!-- <script type="text/javascript">
 // if ($('#echart_line').length) {
