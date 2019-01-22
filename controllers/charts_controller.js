@@ -105,6 +105,7 @@ function getContinentalMapping(country){
 }
 
 function get_years_data(from_year, to_year, data){
+  map_country_json = [];
   var continents_names = ['Asia', 'Africa', 'Antartica', 'North America', 'South America', 'Australia', 'Europe'];
 
 
