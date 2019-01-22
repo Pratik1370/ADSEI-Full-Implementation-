@@ -47,15 +47,16 @@
   <link href="css/charts.css" rel="stylesheet">
   <link href="../build/css/style5.css" rel="stylesheet">
 
+</head>
 
-
-<body onload = showLine()>
+<body onload = "showLine()">
     
   <!-- information warning -->
-  <div class="alert alert-info fade in">
+  <div id="myAlert"  style="background-color: #2C3A47;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <strong>Instruction!</strong> This learning page is used for students to get familiar with the charts. It including the example of each charts and the description of charts' usage.
+      <strong>Instructions!</strong> This learning page is used for students to get familiar with the charts. It including the example of each charts and the description of charts' usage.
   </div>
+
   <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar">
@@ -193,6 +194,21 @@
       });
 
     </script>
+    <script>
+
+        var alerted = localStorage.getItem('alertchart') || '';
+        if (alerted == 'yes') {
+          $(".alert").alert('close')
+    
+        }
+        $('#myAlert').on('closed.bs.alert', function () {
+          if (alerted != 'yes') {
+            localStorage.setItem('alertchart', 'yes');
+          }
+        })
+    
+    
+      </script>
 
 </body>
 

@@ -48,10 +48,20 @@
   <link href="../build/css/slider.css" rel="stylesheet">
   <link href="../build/css/style3.css" rel="stylesheet">
 
+  <!--<script src="../js/popper.min.js"></script>
+  <link href="css/charts.css" rel="stylesheet"> 
+  <link href="../build/css/style5.css" rel="stylesheet">-->
+
 
 </head>
 
+
 <body onload="show()">
+  <div id="myAlert"  style="background-color: #2C3A47;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <strong>Instructions!</strong> This compare tool allows you to select two or the same countries and compare the years and have them viewable in a line graph. <br>
+      <strong>To use:</strong><br> Please select the countries via the dropdown box and select the year you wish to compare.
+  </div>
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -73,7 +83,6 @@
             <li class="active">
               <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Dynamic Data Visualization</a>
               <ul class="collapse list-unstyled" id="pageSubmenu1">
-                <li><a href="#">Continental View</a></li>
                 <li><a href="#">Compare</a></li>
                 <li><a href="/map">Map</a></li>
                 <li class="active">
@@ -131,11 +140,11 @@
           </div>
           <div class="clear"></div>
           <div class="form-group">
-            <label>Select year and month to compare:</label>
+            <label>Select year to compare:</label>
             <input class="yearselect" id="start_y1" name="start">
               </div>
-          <label>Highest Temperature in this year: </label> <label id=" HYear1"><span id="HighTem"></span></label>
-          <label>Month which have highest temperature: </label><label id=" HMonth1"><span id="HighTemMon"></span></label>
+          <label>Highest Temperature: </label> <label id=" HYear1"><span style="-webkit-text-fill-color: red" id="HighTem"></span></label><br>
+          <label>Hottest Month: </label><label id=" HMonth1"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
           
           <div class="progress">
               <div class="progress-bar progress-bar-success" style="width: 100%" id="low" role="progressbar">
@@ -161,12 +170,12 @@
             </ul>
           </div>
           <div class="form-group">
-            <label>Select year and month to compare:</label>
+            <label>Select year to compare:</label>
                 <input class="yearselect2" id="start_y2" name="start">
           
             </div>
-            <label>Highest Temperature in this year: </label> <label id=" HYear2"><span id="HighTem2"></span></label>
-            <label>Month which have highest temperature: </label><label id=" HMonth2"><span id="HighTemMon2"></span></label>
+            <label>Highest Temperature: </label> <label id=" HYear2"><span style="-webkit-text-fill-color: red" id="HighTem2"></span></label><br>
+            <label>Hottest Month: </label><label id=" HMonth2"><span style="-webkit-text-fill-color :red" id="HighTemMon2"></span></label>
             
             <div class="progress">
                 <div class="progress-bar progress-bar-success" style="width: 100%" id="low2" role="progressbar">
@@ -382,8 +391,21 @@
 
       </script>
 
+<script>
+
+    var alerted = localStorage.getItem('alertcmp') || '';
+    if (alerted == 'yes') {
+      $(".alert").alert('close')
+
+    }
+    $('#myAlert').on('closed.bs.alert', function () {
+      if (alerted != 'yes') {
+        localStorage.setItem('alertcmp', 'yes');
+      }
+    })
 
 
+  </script>
 
 
 

@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
   <link href="../build/css/fSelect.css" rel="stylesheet">
@@ -50,6 +53,14 @@
 </head>
 
 <body onload="show()">
+
+  <div id="myAlert" style="background-color: #2C3A47;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Instructions!</strong> This allows you to see the temperature differences of a single country and have them
+    viewable in a line graph. <br>
+    <strong>To use:</strong><br> Please select the range years from the dropdown to see the temperature variations
+    during a period of time.
+  </div>
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -71,7 +82,6 @@
             <li class="active">
               <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Dynamic Data Visualization</a>
               <ul class="collapse list-unstyled" id="pageSubmenu1">
-                <li><a href="#">Continental View</a></li>
                 <li><a href="#" id="compare_btn">Compare</a></li>
                 <li><a href="/map">Map</a></li>
                 <li class="active">
@@ -99,9 +109,6 @@
     </nav>
 
 
-
-
-    a
 
 
 
@@ -145,18 +152,19 @@
                     <tr>
                       <td> <label for="start">First Year :</label></td>
                       <td><input class="yearselect" type="year" id="start_year_data" name="start" value="2000"></td>
-
+                      <br>
                       <td style="align-content: center"><label for="end"> Last Year :</label></td>
-                      <td><input class="yearselect" style="width:25px" type="year" id="end_year_data" name="start" value="2000"></td>
-                      <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Get Data</button></td>
+                      <td><input class="yearselect" style="width:25px" type="year" id="end_year_data" name="start"
+                          value="2000"></td>
+                      <td><button id="year_data" style="float: right;" type="button" class="btn btn-dark">Submit</button></td>
                     </tr>
                     <tr>
                       <td colspan="4">
-                          <label>Highest Temperature is: </label> <label id=" HYear"><span id="HighTem"></span></label>
+                        <label>Highest Temperature: </label> <label id=" HYear"><span style="-webkit-text-fill-color:red"
+                            id="HighTem"></span></label>
                       </td>
                       <td colspan="4">
-                          <label>Month which have highest temperature: </label><label id=" HMonth"><span id="HighTemMon"></span></label>
-
+                        <label>Hottest Month: </label><label id=" HMonth"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
                       </td>
                     </tr>
 
@@ -173,9 +181,9 @@
                     <div class="progress-bar progress-bar-danger" style="width: 100%" id="high" role="progressbar">
                       High Temperature
                     </div>
-                 
+
                   </div>
- 
+
 
 
                   <ul class="nav navbar-right panel_toolbox">
@@ -212,7 +220,6 @@
 
 
 
-  <div class="overlay"></div>
 
 
 
@@ -241,6 +248,7 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="../build/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
+
   <script type="text/javascript">
     $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
@@ -263,10 +271,9 @@
 
 
 
-
   <script type="text/javascript">
     $(document).ready(function (e) {
-      $('.yearselect').yearselect({end: 2013, order: 'desc'});
+      $('.yearselect').yearselect({ end: 2013, order: 'desc' });
       // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
 
     });
@@ -288,9 +295,9 @@
         // console.log(params);
         document.getElementById('start_year_data').value = params.start_year;
         document.getElementById('end_year_data').value = params.end_year;
-        localStorage.setItem('start_year',params.start_year);
-        localStorage.setItem('end_year',params.end_year);
-        localStorage.setItem('selected_country',params.name);
+        localStorage.setItem('start_year', params.start_year);
+        localStorage.setItem('end_year', params.end_year);
+        localStorage.setItem('selected_country', params.name);
         return params;
       };
 
@@ -305,32 +312,47 @@
       $('#year_data').on('click', function (event) {
         var start_year = $('#start_year_data').val();
         var end_year = $('#end_year_data').val();
-        if(start_year > end_year){
+        if (start_year > end_year) {
           alert('Last year should be greater than First year');
-        }else{
-              var country_name = params.name;
-              // var country_name = 'India';
-              localStorage.setItem('start_year',start_year);
-              localStorage.setItem('end_year',end_year);
+        } else {
+          var country_name = params.name;
+          // var country_name = 'India';
+          localStorage.setItem('start_year', start_year);
+          localStorage.setItem('end_year', end_year);
 
-              // var param_send = {start: start_year, end: end_year, country: country_name};
-              // console.log(param_send);
-              window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
+          // var param_send = {start: start_year, end: end_year, country: country_name};
+          // console.log(param_send);
+          window.location.href = 'visualisations_data?name=' + country_name + '&start_year=' + start_year + '&end_year=' + end_year;
         }
       });
       $('#compare_btn').on('click', function (e) {
-            // var c2_id = $(this).attr('id');
-            var c1 = "Brazil";
-            var c2 = "Canada";
-            localStorage.setItem('selected_country', c1);
-            localStorage.setItem('selected_country_2', c2);
-            localStorage.setItem('start_year', 2001);
-            localStorage.setItem('start_year2', 2001);
-            // localStorage.setItem('selected_country_2', c2);
-            // var c1 = localStorage.getItem('selected_country');
-            window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2+'&start_year=2001&end_year=2001';
-          });
+        // var c2_id = $(this).attr('id');
+        var c1 = "Brazil";
+        var c2 = "Canada";
+        localStorage.setItem('selected_country', c1);
+        localStorage.setItem('selected_country_2', c2);
+        localStorage.setItem('start_year', 2001);
+        localStorage.setItem('start_year2', 2001);
+        // localStorage.setItem('selected_country_2', c2);
+        // var c1 = localStorage.getItem('selected_country');
+        window.location.href = 'visualisations_compare?name=' + c1 + '_' + c2 + '&start_year=2001&end_year=2001';
+      });
     });
+  </script>
+  <script>
+
+    var alerted = localStorage.getItem('alertcoun') || '';
+    if (alerted == 'yes') {
+      $(".alert").alert('close')
+
+    }
+    $('#myAlert').on('closed.bs.alert', function () {
+      if (alerted != 'yes') {
+        localStorage.setItem('alertcoun', 'yes');
+      }
+    })
+
+
   </script>
   <!-- <script type="text/javascript">
 // if ($('#echart_line').length) {

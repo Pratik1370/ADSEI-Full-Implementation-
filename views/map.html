@@ -46,6 +46,29 @@
 </head>
 
 <body>
+    <div id="myAlert" style="background-color: #2C3A47;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Introduction!</strong> We are well aware of the fact that the global world temperature is on a rise every
+        day. The imbalance of mercury with the unusual rise and decrease leads a potential threat to the global humankind. The core reason for selection of climatic change is to visualize all
+        the data patterns available from prospect of reflecting the patterns in temperature change which could describe itself the potential threats and measure we
+        shall take for solving the issues encountered. As a wider scope, we will be categorizing the data as per decades and predict the temperature of next 20 years on
+        basis of the dataset analysed.<br><br>
+        
+        Main Data: Global Temperature<br><br>
+    
+       
+        Attributes:<br>
+        dt--Defines the date it was taken<br>
+        AverageTemperature ----Defines the recorded average temperature of one day<br>
+        AverageTemperatureUncertainty-----The difference/average errors or deviation<br>
+        City----The city where we have measured<br>
+        Country----The country where the temperature is measured<br>
+        Latitude----The latitude of the place<br>
+        Longitude----The longitude of the place<br>
+    
+        Total Data: 1048575
+    
+      </div>
   <div class="wrapper">
 
     <nav id="sidebar">
@@ -227,6 +250,21 @@
       });
     })(jQuery);
   </script>
+  <script>
+
+      var alerted = localStorage.getItem('alerted') || '';
+      if (alerted == 'yes') {
+        $(".alert").alert('close')
+  
+      }
+      $('#myAlert').on('closed.bs.alert', function () {
+        if (alerted != 'yes') {
+          localStorage.setItem('alerted', 'yes');
+        }
+      })
+  
+  
+    </script>
 
 </body>
 
