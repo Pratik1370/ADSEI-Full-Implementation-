@@ -54,14 +54,6 @@
 
 <body onload="show()">
 
-  <div id="myAlert" style="background-color: darkcyan;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Instructions!</strong> This allows you to see the temperature differences of a single country and have them
-    viewable in a line graph. <br>
-    <strong>To use:</strong><br> Please select the range years from the dropdown to see the temperature variations
-    during a period of time.
-  </div>
-
   <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar">
@@ -145,6 +137,13 @@
 
 
             <div id="line" class="col-md-12 col-sm-12 col-xs-12">
+                <div id="myAlert" style="background-color: #d9edf7; border-color: #bce8f1;color: #31708f; text-align: justify;font-size: 12px;" class="alert alert-info fade in">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Instructions!</strong> This allows you to see the temperature differences of a single country and have them
+                    viewable in a line graph. <br>
+                    <strong>To use:</strong><br> Please select the range years from the dropdown to see the temperature variations
+                    during a period of time.
+                  </div>
               <div class="x_panel">
                 <div class="x_title">
                   <h2 style="margin-right: 50px">Climate Changes</h2>
@@ -160,11 +159,11 @@
                     </tr>
                     <tr>
                       <td colspan="4">
-                        <label>Highest Temperature: </label> <label id=" HYear"><span style="-webkit-text-fill-color:red"
+                        <label>Highest Temperature:&nbsp; </label> <label id=" HYear"><span style="-webkit-text-fill-color:red"
                             id="HighTem"></span></label>
                       </td>
                       <td colspan="4">
-                        <label>Hottest Month: </label><label id=" HMonth"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
+                        <label>Hottest Month:&nbsp; </label><label id=" HMonth"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
                       </td>
                     </tr>
 

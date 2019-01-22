@@ -5,12 +5,12 @@
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Verdana,sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: Verdana,sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;

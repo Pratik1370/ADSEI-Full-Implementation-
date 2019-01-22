@@ -57,11 +57,7 @@
 
 
 <body onload="show()">
-  <div id="myAlert"  style="background-color: darkcyan;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <strong>Instructions!</strong> This compare tool allows you to select two or the same countries and compare the years and have them viewable in a line graph. <br>
-      <strong>To use:</strong><br> Please select the countries via the dropdown box and select the year you wish to compare.
-  </div>
+ 
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -131,6 +127,11 @@
       <br><br><br><br><br>
 
       <div class="row">
+          <div id="myAlert"  style="background-color: #d9edf7; border-color: #bce8f1; color: #31708f !important; font-size: 12px;text-align: justify;" class="alert alert-info fade in">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Instructions!</strong> This compare tool allows you to select two or the same countries and compare the years and have them viewable in a line graph. <br>
+              <strong>To use:</strong><br> Please select the countries via the dropdown box and select the year you wish to compare.
+          </div>
         <div class="col-sm-6">
           <div class="row">
             <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">Select Country 1
@@ -141,10 +142,10 @@
           <div class="clear"></div>
           <div class="form-group">
             <label>Select year to compare:</label>
-            <input class="yearselect" id="start_y1" name="start">
+            <input class="yearselect" type="year"   id="start_y1" name="start" value="2000">
               </div>
-          <label>Highest Temperature: </label> <label id=" HYear1"><span style="-webkit-text-fill-color: red" id="HighTem"></span></label><br>
-          <label>Hottest Month: </label><label id=" HMonth1"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
+          <label>Highest Temperature:&nbsp; </label> <label id=" HYear1"><span style="-webkit-text-fill-color: red" id="HighTem"></span></label><br>
+          <label>Hottest Month:&nbsp; </label><label id=" HMonth1"><span style="-webkit-text-fill-color: red" id="HighTemMon"></span></label>
           
           <div class="progress">
               <div class="progress-bar progress-bar-success" style="width: 100%" id="low" role="progressbar">
@@ -171,11 +172,11 @@
           </div>
           <div class="form-group">
             <label>Select year to compare:</label>
-                <input class="yearselect2" id="start_y2" name="start">
+                <input class="yearselect2" id="start_y2" name="start" value="2000">
           
             </div>
-            <label>Highest Temperature: </label> <label id=" HYear2"><span style="-webkit-text-fill-color: red" id="HighTem2"></span></label><br>
-            <label>Hottest Month: </label><label id=" HMonth2"><span style="-webkit-text-fill-color :red" id="HighTemMon2"></span></label>
+            <label>Highest Temperature:&nbsp; </label> <label id=" HYear2"><span style="-webkit-text-fill-color: red" id="HighTem2"></span></label><br>
+            <label>Hottest Month: &nbsp;</label><label id=" HMonth2"><span style="-webkit-text-fill-color :red" id="HighTemMon2"></span></label>
             
             <div class="progress">
                 <div class="progress-bar progress-bar-success" style="width: 100%" id="low2" role="progressbar">
@@ -287,30 +288,37 @@
 
 
 
-      <script type="text/javascript">
-        $(document).ready(function () {
-          $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-          });
-
-          $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').fadeOut();
-          });
-
-          $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').addClass('active');
-            $('.overlay').fadeIn();
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-          });
-        });
-      </script>
+     
 
       <script type="text/javascript">
         $(document).ready(function (e) {
+
+
           $('.yearselect').yearselect({end: 2013, order: 'desc'});
           $('.yearselect2').yearselect({end: 2013, order: 'desc'});
+
+
+      var getParams = function (url) {
+        var params = {};
+        var parser = document.createElement('a');
+        parser.href = url;
+        var query = parser.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          params[pair[0]] = decodeURIComponent(pair[1]);
+        }
+        // console.log(params.start_year);
+        document.getElementById('start_y1').value = params.start_year;
+        document.getElementById('start_y2').value = params.end_year;
+
+        return params;
+      };
+
+      // Get parameters from the current URL
+      var params = getParams(window.location.href);
+
+          
           // $('.yearselect').yearselect({ start: 2001, end: 2013, order: 'desc', selected: 2012 });
           var res = ["Côte D'Ivoire", "Ethiopia", "India", "Syria", "Egypt", "Turkey", "Iraq", "Thailand", "Brazil", "Germany", "Colombia", "South Africa", "Morocco", "China", "United States", "Senegal", "Tanzania", "Bangladesh", "Pakistan", "Zimbabwe", "Vietnam", "Nigeria", "Indonesia", "Saudi Arabia", "Afghanistan", "Ukraine", "Congo (Democratic Republic Of The)", "Peru", "United Kingdom", "Angola", "Spain", "Philippines", "Iran", "Australia", "Mexico", "Somalia", "Canada", "Russia", "Japan", "Kenya", "France", "Burma", "Italy", "Chile", "Dominican Republic", "South Korea", "Singapore", "Taiwan", "Sudan"];
           var options = '';
@@ -392,7 +400,25 @@
 
 
       </script>
+ <script type="text/javascript">
+  $(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+      theme: "minimal"
+    });
 
+    $('#dismiss, .overlay').on('click', function () {
+      $('#sidebar').removeClass('active');
+      $('.overlay').fadeOut();
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').addClass('active');
+      $('.overlay').fadeIn();
+      $('.collapse.in').toggleClass('in');
+      $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+  });
+</script>
 <script>
 
     var alerted = localStorage.getItem('alertcmp') || '';
