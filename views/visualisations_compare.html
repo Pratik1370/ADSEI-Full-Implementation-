@@ -55,9 +55,9 @@
 
 </head>
 
-<body onload="show()">
 
-  <div class="alert alert-info fade in">
+<body onload="show()">
+  <div id="myAlert" class="alert alert-info fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       <strong>Instructions!</strong> This compare tool allows you to select two or the same countries and compare the years and have them viewable in a line graph. <br>
       <strong>To use:</strong><br> Please select the countries via the dropdown box and select the year you wish to compare.
@@ -391,8 +391,21 @@
 
       </script>
 
+<script>
+
+    var alerted = localStorage.getItem('alertcmp') || '';
+    if (alerted == 'yes') {
+      $(".alert").alert('close')
+
+    }
+    $('#myAlert').on('closed.bs.alert', function () {
+      if (alerted != 'yes') {
+        localStorage.setItem('alertcmp', 'yes');
+      }
+    })
 
 
+  </script>
 
 
 
