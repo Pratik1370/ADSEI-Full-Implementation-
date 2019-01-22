@@ -537,15 +537,17 @@ var tem;
 var index;
 var mon_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var year = xx.max_temp_year;
+
 for (key in xx.cities) {
+	xx.cities[key].splice(12)
 		tem = Math.max.apply(null, xx.cities[key]);
 		if(tem_max < tem){
-		index = xx.cities[key].indexOf(tem_max);
+		index = xx.cities[key].indexOf(tem.toString());
 		tem_max = tem;
 		}
 }
 $('#HighTem').text(tem_max);
-$('#HighTemMon').text(mon_names[tem]);
+$('#HighTemMon').text(mon_names[index]);
 if(tem_max < 22){
 	$('#high').hide();
 	$('#medium').hide();
