@@ -15,7 +15,13 @@
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
   <script type="text/javascript" src="../js/echarts/bmap.min.js"></script>
   <script type="text/javascript" src="../js/echarts/simplex.js"></script>
-
+<style>
+h4{
+  font-size: 14px !important;
+  /* font-weight: 600 !important; */
+  font-family: Verdana,sans-serif;
+}
+</style>
 
   <script src="../js/charts.js"></script>
 
@@ -50,12 +56,6 @@
 </head>
 
 <body onload = "showLine()">
-    
-  <!-- information warning -->
-  <div id="myAlert"  style="background-color: darkcyan;text-align: justify;-webkit-text-fill-color:white" class="alert alert-info fade in">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <strong>Instructions!</strong> This learning page is used for students to get familiar with the charts. It including the example of each charts and the description of charts' usage.
-  </div>
 
   <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -177,10 +177,16 @@
 
       <!--************************ This is the content part ***********************-->
       <div id="content">
+          <!-- information warning -->
+
         <div class="row" id="chartContent">
-          <br><br><br><br>
+          
+          <br><br><br><br>  <div id="myAlert"  style="background-color: #d9edf7; border-color: #bce8f1; color: #31708f !important; font-size: 12px;text-align: justify;" class="alert alert-info fade in">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Instructions!</strong> This learning page is used for students to get familiar with the charts. It including the example of each charts and the description of charts' usage.
+          </div>
           <div id="main" style="width: 700px;height:480px;" class="col-sm-6"></div>
-          <div id="textContent" style="width: 640px;height:480px;" class="col-sm-6"></div>
+          <div id="textContent" style="width: 640px;height:300px;" class="col-sm-6"></div>
         </div>
 
       </div>

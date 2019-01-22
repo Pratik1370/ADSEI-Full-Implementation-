@@ -191,6 +191,7 @@
                     <li><a class="close-link"><i class="fa fa-close"></i></a>
                     </li>
                   </ul>
+                  <div class="country_name"></div>
                   <div class="clearfix"></div>
                 </div>
 
@@ -302,7 +303,7 @@
 
       // Get parameters from the current URL
       var params = getParams(window.location.href);
-
+// $('.country_name').text(params.name);
       $('#cities_button').on('click', function (event) {
         var country_name = params.name;
         window.location.href = 'cities?name=' + country_name;

@@ -135,6 +135,10 @@ data = data.map(function (item) {
 });
 
 option = {
+    title: {
+        text: country_name,
+        subtext: 'Avg Temperature'
+    },
     tooltip: {
         position: 'top'
     },

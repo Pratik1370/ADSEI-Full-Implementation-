@@ -229,6 +229,10 @@ data = datar.map(function (item) {
 });
 
 option = {
+    title: {
+        text: respons.countries[0],
+        subtext: 'Avg Temperature'
+    },
     tooltip: {
         position: 'top'
     },
@@ -311,6 +315,10 @@ data = datar.map(function (item) {
 });
 
 option = {
+    title: {
+        text: respons.countries[1],
+        subtext: 'Avg Temperature'
+    },
     tooltip: {
         position: 'top'
     },
