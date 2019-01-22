@@ -579,7 +579,8 @@ if(tem_max < 22){
 					}
 				},
 				// data: xx.cities
-				data: xx.cities[key]
+				data: xx.cities[key],
+				type: 'bar'
 			}
 			data.push(obj_data);
 		}
@@ -631,7 +632,6 @@ if(tem_max < 22){
 				type: 'value'
 			}],
 			series: data
-
 		});
 
 	}
@@ -677,7 +677,8 @@ if(tem_max < 22){
 						// }
 					}
 				},
-				data: xx.cities_2
+				data: xx.cities_2,
+				type:'bar'
 				// data: xx.cities_2[key]
 			}
 			data.push(obj_data);
@@ -703,11 +704,12 @@ if(tem_max < 22){
 					magicType: {
 						show: true,
 						title: {
-							line: 'Line',
-							bar: 'Bar'
+							bar: 'Bar',
+							line: 'Line'
+
 
 						},
-						type: ['line', 'bar']
+						type: [ 'bar','line']
 					},
 					restore: {
 						show: true,
@@ -730,6 +732,7 @@ if(tem_max < 22){
 				type: 'value'
 			}],
 			series: data
+			// type: 'bar'
 
 		});
 
