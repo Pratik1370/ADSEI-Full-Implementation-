@@ -49,21 +49,21 @@ function showLine(){
     // specify chart configuration item and data
     var option = {
         title: {
-            text: 'The amount of people in the mall everyday'
+            text: 'Value of Joes Car'
         },
         tooltip: {},
         legend: {
-            data:['Total']
+            data:['Year']
         },
         xAxis: {
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['2011', '2012', '2013', '2014', '2015', '2016', '2017']
         },
         yAxis: {
           type: 'value'
         },
         series: [{
-            name: 'amount',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            name: 'Value',
+            data: [1500, 1400, 1200, 900, 800, 700, 500],
             type: 'line'
         }]
     };
