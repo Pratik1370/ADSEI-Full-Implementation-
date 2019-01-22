@@ -256,6 +256,17 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
+      
+    var alerted = localStorage.getItem('alertcoun') || '';
+    if (alerted == 'yes') {
+      $(".alert").alert('close')
+
+    }
+    $('#myAlert').on('closed.bs.alert', function () {
+      if (alerted != 'yes') {
+        localStorage.setItem('alertcoun', 'yes');
+      }
+    })
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
       });
@@ -346,16 +357,6 @@
   </script>
   <script>
 
-    var alerted = localStorage.getItem('alertcoun') || '';
-    if (alerted == 'yes') {
-      $(".alert").alert('close')
-
-    }
-    $('#myAlert').on('closed.bs.alert', function () {
-      if (alerted != 'yes') {
-        localStorage.setItem('alertcoun', 'yes');
-      }
-    })
 
 
   </script>
