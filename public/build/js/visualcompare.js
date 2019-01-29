@@ -89,7 +89,7 @@ function showPieS(){
                     normal: {
                         color: '#c23531',
                         shadowBlur: 200,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        shadowColor: 'red'
                     }
                 },
     
@@ -172,7 +172,7 @@ function showPieS(){
                      normal: {
                          color: '#c23531',
                          shadowBlur: 200,
-                         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                         shadowColor: 'red'
                      }
                  },
      
