@@ -625,7 +625,7 @@ if(tem_max < 22){
 			xAxis: [{
 				name: '\n\n\n\n\n\n\nMonths',
 				type: 'category',
-				boundaryGap: false,
+				// boundaryGap: false,
 				data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 			}],
 			yAxis: [{
@@ -725,7 +725,7 @@ if(tem_max < 22){
 			xAxis: [{
 				name: '\n\n\n\n\n\n\nMonths',
 				type: 'category',
-				boundaryGap: false,
+				// boundaryGap: false,
 				data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 			}],
 			yAxis: [{

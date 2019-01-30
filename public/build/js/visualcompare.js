@@ -62,7 +62,7 @@ function showPieS(){
         },
         series : [
             {
-                name:'source of visit',
+                name:'City',
                 type:'pie',
                 radius : '55%',
                 center: ['50%', '50%'],
@@ -89,7 +89,7 @@ function showPieS(){
                     normal: {
                         color: '#c23531',
                         shadowBlur: 200,
-                        shadowColor: 'red'
+                        shadowColor: 'silver'
                     }
                 },
     
@@ -145,7 +145,7 @@ function showPieS(){
          },
          series : [
              {
-                 name:'source of visit',
+                 name:'City',
                  type:'pie',
                  radius : '55%',
                  center: ['50%', '50%'],
@@ -171,8 +171,9 @@ function showPieS(){
                  itemStyle: {
                      normal: {
                          color: '#c23531',
-                         shadowBlur: 200,
-                         shadowColor: 'red'
+                         shadowBlur: 200,                         color: '#c23531',
+
+                         shadowColor: 'silver'
                      }
                  },
      

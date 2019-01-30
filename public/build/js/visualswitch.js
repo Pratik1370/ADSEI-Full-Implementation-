@@ -85,7 +85,8 @@ function showPie(){
                     normal: {
                         color: '#c23531',
                         shadowBlur: 200,
-                        shadowColor: 'red'
+                        shadowColor: 'silver',
+                        color: '#c23531'
                     }
                 },
     
