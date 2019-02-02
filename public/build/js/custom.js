@@ -1007,7 +1007,7 @@ $(document).ready(function () {
 
 		}
 	};
-	xhttp.open("GET", "http://localhost:5000/users", true);
+	xhttp.open("GET", window.location.host+"/users", true);
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send();
 
