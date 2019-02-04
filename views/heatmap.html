@@ -44,7 +44,7 @@
     $(document).ready(function (e) {
             var country_name = localStorage.getItem('selected_country');
     $.ajax({
-            url: "http://localhost:5000/heat_map_data?name=" + country_name,
+            url: "/heat_map_data?name=" + country_name,
             type: "GET",
             success: function (res) {
                 console.log(res);
