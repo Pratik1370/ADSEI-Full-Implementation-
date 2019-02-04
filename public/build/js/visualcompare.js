@@ -13,7 +13,7 @@ $(document).ready(function () {
     var start_year = localStorage.getItem('start_year');
     var c1 = localStorage.getItem('selected_country');
     var c2 = localStorage.getItem('selected_country_2');
-	xhttp.open("GET", "http://localhost:5000/heat_map_data?name="+c1+"_"+c2+"&start_year="+start_year, true);
+	xhttp.open("GET", "/heat_map_data?name="+c1+"_"+c2+"&start_year="+start_year, true);
 	xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
     
