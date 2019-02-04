@@ -13,7 +13,7 @@ $(document).ready(function () {
     var start_year = localStorage.getItem('start_year');
     var end_year = localStorage.getItem('end_year');
     var c1 = localStorage.getItem('selected_country');
-    xhttp.open("GET", "http://localhost:5000/cities_data?name="+c1+"&start_year="+start_year+'&end_year='+end_year, true);
+    xhttp.open("GET", "/cities_data?name="+c1+"&start_year="+start_year+'&end_year='+end_year, true);
 	xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
     
