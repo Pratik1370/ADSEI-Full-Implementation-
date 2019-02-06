@@ -35,6 +35,7 @@ function showPie(){
     data = JSON.parse(data);
     var myChart = echarts.init(document.getElementById('main'));
     var result_data = data.cities_in_country;
+ 
     // specify chart configuration item and data
     option = {
         title: {
@@ -83,11 +84,19 @@ function showPie(){
                 },
                 itemStyle: {
                     normal: {
+                        label : {
+                            position : 'inner',
+                            show: true,
+                            formatter : function (result_data) {                         
+                              return result_data.name
+                            //   return (result_data.name - 0).toFixed(0) + '%'
+                            }
+                        },
                         color: '#c23531',
                         shadowBlur: 200,
                         shadowColor: 'silver',
                         color: '#c23531'
-                    }
+                    },
                 },
     
                 animationType: 'scale',

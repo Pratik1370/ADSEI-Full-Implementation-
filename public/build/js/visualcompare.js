@@ -87,6 +87,14 @@ function showPieS(){
                 },
                 itemStyle: {
                     normal: {
+                        label : {
+                            position : 'inner',
+                            show: true,
+                            formatter : function (result_data) {                         
+                              return result_data.name
+                            //   return (result_data.name - 0).toFixed(0) + '%'
+                            }
+                        },
                         color: '#c23531',
                         shadowBlur: 200,
                         shadowColor: 'silver'
@@ -170,9 +178,17 @@ function showPieS(){
                  },
                  itemStyle: {
                      normal: {
+                        label : {
+                            position : 'inner',
+                            show: true,
+                            formatter : function (result_data) {                         
+                              return result_data.name
+                            //   return (result_data.name - 0).toFixed(0) + '%'
+                            }
+                        },
                          color: '#c23531',
-                         shadowBlur: 200,                         color: '#c23531',
-
+                         shadowBlur: 200,                         
+                         color: '#c23531',
                          shadowColor: 'silver'
                      }
                  },
